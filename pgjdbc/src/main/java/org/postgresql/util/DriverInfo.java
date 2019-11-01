@@ -14,8 +14,8 @@ public final class DriverInfo {
   }
 
   // Driver name
-  public static final String DRIVER_NAME = "PostgreSQL JDBC Driver";
-  public static final String DRIVER_SHORT_NAME = "PgJDBC";
+  public static final String DRIVER_NAME = "MZ-Patched PostgreSQL JDBC Driver";
+  public static final String DRIVER_SHORT_NAME = "MzPgJDBC";
   public static final String DRIVER_VERSION = "/*$mvn.project.property.parsedversion.osgiversion$*/";
   public static final String DRIVER_FULL_NAME = DRIVER_NAME + " " + DRIVER_VERSION;
 
