@@ -14,6 +14,7 @@ import org.postgresql.util.JdbcBlackHole;
 import org.postgresql.util.PSQLException;
 import org.postgresql.util.PSQLState;
 
+import java.nio.charset.StandardCharsets;
 import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -29,6 +30,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.regex.Pattern;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class PgDatabaseMetaData implements DatabaseMetaData {
 
@@ -1444,7 +1448,7 @@ public class PgDatabaseMetaData implements DatabaseMetaData {
     f[3] = new Field("COLUMN_NAME", Oid.VARCHAR);
     f[4] = new Field("DATA_TYPE", Oid.INT2);
     f[5] = new Field("TYPE_NAME", Oid.VARCHAR);
-    f[6] = new Field("COLUMN_SIZE", Oid.INT4);
+    f[6] = new Field("COLUMN_SIZE", Oid.INT4); // the "precision" sorta
     f[7] = new Field("BUFFER_LENGTH", Oid.VARCHAR);
     f[8] = new Field("DECIMAL_DIGITS", Oid.INT4);
     f[9] = new Field("NUM_PREC_RADIX", Oid.INT4);
@@ -1463,153 +1467,71 @@ public class PgDatabaseMetaData implements DatabaseMetaData {
     f[22] = new Field("IS_AUTOINCREMENT", Oid.VARCHAR);
     f[23] = new Field( "IS_GENERATEDCOLUMN", Oid.VARCHAR);
 
-    String sql;
-    // a.attnum isn't decremented when preceding columns are dropped,
-    // so the only way to calculate the correct column number is with
-    // window functions, new in 8.4.
-    //
-    // We want to push as much predicate information below the window
-    // function as possible (schema/table names), but must leave
-    // column name outside so we correctly count the other columns.
-    //
-    if (connection.haveMinimumServerVersion(ServerVersion.v8_4)) {
-      sql = "SELECT * FROM (";
-    } else {
-      sql = "";
-    }
+    // materialize does not support `SHOW TABLES LIKE ..`, so do it here
+    Pattern tableNameRe = Pattern.compile(tableNamePattern.replace("%", ".*"));
 
-    sql += "SELECT n.nspname,c.relname,a.attname,a.atttypid,a.attnotnull "
-           + "OR (t.typtype = 'd' AND t.typnotnull) AS attnotnull,a.atttypmod,a.attlen,";
-
-    if (connection.haveMinimumServerVersion(ServerVersion.v8_4)) {
-      sql += "row_number() OVER (PARTITION BY a.attrelid ORDER BY a.attnum) AS attnum, ";
-    } else {
-      sql += "a.attnum,";
-    }
-
-    if (connection.haveMinimumServerVersion(ServerVersion.v10)) {
-      sql += "nullif(a.attidentity, '') as attidentity,";
-    } else {
-      sql += "null as attidentity,";
-    }
-    sql += "pg_catalog.pg_get_expr(def.adbin, def.adrelid) AS adsrc,dsc.description,t.typbasetype,t.typtype "
-           + " FROM pg_catalog.pg_namespace n "
-           + " JOIN pg_catalog.pg_class c ON (c.relnamespace = n.oid) "
-           + " JOIN pg_catalog.pg_attribute a ON (a.attrelid=c.oid) "
-           + " JOIN pg_catalog.pg_type t ON (a.atttypid = t.oid) "
-           + " LEFT JOIN pg_catalog.pg_attrdef def ON (a.attrelid=def.adrelid AND a.attnum = def.adnum) "
-           + " LEFT JOIN pg_catalog.pg_description dsc ON (c.oid=dsc.objoid AND a.attnum = dsc.objsubid) "
-           + " LEFT JOIN pg_catalog.pg_class dc ON (dc.oid=dsc.classoid AND dc.relname='pg_class') "
-           + " LEFT JOIN pg_catalog.pg_namespace dn ON (dc.relnamespace=dn.oid AND dn.nspname='pg_catalog') "
-           + " WHERE c.relkind in ('r','p','v','f','m') and a.attnum > 0 AND NOT a.attisdropped ";
-
-    if (schemaPattern != null && !schemaPattern.isEmpty()) {
-      sql += " AND n.nspname LIKE " + escapeQuotes(schemaPattern);
-    }
-    if (tableNamePattern != null && !tableNamePattern.isEmpty()) {
-      sql += " AND c.relname LIKE " + escapeQuotes(tableNamePattern);
-    }
-    if (connection.haveMinimumServerVersion(ServerVersion.v8_4)) {
-      sql += ") c WHERE true ";
-    }
-    if (columnNamePattern != null && !columnNamePattern.isEmpty()) {
-      sql += " AND attname LIKE " + escapeQuotes(columnNamePattern);
-    }
-    sql += " ORDER BY nspname,c.relname,attnum ";
-
-    Statement stmt = connection.createStatement();
-    ResultSet rs = stmt.executeQuery(sql);
-    while (rs.next()) {
-      byte[][] tuple = new byte[numberOfFields][];
-      int typeOid = (int) rs.getLong("atttypid");
-      int typeMod = rs.getInt("atttypmod");
-
-      tuple[0] = null; // Catalog name, not supported
-      tuple[1] = rs.getBytes("nspname"); // Schema
-      tuple[2] = rs.getBytes("relname"); // Table name
-      tuple[3] = rs.getBytes("attname"); // Column name
-
-      String typtype = rs.getString("typtype");
-      int sqlType;
-      if ("c".equals(typtype)) {
-        sqlType = Types.STRUCT;
-      } else if ("d".equals(typtype)) {
-        sqlType = Types.DISTINCT;
-      } else if ("e".equals(typtype)) {
-        sqlType = Types.VARCHAR;
-      } else {
-        sqlType = connection.getTypeInfo().getSQLType(typeOid);
-      }
-
-      tuple[4] = connection.encodeString(Integer.toString(sqlType));
-      String pgType = connection.getTypeInfo().getPGType(typeOid);
-      tuple[5] = connection.encodeString(pgType); // Type name
-      tuple[7] = null; // Buffer length
-
-
-      String defval = rs.getString("adsrc");
-
-      if (defval != null) {
-        if (pgType.equals("int4")) {
-          if (defval.contains("nextval(")) {
-            tuple[5] = connection.encodeString("serial"); // Type name == serial
+    String[] queries = {"SHOW TABLES", "SHOW VIEWS"};
+    for (String query : queries) {
+      try (
+        Statement tablesStmt = connection.createStatement();
+        ResultSet rs = tablesStmt.executeQuery(query)
+      ) {
+        while (rs.next()) {
+          String tableName = rs.getString(1);
+          if (!tableNameRe.matcher(tableName).matches()) {
+            continue;
           }
-        } else if (pgType.equals("int8")) {
-          if (defval.contains("nextval(")) {
-            tuple[5] = connection.encodeString("bigserial"); // Type name == bigserial
+          String columnQuery = String.format("SHOW COLUMNS FROM %s", tableName);
+          try (
+            Statement columnsStmt = connection.createStatement();
+            ResultSet crs = columnsStmt.executeQuery(columnQuery)
+          ) {
+            int columnIdx = 0; // TODO: maybe we shouldn't rely on the output order of SHOW TABLES for this?
+            while (crs.next()) {
+              columnIdx += 1;
+              byte[][] tuple = new byte[numberOfFields][];
+
+              // SHOW COLUMNS returns a table with NAME NULLABLE TYPE fields
+              byte[] name = crs.getBytes(1);
+              boolean nullable = crs.getBoolean(2);
+              String typeName = crs.getString(3);
+
+              tuple[0] = null;
+              tuple[1] = null;
+              tuple[2] = connection.encodeString(tableName);
+              tuple[3] = name;
+              int theType = connection.getTypeInfo().getSQLType(typeName);
+              tuple[4] = connection.encodeString(Integer.toString(theType));
+              tuple[5] = connection.encodeString(typeName);
+              int theOid = connection.getTypeInfo().getPGType(typeName);
+              tuple[6] = connection.encodeString(Integer.toString(theOid));
+              tuple[7] = null; // Not used
+              // TODO: extract digits
+              tuple[8] = connection.encodeString("0");
+              // everything is base 10
+              tuple[9] = connection.encodeString("10");
+              tuple[10] = connection.encodeString(Integer.toString(nullable
+                ? java.sql.DatabaseMetaData.columnNoNulls : java.sql.DatabaseMetaData.columnNullable)); // Nullable
+              tuple[11] = null;
+              tuple[12] = null; // materialize does not supply defaults
+              tuple[13] = null; // not used
+              tuple[14] = null; // not used
+              tuple[15] = tuple[6]; // char octet length
+              tuple[16] = connection.encodeString(Integer.toString(columnIdx));
+              tuple[17] = connection.encodeString(nullable ? "NO" : "YES");
+              tuple[18] = null; // SCOPE_CATALOG
+              tuple[19] = null; // SCOPE_SCHEMA
+              tuple[20] = null; // SCOPE_TABLE
+              tuple[21] = null; // TODO: SOURCE_DATA_TYPE
+              tuple[22] = connection.encodeString(""); // TODO: Do we auto increment anything, conceptually?
+              tuple[23] = connection.encodeString(""); // TODO: Do we auto increment anything, conceptually?
+
+              v.add(tuple);
+            }
           }
         }
       }
-      String identity = rs.getString("attidentity");
-
-      int decimalDigits = connection.getTypeInfo().getScale(typeOid, typeMod);
-      int columnSize = connection.getTypeInfo().getPrecision(typeOid, typeMod);
-      if (columnSize == 0) {
-        columnSize = connection.getTypeInfo().getDisplaySize(typeOid, typeMod);
-      }
-
-      tuple[6] = connection.encodeString(Integer.toString(columnSize));
-      tuple[8] = connection.encodeString(Integer.toString(decimalDigits));
-
-      // Everything is base 10 unless we override later.
-      tuple[9] = connection.encodeString("10");
-
-      if (pgType.equals("bit") || pgType.equals("varbit")) {
-        tuple[9] = connection.encodeString("2");
-      }
-
-      tuple[10] = connection.encodeString(Integer.toString(rs.getBoolean("attnotnull")
-          ? java.sql.DatabaseMetaData.columnNoNulls : java.sql.DatabaseMetaData.columnNullable)); // Nullable
-      tuple[11] = rs.getBytes("description"); // Description (if any)
-      tuple[12] = rs.getBytes("adsrc"); // Column default
-      tuple[13] = null; // sql data type (unused)
-      tuple[14] = null; // sql datetime sub (unused)
-      tuple[15] = tuple[6]; // char octet length
-      tuple[16] = connection.encodeString(String.valueOf(rs.getInt("attnum"))); // ordinal position
-      // Is nullable
-      tuple[17] = connection.encodeString(rs.getBoolean("attnotnull") ? "NO" : "YES");
-
-      int baseTypeOid = (int) rs.getLong("typbasetype");
-
-      tuple[18] = null; // SCOPE_CATLOG
-      tuple[19] = null; // SCOPE_SCHEMA
-      tuple[20] = null; // SCOPE_TABLE
-      tuple[21] = baseTypeOid == 0
-                  ? null
-                  : connection.encodeString(Integer.toString(connection.getTypeInfo().getSQLType(baseTypeOid))); // SOURCE_DATA_TYPE
-
-      String autoinc = "NO";
-      if (defval != null && defval.contains("nextval(") || identity != null) {
-        autoinc = "YES";
-      }
-      tuple[22] = connection.encodeString(autoinc);
-      // there is no way to tell if the value was actually autogenerated.
-      tuple[23] = connection.encodeString("");
-
-      v.add(tuple);
     }
-    rs.close();
-    stmt.close();
 
     return ((BaseStatement) createMetaDataStatement()).createDriverResultSet(f, v);
   }
