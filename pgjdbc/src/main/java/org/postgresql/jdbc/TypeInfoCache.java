@@ -109,6 +109,20 @@ public class TypeInfoCache implements TypeInfo {
     typeAliases.put("float", "float8");
     typeAliases.put("boolean", "bool");
     typeAliases.put("decimal", "numeric");
+
+    typeAliases.put("i32", "int4");
+    typeAliases.put("i64", "int8");
+    typeAliases.put("f32", "float4");
+    typeAliases.put("f64", "float8");
+    typeAliases.put("string", "varchar");
+  }
+
+  private String resolveName(String pgTypeName) {
+    String resolved = typeAliases.get(pgTypeName);
+    if (resolved != null) {
+      return resolved;
+    }
+    return pgTypeName;
   }
 
   public TypeInfoCache(BaseConnection conn, int unknownLength) {
@@ -185,71 +199,11 @@ public class TypeInfoCache implements TypeInfo {
     if (pgTypeName.endsWith("[]")) {
       return Types.ARRAY;
     }
-    Integer i = pgNameToSQLType.get(pgTypeName);
+    Integer i = pgNameToSQLType.get(resolveName(pgTypeName));
     if (i != null) {
       return i;
     }
-
-    if (getTypeInfoStatement == null) {
-      // There's no great way of telling what's an array type.
-      // People can name their own types starting with _.
-      // Other types use typelem that aren't actually arrays, like box.
-      //
-      String sql;
-      // in case of multiple records (in different schemas) choose the one from the current
-      // schema,
-      // otherwise take the last version of a type that is at least more deterministic then before
-      // (keeping old behaviour of finding types, that should not be found without correct search
-      // path)
-      sql = "SELECT typinput='array_in'::regproc, typtype "
-            + "  FROM pg_catalog.pg_type "
-            + "  LEFT "
-            + "  JOIN (select ns.oid as nspoid, ns.nspname, r.r "
-            + "          from pg_namespace as ns "
-            // -- go with older way of unnesting array to be compatible with 8.0
-            + "          join ( select s.r, (current_schemas(false))[s.r] as nspname "
-            + "                   from generate_series(1, array_upper(current_schemas(false), 1)) as s(r) ) as r "
-            + "         using ( nspname ) "
-            + "       ) as sp "
-            + "    ON sp.nspoid = typnamespace "
-            + " WHERE typname = ? "
-            + " ORDER BY sp.r, pg_type.oid DESC LIMIT 1;";
-
-      getTypeInfoStatement = conn.prepareStatement(sql);
-    }
-
-    getTypeInfoStatement.setString(1, pgTypeName);
-
-    // Go through BaseStatement to avoid transaction start.
-    if (!((BaseStatement) getTypeInfoStatement)
-        .executeWithFlags(QueryExecutor.QUERY_SUPPRESS_BEGIN)) {
-      throw new PSQLException(GT.tr("No results were returned by the query."), PSQLState.NO_DATA);
-    }
-
-    ResultSet rs = getTypeInfoStatement.getResultSet();
-
-    Integer type = null;
-    if (rs.next()) {
-      boolean isArray = rs.getBoolean(1);
-      String typtype = rs.getString(2);
-      if (isArray) {
-        type = Types.ARRAY;
-      } else if ("c".equals(typtype)) {
-        type = Types.STRUCT;
-      } else if ("d".equals(typtype)) {
-        type = Types.DISTINCT;
-      } else if ("e".equals(typtype)) {
-        type = Types.VARCHAR;
-      }
-    }
-
-    if (type == null) {
-      type = Types.OTHER;
-    }
-    rs.close();
-
-    pgNameToSQLType.put(pgTypeName, type);
-    return type;
+    throw new SQLException("Unable to find type name for " + pgTypeName);
   }
 
   private PreparedStatement getOidStatement(String pgTypeName) throws SQLException {
@@ -359,7 +313,7 @@ public class TypeInfoCache implements TypeInfo {
   }
 
   public synchronized int getPGType(String pgTypeName) throws SQLException {
-    Integer oid = pgNameToOid.get(pgTypeName);
+    Integer oid = pgNameToOid.get(resolveName(pgTypeName));
     if (oid != null) {
       return oid;
     }
