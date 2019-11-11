@@ -2043,34 +2043,22 @@ public class PgDatabaseMetaData implements DatabaseMetaData {
     return ((BaseStatement) createMetaDataStatement()).createDriverResultSet(f, v);
   }
 
+  /**
+   * Return no primary keys
+   *
+   * TODO: MaterializeInc/materialize#883
+   */
   public ResultSet getPrimaryKeys(String catalog, String schema, String table)
       throws SQLException {
-    String sql;
-    sql = "SELECT NULL AS TABLE_CAT, n.nspname AS TABLE_SCHEM, "
-          + "  ct.relname AS TABLE_NAME, a.attname AS COLUMN_NAME, "
-          + "  (i.keys).n AS KEY_SEQ, ci.relname AS PK_NAME "
-          + "FROM pg_catalog.pg_class ct "
-          + "  JOIN pg_catalog.pg_attribute a ON (ct.oid = a.attrelid) "
-          + "  JOIN pg_catalog.pg_namespace n ON (ct.relnamespace = n.oid) "
-          + "  JOIN (SELECT i.indexrelid, i.indrelid, i.indisprimary, "
-          + "             information_schema._pg_expandarray(i.indkey) AS keys "
-          + "        FROM pg_catalog.pg_index i) i "
-          + "    ON (a.attnum = (i.keys).x AND a.attrelid = i.indrelid) "
-          + "  JOIN pg_catalog.pg_class ci ON (ci.oid = i.indexrelid) "
-          + "WHERE true ";
-
-    if (schema != null && !schema.isEmpty()) {
-      sql += " AND n.nspname = " + escapeQuotes(schema);
-    }
-
-    if (table != null && !table.isEmpty()) {
-      sql += " AND ct.relname = " + escapeQuotes(table);
-    }
-
-    sql += " AND i.indisprimary "
-        + " ORDER BY table_name, pk_name, key_seq";
-
-    return createMetaDataStatement().executeQuery(sql);
+    Field[] f = new Field[6];
+    f[0] = header("TABLE_CAT");
+    f[1] = header("TABLE_SCHEM");
+    f[2] = header("TABLE_NAME");
+    f[3] = header("COLUMN_NAME");
+    f[4] = header("KEY_SEQ");
+    f[5] = header("PK_NAME");
+    List<byte[][]> v = new ArrayList<>();
+    return ((BaseStatement) createMetaDataStatement()).createDriverResultSet(f, v);
   }
 
   /**
