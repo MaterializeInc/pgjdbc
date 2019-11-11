@@ -1244,77 +1244,59 @@ public class PgDatabaseMetaData implements DatabaseMetaData {
   @Override
   public ResultSet getTables(String catalog, String schemaPattern, String tableNamePattern,
                              String[] types) throws SQLException {
-    String select;
-    String orderby;
-    String useSchemas = "SCHEMAS";
-    select = "SELECT NULL AS TABLE_CAT, n.nspname AS TABLE_SCHEM, c.relname AS TABLE_NAME, "
-             + " CASE n.nspname ~ '^pg_' OR n.nspname = 'information_schema' "
-             + " WHEN true THEN CASE "
-             + " WHEN n.nspname = 'pg_catalog' OR n.nspname = 'information_schema' THEN CASE c.relkind "
-             + "  WHEN 'r' THEN 'SYSTEM TABLE' "
-             + "  WHEN 'v' THEN 'SYSTEM VIEW' "
-             + "  WHEN 'i' THEN 'SYSTEM INDEX' "
-             + "  ELSE NULL "
-             + "  END "
-             + " WHEN n.nspname = 'pg_toast' THEN CASE c.relkind "
-             + "  WHEN 'r' THEN 'SYSTEM TOAST TABLE' "
-             + "  WHEN 'i' THEN 'SYSTEM TOAST INDEX' "
-             + "  ELSE NULL "
-             + "  END "
-             + " ELSE CASE c.relkind "
-             + "  WHEN 'r' THEN 'TEMPORARY TABLE' "
-             + "  WHEN 'p' THEN 'TEMPORARY TABLE' "
-             + "  WHEN 'i' THEN 'TEMPORARY INDEX' "
-             + "  WHEN 'S' THEN 'TEMPORARY SEQUENCE' "
-             + "  WHEN 'v' THEN 'TEMPORARY VIEW' "
-             + "  ELSE NULL "
-             + "  END "
-             + " END "
-             + " WHEN false THEN CASE c.relkind "
-             + " WHEN 'r' THEN 'TABLE' "
-             + " WHEN 'p' THEN 'TABLE' "
-             + " WHEN 'i' THEN 'INDEX' "
-             + " WHEN 'S' THEN 'SEQUENCE' "
-             + " WHEN 'v' THEN 'VIEW' "
-             + " WHEN 'c' THEN 'TYPE' "
-             + " WHEN 'f' THEN 'FOREIGN TABLE' "
-             + " WHEN 'm' THEN 'MATERIALIZED VIEW' "
-             + " ELSE NULL "
-             + " END "
-             + " ELSE NULL "
-             + " END "
-             + " AS TABLE_TYPE, d.description AS REMARKS, "
-             + " '' as TYPE_CAT, '' as TYPE_SCHEM, '' as TYPE_NAME, "
-             + "'' AS SELF_REFERENCING_COL_NAME, '' AS REF_GENERATION "
-             + " FROM pg_catalog.pg_namespace n, pg_catalog.pg_class c "
-             + " LEFT JOIN pg_catalog.pg_description d ON (c.oid = d.objoid AND d.objsubid = 0) "
-             + " LEFT JOIN pg_catalog.pg_class dc ON (d.classoid=dc.oid AND dc.relname='pg_class') "
-             + " LEFT JOIN pg_catalog.pg_namespace dn ON (dn.oid=dc.relnamespace AND dn.nspname='pg_catalog') "
-             + " WHERE c.relnamespace = n.oid ";
-
-    if (schemaPattern != null && !schemaPattern.isEmpty()) {
-      select += " AND n.nspname LIKE " + escapeQuotes(schemaPattern);
-    }
-    orderby = " ORDER BY TABLE_TYPE,TABLE_SCHEM,TABLE_NAME ";
-
-    if (tableNamePattern != null && !tableNamePattern.isEmpty()) {
-      select += " AND c.relname LIKE " + escapeQuotes(tableNamePattern);
-    }
+    List<String> ts = null;
     if (types != null) {
-      select += " AND (false ";
-      StringBuilder orclause = new StringBuilder();
-      for (String type : types) {
-        Map<String, String> clauses = tableTypeClauses.get(type);
-        if (clauses != null) {
-          String clause = clauses.get(useSchemas);
-          orclause.append(" OR ( ").append(clause).append(" ) ");
+      ts = Arrays.asList(types);
+    }
+    int numberOfFields = 9;
+    List<byte[][]> values = new ArrayList<byte[][]>(); // The new ResultSet tuple stuff
+    Field[] headers = new Field[numberOfFields];
+    // see the docs on the interface function for the definition of these
+    headers[0] = header("TABLE_SCHEM");
+    headers[1] = header("TABLE_NAME");
+    headers[2] = header("TABLE_TYPE"); // Typical types are "TABLE", "VIEW",
+    headers[3] = header("REMARKS");
+    headers[4] = header("TYPE_CAT");
+    headers[5] = header("TYPE_SCHEM");
+    headers[6] = header("TYPE_NAME");
+    headers[7] = header("SELF_REFERENCING_COL_NAME");
+    headers[8] = header("REF_GENERATION");
+
+    String[][] queries = {{"SHOW TABLES", "TABLE"}, {"SHOW VIEWS", "VIEW"}};
+    for (String[] select_output : queries) {
+      String select = select_output[0];
+      String output = select_output[1];
+      final byte[] output_ty = connection.encodeString(output);
+      try (
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(select);
+      ) {
+        int count = 0;
+        while (rs.next()) {
+          count += 1;
+          byte[][] tuple = new byte[numberOfFields][];
+          tuple[0] = null;
+          // `SHOW <OBJECT>` only returns a single column and there 1 indexed
+          tuple[1] = rs.getBytes(1);
+          tuple[2] = output_ty;
+          tuple[3] = null;
+          tuple[4] = null;
+          tuple[5] = null;
+          tuple[6] = null;
+          tuple[7] = null;
+          tuple[8] = null;
+          values.add(tuple);
         }
       }
-      select += orclause.toString() + ") ";
     }
-    String sql = select + orderby;
+    return ((BaseStatement) createMetaDataStatement()).createDriverResultSet(headers, values);
+  }
 
-    return createMetaDataStatement().executeQuery(sql);
+  /**
+   * Construct header manually
+   */
+  private Field header(String name) {
+    return new Field(name, Oid.VARCHAR);
   }
 
   private static final Map<String, Map<String, String>> tableTypeClauses;
