@@ -808,33 +808,7 @@ public class PgConnection implements BaseConnection {
   public int getTransactionIsolation() throws SQLException {
     checkClosed();
 
-    String level = null;
-    final ResultSet rs = execSQLQuery("SHOW TRANSACTION ISOLATION LEVEL"); // nb: no BEGIN triggered
-    if (rs.next()) {
-      level = rs.getString(1);
-    }
-    rs.close();
-
-    // TODO revisit: throw exception instead of silently eating the error in unknown cases?
-    if (level == null) {
-      return Connection.TRANSACTION_READ_COMMITTED; // Best guess.
-    }
-
-    level = level.toUpperCase(Locale.US);
-    if (level.equals("READ COMMITTED")) {
-      return Connection.TRANSACTION_READ_COMMITTED;
-    }
-    if (level.equals("READ UNCOMMITTED")) {
-      return Connection.TRANSACTION_READ_UNCOMMITTED;
-    }
-    if (level.equals("REPEATABLE READ")) {
-      return Connection.TRANSACTION_REPEATABLE_READ;
-    }
-    if (level.equals("SERIALIZABLE")) {
-      return Connection.TRANSACTION_SERIALIZABLE;
-    }
-
-    return Connection.TRANSACTION_READ_COMMITTED; // Best guess.
+    return Connection.TRANSACTION_SERIALIZABLE;
   }
 
   public void setTransactionIsolation(int level) throws SQLException {
