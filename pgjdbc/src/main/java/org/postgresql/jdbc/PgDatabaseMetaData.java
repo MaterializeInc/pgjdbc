@@ -2076,14 +2076,36 @@ public class PgDatabaseMetaData implements DatabaseMetaData {
     return createMetaDataStatement().executeQuery(sql);
   }
 
+  public ResultSet getStubKeyRelationships(String catalog, String schema, String table)
+      throws SQLException {
+    Field[] f = new Field[18];
+    f[0] = new Field("PKTABLE_CAT", Oid.VARCHAR);
+    f[1] = new Field("PKTABLE_SCHEM", Oid.VARCHAR);
+    f[2] = new Field("PKTABLE_NAME", Oid.VARCHAR);
+    f[3] = new Field("PKCOLUMN_NAME", Oid.VARCHAR);
+    f[4] = new Field("FKTABLE_CAT", Oid.VARCHAR);
+    f[5] = new Field("FKTABLE_SCHEM", Oid.VARCHAR);
+    f[6] = new Field("FKTABLE_NAME", Oid.VARCHAR);
+    f[7] = new Field("FKCOLUMN_NAME", Oid.VARCHAR);
+    f[8] = new Field("KEQ_SEQ", Oid.INT2);
+    f[9] = new Field("UPDATE_RULE", Oid.INT2);
+    f[10] = new Field("DELETE_RULE", Oid.INT2);
+    f[11] = new Field("FK_NAME", Oid.VARCHAR);
+    f[12] = new Field("PK_NAME", Oid.VARCHAR);
+    f[13] = new Field("DEFERRABILITY", Oid.INT2);
+    List<byte[][]> v = new ArrayList<byte[][]>(); // The new ResultSet that we will eventually return
+
+    return ((BaseStatement) createMetaDataStatement()).createDriverResultSet(f, v);
+  }
+
   public ResultSet getImportedKeys(String catalog, String schema, String table)
       throws SQLException {
-    return getImportedExportedKeys(null, null, null, catalog, schema, table);
+    return getStubKeyRelationships(catalog, schema, table);
   }
 
   public ResultSet getExportedKeys(String catalog, String schema, String table)
       throws SQLException {
-    return getImportedExportedKeys(catalog, schema, table, null, null, null);
+    return getStubKeyRelationships(catalog, schema, table);
   }
 
   public ResultSet getCrossReference(String primaryCatalog, String primarySchema,
