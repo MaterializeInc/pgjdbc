@@ -136,9 +136,25 @@ public class PgResultSetMetaData implements ResultSetMetaData, PGResultSetMetaDa
     return connection.getTypeInfo().getDisplaySize(field.getOID(), field.getMod());
   }
 
+  static boolean HAVE_DEBUGGED_COLUMN_LABEL = false;
+
   public String getColumnLabel(int column) throws SQLException {
     Field field = getField(column);
-    return field.getColumnLabel();
+    if (field != null) {
+      return field.getColumnLabel();
+    } else {
+      System.out.printf("Got null for field at idx %s", column);
+      if (!HAVE_DEBUGGED_COLUMN_LABEL) {
+        HAVE_DEBUGGED_COLUMN_LABEL = true;
+        System.out.printf("\nDEBUGGING INVALID FIELD ACCESS in fields: ");
+          for (Field field_ :fields) {
+              System.out.printf("%s ", field_);
+          }
+        new Throwable().printStackTrace();
+      }
+      System.out.printf("\n");
+      return "field_stub_" + column;
+    }
   }
 
   public String getColumnName(int column) throws SQLException {
