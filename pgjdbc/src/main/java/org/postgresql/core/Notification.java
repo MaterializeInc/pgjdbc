@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core;
+package org.materialize.core;
 
-import org.postgresql.PGNotification;
+import org.materialize.PGNotification;
 
 public class Notification implements PGNotification {
 

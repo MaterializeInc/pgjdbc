@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.util;
+package org.materialize.test.util;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import org.postgresql.util.CanEstimateSize;
-import org.postgresql.util.LruCache;
+import org.materialize.util.CanEstimateSize;
+import org.materialize.util.LruCache;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.Deque;
 
 /**
- * Tests {@link org.postgresql.util.LruCache}.
+ * Tests {@link org.materialize.util.LruCache}.
  */
 public class LruCacheTest {
 

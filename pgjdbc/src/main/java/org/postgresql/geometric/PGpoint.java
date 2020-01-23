@@ -3,22 +3,22 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.geometric;
+package org.materialize.geometric;
 
-import org.postgresql.util.ByteConverter;
-import org.postgresql.util.GT;
-import org.postgresql.util.PGBinaryObject;
-import org.postgresql.util.PGobject;
-import org.postgresql.util.PGtokenizer;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.util.ByteConverter;
+import org.materialize.util.GT;
+import org.materialize.util.PGBinaryObject;
+import org.materialize.util.PGobject;
+import org.materialize.util.PGtokenizer;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.awt.Point;
 import java.io.Serializable;
 import java.sql.SQLException;
 
 /**
- * <p>It maps to the point datatype in org.postgresql.</p>
+ * <p>It maps to the point datatype in org.materialize.</p>
  *
  * <p>This implements a version of java.awt.Point, except it uses double to represent the coordinates.</p>
  */
@@ -105,7 +105,7 @@ public class PGpoint extends PGobject implements PGBinaryObject, Serializable, C
   }
 
   /**
-   * @return the PGpoint in the syntax expected by org.postgresql
+   * @return the PGpoint in the syntax expected by org.materialize
    */
   public String getValue() {
     return "(" + x + "," + y + ")";
@@ -116,7 +116,7 @@ public class PGpoint extends PGobject implements PGBinaryObject, Serializable, C
   }
 
   /**
-   * Populate the byte array with PGpoint in the binary syntax expected by org.postgresql.
+   * Populate the byte array with PGpoint in the binary syntax expected by org.materialize.
    */
   public void toBytes(byte[] b, int offset) {
     ByteConverter.float8(b, offset, x);

@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.util;
+package org.materialize.util;
 
 import java.text.MessageFormat;
 import java.util.Locale;
@@ -30,9 +30,9 @@ public class GT {
   private GT() {
     try {
       //#if mvn.project.property.postgresql.jdbc.spec < "JDBC4.1"
-      bundle = ResourceBundle.getBundle("org.postgresql.translation.messages");
+      bundle = ResourceBundle.getBundle("org.materialize.translation.messages");
       //#else
-      bundle = ResourceBundle.getBundle("org.postgresql.translation.messages", Locale.getDefault(Locale.Category.DISPLAY));
+      bundle = ResourceBundle.getBundle("org.materialize.translation.messages", Locale.getDefault(Locale.Category.DISPLAY));
       //#endif
     } catch (MissingResourceException mre) {
       // translation files have not been installed

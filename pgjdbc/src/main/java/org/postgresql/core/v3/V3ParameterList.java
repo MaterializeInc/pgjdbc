@@ -4,9 +4,9 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.core.v3;
+package org.materialize.core.v3;
 
-import org.postgresql.core.ParameterList;
+import org.materialize.core.ParameterList;
 
 import java.sql.SQLException;
 
@@ -42,7 +42,7 @@ interface V3ParameterList extends ParameterList {
 
   /**
    * Return the parameter type information.
-   * @return an array of {@link org.postgresql.core.Oid} type information
+   * @return an array of {@link org.materialize.core.Oid} type information
    */
   int[] getParamTypes();
 

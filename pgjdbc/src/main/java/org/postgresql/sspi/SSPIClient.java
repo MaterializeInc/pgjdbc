@@ -4,12 +4,12 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.sspi;
+package org.materialize.sspi;
 
-import org.postgresql.core.PGStream;
-import org.postgresql.util.HostSpec;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.core.PGStream;
+import org.materialize.util.HostSpec;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import com.sun.jna.LastErrorException;
 import com.sun.jna.Platform;

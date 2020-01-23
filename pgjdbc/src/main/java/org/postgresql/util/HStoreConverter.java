@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.util;
+package org.materialize.util;
 
-import org.postgresql.core.Encoding;
+import org.materialize.core.Encoding;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

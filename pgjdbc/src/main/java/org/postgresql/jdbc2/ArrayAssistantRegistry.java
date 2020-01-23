@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc2;
+package org.materialize.jdbc2;
 
 import java.util.HashMap;
 import java.util.Map;

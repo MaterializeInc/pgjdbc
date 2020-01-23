@@ -3,19 +3,19 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication.fluent;
+package org.materialize.replication.fluent;
 
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.ReplicationProtocol;
-import org.postgresql.replication.PGReplicationStream;
-import org.postgresql.replication.fluent.logical.ChainedLogicalStreamBuilder;
-import org.postgresql.replication.fluent.logical.LogicalReplicationOptions;
-import org.postgresql.replication.fluent.logical.LogicalStreamBuilder;
-import org.postgresql.replication.fluent.logical.StartLogicalReplicationCallback;
-import org.postgresql.replication.fluent.physical.ChainedPhysicalStreamBuilder;
-import org.postgresql.replication.fluent.physical.PhysicalReplicationOptions;
-import org.postgresql.replication.fluent.physical.PhysicalStreamBuilder;
-import org.postgresql.replication.fluent.physical.StartPhysicalReplicationCallback;
+import org.materialize.core.BaseConnection;
+import org.materialize.core.ReplicationProtocol;
+import org.materialize.replication.PGReplicationStream;
+import org.materialize.replication.fluent.logical.ChainedLogicalStreamBuilder;
+import org.materialize.replication.fluent.logical.LogicalReplicationOptions;
+import org.materialize.replication.fluent.logical.LogicalStreamBuilder;
+import org.materialize.replication.fluent.logical.StartLogicalReplicationCallback;
+import org.materialize.replication.fluent.physical.ChainedPhysicalStreamBuilder;
+import org.materialize.replication.fluent.physical.PhysicalReplicationOptions;
+import org.materialize.replication.fluent.physical.PhysicalStreamBuilder;
+import org.materialize.replication.fluent.physical.StartPhysicalReplicationCallback;
 
 import java.sql.SQLException;
 

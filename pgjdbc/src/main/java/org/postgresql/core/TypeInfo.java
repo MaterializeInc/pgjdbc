@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core;
+package org.materialize.core;
 
-import org.postgresql.util.PGobject;
+import org.materialize.util.PGobject;
 
 import java.sql.SQLException;
 import java.util.Iterator;

@@ -3,21 +3,21 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package org.materialize.test.jdbc2;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-import org.postgresql.PGConnection;
-import org.postgresql.PGProperty;
-import org.postgresql.copy.CopyDual;
-import org.postgresql.copy.CopyManager;
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.replication.LogSequenceNumber;
-import org.postgresql.test.TestUtil;
-import org.postgresql.test.util.rules.ServerVersionRule;
-import org.postgresql.test.util.rules.annotation.HaveMinimalServerVersion;
+import org.materialize.PGConnection;
+import org.materialize.PGProperty;
+import org.materialize.copy.CopyDual;
+import org.materialize.copy.CopyManager;
+import org.materialize.core.BaseConnection;
+import org.materialize.core.ServerVersion;
+import org.materialize.replication.LogSequenceNumber;
+import org.materialize.test.TestUtil;
+import org.materialize.test.util.rules.ServerVersionRule;
+import org.materialize.test.util.rules.annotation.HaveMinimalServerVersion;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.After;

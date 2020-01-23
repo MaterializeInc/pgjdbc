@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.core.Oid;
-import org.postgresql.core.TypeInfo;
-import org.postgresql.util.ByteConverter;
+import org.materialize.core.Oid;
+import org.materialize.core.TypeInfo;
+import org.materialize.util.ByteConverter;
 
 import java.sql.Connection;
 import java.sql.SQLFeatureNotSupportedException;

@@ -3,15 +3,15 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.largeobject.LargeObject;
+import org.materialize.largeobject.LargeObject;
 
 import java.sql.SQLException;
 
 public class PgBlob extends AbstractBlobClob implements java.sql.Blob {
 
-  public PgBlob(org.postgresql.core.BaseConnection conn, long oid) throws SQLException {
+  public PgBlob(org.materialize.core.BaseConnection conn, long oid) throws SQLException {
     super(conn, oid);
   }
 

@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.util.CanEstimateSize;
+import org.materialize.util.CanEstimateSize;
 
 /**
  * This is an internal class to hold field metadata info like table name, column name, etc.

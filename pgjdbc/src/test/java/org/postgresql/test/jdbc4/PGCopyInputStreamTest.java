@@ -3,15 +3,15 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc4;
+package org.materialize.test.jdbc4;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.postgresql.PGConnection;
-import org.postgresql.copy.PGCopyInputStream;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.test.TestUtil;
+import org.materialize.PGConnection;
+import org.materialize.copy.PGCopyInputStream;
+import org.materialize.core.ServerVersion;
+import org.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Before;

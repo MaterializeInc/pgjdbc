@@ -3,17 +3,17 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.core.Field;
-import org.postgresql.core.ParameterList;
-import org.postgresql.core.Query;
-import org.postgresql.core.ResultCursor;
-import org.postgresql.core.ResultHandlerBase;
-import org.postgresql.core.v3.BatchedQuery;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.core.Field;
+import org.materialize.core.ParameterList;
+import org.materialize.core.Query;
+import org.materialize.core.ResultCursor;
+import org.materialize.core.ResultHandlerBase;
+import org.materialize.core.v3.BatchedQuery;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.sql.BatchUpdateException;
 import java.sql.ResultSet;

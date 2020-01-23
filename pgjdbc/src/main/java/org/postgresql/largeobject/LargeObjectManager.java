@@ -3,14 +3,14 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.largeobject;
+package org.materialize.largeobject;
 
-import org.postgresql.core.BaseConnection;
-import org.postgresql.fastpath.Fastpath;
-import org.postgresql.fastpath.FastpathArg;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.core.BaseConnection;
+import org.materialize.fastpath.Fastpath;
+import org.materialize.fastpath.FastpathArg;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,10 +18,10 @@ import java.sql.Statement;
 import java.util.logging.Level;
 
 /**
- * This class implements the large object interface to org.postgresql.
+ * This class implements the large object interface to org.materialize.
  *
  * <p>It provides methods that allow client code to create, open and delete large objects from the
- * database. When opening an object, an instance of org.postgresql.largeobject.LargeObject is
+ * database. When opening an object, an instance of org.materialize.largeobject.LargeObject is
  * returned, and its methods then allow access to the object.</p>
  *
  * <p>This class can only be created by {@link BaseConnection}</p>
@@ -29,14 +29,14 @@ import java.util.logging.Level;
  * <p>To get access to this class, use the following segment of code:</p>
  *
  * <pre>
- * import org.postgresql.largeobject.*;
+ * import org.materialize.largeobject.*;
  *
  * Connection  conn;
  * LargeObjectManager lobj;
  *
  * ... code that opens a connection ...
  *
- * lobj = ((org.postgresql.PGConnection)myconn).getLargeObjectAPI();
+ * lobj = ((org.materialize.PGConnection)myconn).getLargeObjectAPI();
  * </pre>
  *
  * <p>Normally, client code would use the getAsciiStream, getBinaryStream, or getUnicodeStream methods
@@ -46,7 +46,7 @@ import java.util.logging.Level;
  * <p>However, sometimes lower level access to Large Objects are required, that are not supported by
  * the JDBC specification.</p>
  *
- * <p>Refer to org.postgresql.largeobject.LargeObject on how to manipulate the contents of a Large
+ * <p>Refer to org.materialize.largeobject.LargeObject on how to manipulate the contents of a Large
  * Object.</p>
  *
  * @see java.sql.ResultSet#getAsciiStream

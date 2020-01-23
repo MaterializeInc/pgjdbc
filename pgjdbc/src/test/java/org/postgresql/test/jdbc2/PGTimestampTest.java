@@ -3,16 +3,16 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package org.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
 
-import org.postgresql.test.TestUtil;
-import org.postgresql.util.PGInterval;
-import org.postgresql.util.PGTimestamp;
+import org.materialize.test.TestUtil;
+import org.materialize.util.PGInterval;
+import org.materialize.util.PGTimestamp;
 
 import org.junit.After;
 import org.junit.Before;

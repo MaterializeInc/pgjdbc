@@ -4,7 +4,7 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.core;
+package org.materialize.core;
 
 import java.io.InputStream;
 import java.sql.SQLException;

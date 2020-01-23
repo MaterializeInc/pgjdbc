@@ -3,12 +3,12 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core;
+package org.materialize.core;
 
-import org.postgresql.PGConnection;
-import org.postgresql.jdbc.FieldMetadata;
-import org.postgresql.jdbc.TimestampUtils;
-import org.postgresql.util.LruCache;
+import org.materialize.PGConnection;
+import org.materialize.jdbc.FieldMetadata;
+import org.materialize.jdbc.TimestampUtils;
+import org.materialize.util.LruCache;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -65,11 +65,11 @@ public interface BaseConnection extends PGConnection, Connection {
 
   /**
    * <p>Construct and return an appropriate object for the given type and value. This only considers
-   * the types registered via {@link org.postgresql.PGConnection#addDataType(String, Class)} and
-   * {@link org.postgresql.PGConnection#addDataType(String, String)}.</p>
+   * the types registered via {@link org.materialize.PGConnection#addDataType(String, Class)} and
+   * {@link org.materialize.PGConnection#addDataType(String, String)}.</p>
    *
    * <p>If no class is registered as handling the given type, then a generic
-   * {@link org.postgresql.util.PGobject} instance is returned.</p>
+   * {@link org.materialize.util.PGobject} instance is returned.</p>
    *
    * @param type the backend typename
    * @param value the type-specific string representation of the value

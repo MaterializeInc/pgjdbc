@@ -3,14 +3,14 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.copy;
+package org.materialize.copy;
 
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.Encoding;
-import org.postgresql.core.QueryExecutor;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.core.BaseConnection;
+import org.materialize.core.Encoding;
+import org.materialize.core.QueryExecutor;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.util;
+package org.materialize.util;
 
 import java.sql.SQLException;
 
@@ -23,7 +23,7 @@ public interface PGBinaryObject {
 
   /**
    * This method is called to return the number of bytes needed to store this object in the binary
-   * form required by org.postgresql.
+   * form required by org.materialize.
    *
    * @return the number of bytes needed to store this object
    */
@@ -31,7 +31,7 @@ public interface PGBinaryObject {
 
   /**
    * This method is called the to store the value of the object, in the binary form required by
-   * org.postgresql.
+   * org.materialize.
    *
    * @param bytes the array to store the value, it is guaranteed to be at lest
    *        {@link #lengthInBytes} in size.

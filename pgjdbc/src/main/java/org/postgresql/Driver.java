@@ -3,18 +3,18 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql;
+package org.materialize;
 
-import org.postgresql.jdbc.PgConnection;
-import org.postgresql.util.DriverInfo;
-import org.postgresql.util.ExpressionProperties;
-import org.postgresql.util.GT;
-import org.postgresql.util.HostSpec;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
-import org.postgresql.util.SharedTimer;
-import org.postgresql.util.URLCoder;
-import org.postgresql.util.WriterHandler;
+import org.materialize.jdbc.PgConnection;
+import org.materialize.util.DriverInfo;
+import org.materialize.util.ExpressionProperties;
+import org.materialize.util.GT;
+import org.materialize.util.HostSpec;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
+import org.materialize.util.SharedTimer;
+import org.materialize.util.URLCoder;
+import org.materialize.util.WriterHandler;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,14 +51,14 @@ import java.util.logging.StreamHandler;
  * DriverManager. This means that a user can load and register a driver by doing
  * Class.forName("foo.bah.Driver")</p>
  *
- * @see org.postgresql.PGConnection
+ * @see org.materialize.PGConnection
  * @see java.sql.Driver
  */
 public class Driver implements java.sql.Driver {
 
   private static Driver registeredDriver;
-  private static final Logger PARENT_LOGGER = Logger.getLogger("org.postgresql");
-  private static final Logger LOGGER = Logger.getLogger("org.postgresql.Driver");
+  private static final Logger PARENT_LOGGER = Logger.getLogger("org.materialize");
+  private static final Logger LOGGER = Logger.getLogger("org.materialize.Driver");
   private static SharedTimer sharedTimer = new SharedTimer();
   private static final String DEFAULT_PORT =
       /*$"\""+mvn.project.property.template.default.pg.port+"\";"$*//*-*/"5431";
@@ -268,7 +268,7 @@ public class Driver implements java.sql.Driver {
     } catch (PSQLException ex1) {
       LOGGER.log(Level.FINE, "Connection error: ", ex1);
       // re-throw the exception, otherwise it will be caught next, and a
-      // org.postgresql.unusual error will be returned instead.
+      // org.materialize.unusual error will be returned instead.
       throw ex1;
     } catch (java.security.AccessControlException ace) {
       throw new PSQLException(
@@ -504,12 +504,12 @@ public class Driver implements java.sql.Driver {
 
   @Override
   public int getMajorVersion() {
-    return org.postgresql.util.DriverInfo.MAJOR_VERSION;
+    return org.materialize.util.DriverInfo.MAJOR_VERSION;
   }
 
   @Override
   public int getMinorVersion() {
-    return org.postgresql.util.DriverInfo.MINOR_VERSION;
+    return org.materialize.util.DriverInfo.MINOR_VERSION;
   }
 
   /**

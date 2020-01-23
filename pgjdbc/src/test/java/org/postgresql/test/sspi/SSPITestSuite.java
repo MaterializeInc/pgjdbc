@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.sspi;
+package org.materialize.test.sspi;
 
 /*
  * Executes all known tests for SSPI.

@@ -770,7 +770,7 @@ Author: [Vladimir Gordiychuk](https://github.com/Gordiychuk)
 
 * feat: Customize default fetchSize for statements PR #287 (093a4bc)
 * feat: Customize default fetchSize for statements PR #287 (519bfe1)
-* perf: Read test only property "org.postgresql.forceBinary" spend many time when creating statements PR #291 (e185a48)
+* perf: Read test only property "org.materialize.forceBinary" spend many time when creating statements PR #291 (e185a48)
 
 Author: [Vladimir Sitnikov](https://github.com/vlsi)
 
@@ -990,7 +990,7 @@ Author: nicolas-f <github@nettrader.fr>
 Author: Dave Cramer <davec@postgresintl.com>
 Date:   Mon Aug 18 12:30:48 2014 +0000
 
-    NPE fix in org.postgresql.Driver.getPropertyInfo #176 \
+    NPE fix in org.materialize.Driver.getPropertyInfo #176 \
     from Sergey Ignatov
 
 <a name="version_9.3-1102"></a>
@@ -1321,7 +1321,7 @@ Date:   Thu Sep 20 14:02:18 2012 +0800
     
     It seems to be a common and default configuration on some Linux systems
     for the local hostname not to resolve to the loopback IP address. This
-    causes testTimeoutOccurs(org.postgresql.test.jdbc2.LoginTimeoutTest)
+    causes testTimeoutOccurs(org.materialize.test.jdbc2.LoginTimeoutTest)
     to fail. I'm seeing this on Fedora 17 among others.
     
     While it's best to fix such systems, not causing an easily avoided
@@ -1680,11 +1680,11 @@ Date:   Fri Oct 25 16:18:10 2013 +0800
     
     You need this patch if attempts to use a URL like
     
-        jdbc:postgresql://ipaddress:port/dbname?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+        jdbc:postgresql://ipaddress:port/dbname?ssl=true&sslfactory=org.materialize.ssl.NonValidatingFactory
     
     fails with:
     
-        java.lang.ClassNotFoundException: org.postgresql.ssl.NonValidatingFactory
+        java.lang.ClassNotFoundException: org.materialize.ssl.NonValidatingFactory
     
     in the stack trace.
 
@@ -2101,7 +2101,7 @@ Date:   Fri Jan 11 06:11:41 2013 -0800
 Author: Dave Cramer 
 Date:   Fri Jan 11 09:09:59 2013 -0500
 
-    changed package to org.postgresql.ssl
+    changed package to org.materialize.ssl
 
 Author: Dave Cramer 
 Date:   Fri Jan 11 05:57:43 2013 -0800

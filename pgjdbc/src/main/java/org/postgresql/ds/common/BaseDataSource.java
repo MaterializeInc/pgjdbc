@@ -3,16 +3,16 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.ds.common;
+package org.materialize.ds.common;
 
-import org.postgresql.PGProperty;
-import org.postgresql.jdbc.AutoSave;
-import org.postgresql.jdbc.PreferQueryMode;
-import org.postgresql.util.ExpressionProperties;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
-import org.postgresql.util.URLCoder;
+import org.materialize.PGProperty;
+import org.materialize.jdbc.AutoSave;
+import org.materialize.jdbc.PreferQueryMode;
+import org.materialize.util.ExpressionProperties;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
+import org.materialize.util.URLCoder;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -63,10 +63,10 @@ public abstract class BaseDataSource implements CommonDataSource, Referenceable 
    */
   static {
     try {
-      Class.forName("org.postgresql.Driver");
+      Class.forName("org.materialize.Driver");
     } catch (ClassNotFoundException e) {
       throw new IllegalStateException(
-        "BaseDataSource is unable to load org.postgresql.Driver. Please check if you have proper PostgreSQL JDBC Driver jar on the classpath",
+        "BaseDataSource is unable to load org.materialize.Driver. Please check if you have proper PostgreSQL JDBC Driver jar on the classpath",
         e);
     }
   }
@@ -1192,7 +1192,7 @@ public abstract class BaseDataSource implements CommonDataSource, Referenceable 
    */
   public void setUrl(String url) {
 
-    Properties p = org.postgresql.Driver.parseURL(url, null);
+    Properties p = org.materialize.Driver.parseURL(url, null);
 
     if (p == null) {
       throw new IllegalArgumentException("URL invalid " + url);
@@ -1449,7 +1449,7 @@ public abstract class BaseDataSource implements CommonDataSource, Referenceable 
 
   //#if mvn.project.property.postgresql.jdbc.spec >= "JDBC4.1"
   public java.util.logging.Logger getParentLogger() {
-    return Logger.getLogger("org.postgresql");
+    return Logger.getLogger("org.materialize");
   }
   //#endif
 

@@ -8,8 +8,8 @@ PostgreSQL JDBC Driver (PgJDBC for short) allows Java programs to connect to a P
 [![Build status](https://ci.appveyor.com/api/projects/status/d8ucmegnmourohwu/branch/master?svg=true)](https://ci.appveyor.com/project/davecramer/pgjdbc/branch/master)
 [![Build Status](https://travis-ci.org/pgjdbc/pgjdbc.svg?branch=master)](https://travis-ci.org/pgjdbc/pgjdbc)
 [![codecov.io](http://codecov.io/github/pgjdbc/pgjdbc/coverage.svg?branch=master)](http://codecov.io/github/pgjdbc/pgjdbc?branch=master)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.postgresql/postgresql/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.postgresql/postgresql)
-[![Javadocs](http://javadoc.io/badge/org.postgresql/postgresql.svg)](http://javadoc.io/doc/org.postgresql/postgresql)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.materialize/postgresql/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.materialize/postgresql)
+[![Javadocs](http://javadoc.io/badge/org.materialize/postgresql.svg)](http://javadoc.io/doc/org.materialize/postgresql)
 [![License](https://img.shields.io/badge/License-BSD--2--Clause-blue.svg)](https://opensource.org/licenses/BSD-2-Clause)
 [![Join the chat at https://gitter.im/pgjdbc/pgjdbc](https://badges.gitter.im/pgjdbc/pgjdbc.svg)](https://gitter.im/pgjdbc/pgjdbc?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -22,12 +22,12 @@ PgJDBC regression tests are run against all PostgreSQL versions since 8.2, inclu
 Most people do not need to compile PgJDBC. You can download the precompiled driver (jar) from the [PostgreSQL JDBC site](https://jdbc.postgresql.org/download.html) or using your chosen dependency management tool:
 
 ### Maven Central
-You can search on The Central Repository with GroupId and ArtifactId [![Maven Search](https://img.shields.io/badge/org.postgresql-postgresql-yellow.svg)][mvn-search] for:
+You can search on The Central Repository with GroupId and ArtifactId [![Maven Search](https://img.shields.io/badge/org.materialize-postgresql-yellow.svg)][mvn-search] for:
 
 [![Java 8](https://img.shields.io/badge/Java_8-42.2.7-blue.svg)][mvn-jre8]
 ```xml
 <dependency>
-    <groupId>org.postgresql</groupId>
+    <groupId>org.materialize</groupId>
     <artifactId>postgresql</artifactId>
     <version>42.2.7</version>
 </dependency>
@@ -36,7 +36,7 @@ You can search on The Central Repository with GroupId and ArtifactId [![Maven Se
 [![Java 7](https://img.shields.io/badge/Java_7-42.2.7.jre7-blue.svg)][mvn-jre7]
 ```xml
 <dependency>
-    <groupId>org.postgresql</groupId>
+    <groupId>org.materialize</groupId>
     <artifactId>postgresql</artifactId>
     <version>42.2.7.jre7</version>
 </dependency>
@@ -45,21 +45,21 @@ You can search on The Central Repository with GroupId and ArtifactId [![Maven Se
 [![Java 6](https://img.shields.io/badge/Java_6-42.2.7.jre6-blue.svg)][mvn-jre6]
 ```xml
 <dependency>
-    <groupId>org.postgresql</groupId>
+    <groupId>org.materialize</groupId>
     <artifactId>postgresql</artifactId>
     <version>42.2.7.jre6</version>
 </dependency>
 ```
-[mvn-search]: http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.postgresql%22%20AND%20a%3A%22postgresql%22 "Search on Maven Central"
-[mvn-jre6]: http://search.maven.org/#artifactdetails|org.postgresql|postgresql|42.2.7.jre6|bundle
-[mvn-jre7]: http://search.maven.org/#artifactdetails|org.postgresql|postgresql|42.2.7.jre7|bundle
-[mvn-jre8]: http://search.maven.org/#artifactdetails|org.postgresql|postgresql|42.2.7|bundle
+[mvn-search]: http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.materialize%22%20AND%20a%3A%22postgresql%22 "Search on Maven Central"
+[mvn-jre6]: http://search.maven.org/#artifactdetails|org.materialize|postgresql|42.2.7.jre6|bundle
+[mvn-jre7]: http://search.maven.org/#artifactdetails|org.materialize|postgresql|42.2.7.jre7|bundle
+[mvn-jre8]: http://search.maven.org/#artifactdetails|org.materialize|postgresql|42.2.7|bundle
 
 #### Development snapshots
 Snapshot builds (builds from `master` branch) are also deployed to Maven Central, so you can test current development version (test some bugfix) using:
 ```xml
 <dependency>
-  <groupId>org.postgresql</groupId>
+  <groupId>org.materialize</groupId>
   <artifactId>postgresql</artifactId>
   <version>42.2.8-SNAPSHOT</version> <!-- Java 8 -->
   <version>42.2.8.jre7-SNAPSHOT</version> <!-- Java 7 -->
@@ -77,10 +77,10 @@ For more information you can read [the PgJDBC driver documentation](https://jdbc
 
 | Implements                          | Class                                          |
 | ----------------------------------- | ---------------------------------------------- |
-| java.sql.Driver                     | **org.postgresql.Driver**                      |
-| javax.sql.DataSource                | org.postgresql.ds.PGSimpleDataSource           |
-| javax.sql.ConnectionPoolDataSource  | org.postgresql.ds.PGConnectionPoolDataSource   |
-| javax.sql.XADataSource              | org.postgresql.xa.PGXADataSource               |
+| java.sql.Driver                     | **org.materialize.Driver**                      |
+| javax.sql.DataSource                | org.materialize.ds.PGSimpleDataSource           |
+| javax.sql.ConnectionPoolDataSource  | org.materialize.ds.PGConnectionPoolDataSource   |
+| javax.sql.XADataSource              | org.materialize.xa.PGXADataSource               |
 
 ### Building the Connection URL
 The driver recognises JDBC URLs of the form:

@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.copy;
+package org.materialize.copy;
 
 /**
  * Bidirectional via copy stream protocol. Via bidirectional copy protocol work PostgreSQL

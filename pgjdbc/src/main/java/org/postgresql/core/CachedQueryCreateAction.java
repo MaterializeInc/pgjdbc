@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core;
+package org.materialize.core;
 
-import org.postgresql.jdbc.PreferQueryMode;
-import org.postgresql.util.LruCache;
+import org.materialize.jdbc.PreferQueryMode;
+import org.materialize.util.LruCache;
 
 import java.sql.SQLException;
 import java.util.List;

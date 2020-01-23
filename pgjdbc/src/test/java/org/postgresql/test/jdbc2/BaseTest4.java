@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package org.materialize.test.jdbc2;
 
-import org.postgresql.PGConnection;
-import org.postgresql.PGProperty;
-import org.postgresql.core.Version;
-import org.postgresql.jdbc.PreferQueryMode;
-import org.postgresql.test.TestUtil;
+import org.materialize.PGConnection;
+import org.materialize.PGProperty;
+import org.materialize.core.Version;
+import org.materialize.jdbc.PreferQueryMode;
+import org.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Assume;

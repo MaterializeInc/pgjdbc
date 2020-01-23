@@ -3,12 +3,12 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jre7.sasl;
+package org.materialize.jre7.sasl;
 
-import org.postgresql.core.PGStream;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.core.PGStream;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import com.ongres.scram.client.ScramClient;
 import com.ongres.scram.client.ScramSession;

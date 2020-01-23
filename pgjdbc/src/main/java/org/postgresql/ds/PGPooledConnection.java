@@ -3,12 +3,12 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.ds;
+package org.materialize.ds;
 
-import org.postgresql.PGConnection;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.PGConnection;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
@@ -33,7 +33,7 @@ import javax.sql.StatementEventListener;
  *
  * @author Aaron Mulder (ammulder@chariotsolutions.com)
  * @author Csaba Nagy (ncsaba@yahoo.com)
- * @see org.postgresql.ds.PGConnectionPoolDataSource
+ * @see org.materialize.ds.PGConnectionPoolDataSource
  */
 public class PGPooledConnection implements PooledConnection {
   private final List<ConnectionEventListener> listeners = new LinkedList<ConnectionEventListener>();
@@ -321,17 +321,17 @@ public class PGPooledConnection implements PooledConnection {
         if (methodName.equals("createStatement")) {
           Statement st = (Statement) method.invoke(con, args);
           return Proxy.newProxyInstance(getClass().getClassLoader(),
-              new Class[]{Statement.class, org.postgresql.PGStatement.class},
+              new Class[]{Statement.class, org.materialize.PGStatement.class},
               new StatementHandler(this, st));
         } else if (methodName.equals("prepareCall")) {
           Statement st = (Statement) method.invoke(con, args);
           return Proxy.newProxyInstance(getClass().getClassLoader(),
-              new Class[]{CallableStatement.class, org.postgresql.PGStatement.class},
+              new Class[]{CallableStatement.class, org.materialize.PGStatement.class},
               new StatementHandler(this, st));
         } else if (methodName.equals("prepareStatement")) {
           Statement st = (Statement) method.invoke(con, args);
           return Proxy.newProxyInstance(getClass().getClassLoader(),
-              new Class[]{PreparedStatement.class, org.postgresql.PGStatement.class},
+              new Class[]{PreparedStatement.class, org.materialize.PGStatement.class},
               new StatementHandler(this, st));
         } else {
           return method.invoke(con, args);

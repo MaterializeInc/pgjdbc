@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.util;
+package org.materialize.util;
 
-import org.postgresql.core.EncodingPredictor;
+import org.materialize.core.EncodingPredictor;
 
 import java.io.Serializable;
 import java.util.HashMap;

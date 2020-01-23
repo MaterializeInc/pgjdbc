@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.hostchooser;
+package org.materialize.hostchooser;
 
 /**
  * Known state of a server.

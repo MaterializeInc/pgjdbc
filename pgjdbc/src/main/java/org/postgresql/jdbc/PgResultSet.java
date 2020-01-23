@@ -3,28 +3,28 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.PGResultSetMetaData;
-import org.postgresql.PGStatement;
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.BaseStatement;
-import org.postgresql.core.Encoding;
-import org.postgresql.core.Field;
-import org.postgresql.core.Oid;
-import org.postgresql.core.Query;
-import org.postgresql.core.ResultCursor;
-import org.postgresql.core.ResultHandlerBase;
-import org.postgresql.core.TypeInfo;
-import org.postgresql.core.Utils;
-import org.postgresql.util.ByteConverter;
-import org.postgresql.util.GT;
-import org.postgresql.util.HStoreConverter;
-import org.postgresql.util.PGbytea;
-import org.postgresql.util.PGobject;
-import org.postgresql.util.PGtokenizer;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.PGResultSetMetaData;
+import org.materialize.PGStatement;
+import org.materialize.core.BaseConnection;
+import org.materialize.core.BaseStatement;
+import org.materialize.core.Encoding;
+import org.materialize.core.Field;
+import org.materialize.core.Oid;
+import org.materialize.core.Query;
+import org.materialize.core.ResultCursor;
+import org.materialize.core.ResultHandlerBase;
+import org.materialize.core.TypeInfo;
+import org.materialize.core.Utils;
+import org.materialize.util.ByteConverter;
+import org.materialize.util.GT;
+import org.materialize.util.HStoreConverter;
+import org.materialize.util.PGbytea;
+import org.materialize.util.PGobject;
+import org.materialize.util.PGtokenizer;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.io.ByteArrayInputStream;
 import java.io.CharArrayReader;
@@ -73,7 +73,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
-public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultSet {
+public class PgResultSet implements ResultSet, org.materialize.PGRefCursorResultSet {
 
   // needed for updateable result set support
   private boolean updateable = false;
@@ -160,7 +160,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   public java.net.URL getURL(int columnIndex) throws SQLException {
     connection.getLogger().log(Level.FINEST, "  getURL columnIndex: {0}", columnIndex);
     checkClosed();
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "getURL(int)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "getURL(int)");
   }
 
   public java.net.URL getURL(String columnName) throws SQLException {
@@ -691,7 +691,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
     if (map == null || map.isEmpty()) {
       return getObject(i);
     }
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "getObjectImpl(int,Map)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "getObjectImpl(int,Map)");
   }
 
   public Ref getRef(String columnName) throws SQLException {
@@ -701,7 +701,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   public Ref getRef(int i) throws SQLException {
     checkClosed();
     // The backend doesn't yet have SQL3 REF types
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "getRef(int)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "getRef(int)");
   }
 
   @Override
@@ -3134,27 +3134,27 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateRef(int columnIndex, Ref x) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateRef(int,Ref)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateRef(int,Ref)");
   }
 
   public void updateRef(String columnName, Ref x) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateRef(String,Ref)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateRef(String,Ref)");
   }
 
   public void updateBlob(int columnIndex, Blob x) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateBlob(int,Blob)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateBlob(int,Blob)");
   }
 
   public void updateBlob(String columnName, Blob x) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateBlob(String,Blob)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateBlob(String,Blob)");
   }
 
   public void updateClob(int columnIndex, Clob x) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateClob(int,Clob)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateClob(int,Clob)");
   }
 
   public void updateClob(String columnName, Clob x) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateClob(String,Clob)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateClob(String,Clob)");
   }
 
   public void updateArray(int columnIndex, Array x) throws SQLException {
@@ -3432,28 +3432,28 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   //#if mvn.project.property.postgresql.jdbc.spec >= "JDBC4.2"
   public void updateObject(int columnIndex, Object x, java.sql.SQLType targetSqlType,
       int scaleOrLength) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateObject");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateObject");
   }
 
   public void updateObject(String columnLabel, Object x, java.sql.SQLType targetSqlType,
       int scaleOrLength) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateObject");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateObject");
   }
 
   public void updateObject(int columnIndex, Object x, java.sql.SQLType targetSqlType)
       throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateObject");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateObject");
   }
 
   public void updateObject(String columnLabel, Object x, java.sql.SQLType targetSqlType)
       throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateObject");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateObject");
   }
   //#endif
 
   public RowId getRowId(int columnIndex) throws SQLException {
     connection.getLogger().log(Level.FINEST, "  getRowId columnIndex: {0}", columnIndex);
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "getRowId(int)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "getRowId(int)");
   }
 
   public RowId getRowId(String columnName) throws SQLException {
@@ -3461,7 +3461,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateRowId(int columnIndex, RowId x) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateRowId(int, RowId)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateRowId(int, RowId)");
   }
 
   public void updateRowId(String columnName, RowId x) throws SQLException {
@@ -3469,7 +3469,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public int getHoldability() throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "getHoldability()");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "getHoldability()");
   }
 
   public boolean isClosed() throws SQLException {
@@ -3477,7 +3477,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateNString(int columnIndex, String nString) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateNString(int, String)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateNString(int, String)");
   }
 
   public void updateNString(String columnName, String nString) throws SQLException {
@@ -3485,7 +3485,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateNClob(int columnIndex, NClob nClob) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateNClob(int, NClob)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateNClob(int, NClob)");
   }
 
   public void updateNClob(String columnName, NClob nClob) throws SQLException {
@@ -3493,7 +3493,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateNClob(int columnIndex, Reader reader) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateNClob(int, Reader)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateNClob(int, Reader)");
   }
 
   public void updateNClob(String columnName, Reader reader) throws SQLException {
@@ -3501,7 +3501,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateNClob(int columnIndex, Reader reader, long length) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateNClob(int, Reader, long)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateNClob(int, Reader, long)");
   }
 
   public void updateNClob(String columnName, Reader reader, long length) throws SQLException {
@@ -3510,7 +3510,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
 
   public NClob getNClob(int columnIndex) throws SQLException {
     connection.getLogger().log(Level.FINEST, "  getNClob columnIndex: {0}", columnIndex);
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "getNClob(int)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "getNClob(int)");
   }
 
   public NClob getNClob(String columnName) throws SQLException {
@@ -3519,7 +3519,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
 
   public void updateBlob(int columnIndex, InputStream inputStream, long length)
       throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(),
+    throw org.materialize.Driver.notImplemented(this.getClass(),
         "updateBlob(int, InputStream, long)");
   }
 
@@ -3529,7 +3529,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateBlob(int columnIndex, InputStream inputStream) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateBlob(int, InputStream)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateBlob(int, InputStream)");
   }
 
   public void updateBlob(String columnName, InputStream inputStream) throws SQLException {
@@ -3537,7 +3537,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateClob(int columnIndex, Reader reader, long length) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateClob(int, Reader, long)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateClob(int, Reader, long)");
   }
 
   public void updateClob(String columnName, Reader reader, long length) throws SQLException {
@@ -3545,7 +3545,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateClob(int columnIndex, Reader reader) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "updateClob(int, Reader)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "updateClob(int, Reader)");
   }
 
   public void updateClob(String columnName, Reader reader) throws SQLException {
@@ -3576,7 +3576,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
 
   public String getNString(int columnIndex) throws SQLException {
     connection.getLogger().log(Level.FINEST, "  getNString columnIndex: {0}", columnIndex);
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "getNString(int)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "getNString(int)");
   }
 
   public String getNString(String columnName) throws SQLException {
@@ -3585,7 +3585,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
 
   public Reader getNCharacterStream(int columnIndex) throws SQLException {
     connection.getLogger().log(Level.FINEST, "  getNCharacterStream columnIndex: {0}", columnIndex);
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "getNCharacterStream(int)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "getNCharacterStream(int)");
   }
 
   public Reader getNCharacterStream(String columnName) throws SQLException {
@@ -3593,7 +3593,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateNCharacterStream(int columnIndex, Reader x, int length) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(),
+    throw org.materialize.Driver.notImplemented(this.getClass(),
         "updateNCharacterStream(int, Reader, int)");
   }
 
@@ -3602,7 +3602,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateNCharacterStream(int columnIndex, Reader x) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(),
+    throw org.materialize.Driver.notImplemented(this.getClass(),
         "updateNCharacterStream(int, Reader)");
   }
 
@@ -3611,7 +3611,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateNCharacterStream(int columnIndex, Reader x, long length) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(),
+    throw org.materialize.Driver.notImplemented(this.getClass(),
         "updateNCharacterStream(int, Reader, long)");
   }
 
@@ -3621,7 +3621,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
 
   public void updateCharacterStream(int columnIndex, Reader reader, long length)
       throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(),
+    throw org.materialize.Driver.notImplemented(this.getClass(),
         "updateCharaceterStream(int, Reader, long)");
   }
 
@@ -3631,7 +3631,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateCharacterStream(int columnIndex, Reader reader) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(),
+    throw org.materialize.Driver.notImplemented(this.getClass(),
         "updateCharaceterStream(int, Reader)");
   }
 
@@ -3641,7 +3641,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
 
   public void updateBinaryStream(int columnIndex, InputStream inputStream, long length)
       throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(),
+    throw org.materialize.Driver.notImplemented(this.getClass(),
         "updateBinaryStream(int, InputStream, long)");
   }
 
@@ -3651,7 +3651,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateBinaryStream(int columnIndex, InputStream inputStream) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(),
+    throw org.materialize.Driver.notImplemented(this.getClass(),
         "updateBinaryStream(int, InputStream)");
   }
 
@@ -3661,7 +3661,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
 
   public void updateAsciiStream(int columnIndex, InputStream inputStream, long length)
       throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(),
+    throw org.materialize.Driver.notImplemented(this.getClass(),
         "updateAsciiStream(int, InputStream, long)");
   }
 
@@ -3671,7 +3671,7 @@ public class PgResultSet implements ResultSet, org.postgresql.PGRefCursorResultS
   }
 
   public void updateAsciiStream(int columnIndex, InputStream inputStream) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(),
+    throw org.materialize.Driver.notImplemented(this.getClass(),
         "updateAsciiStream(int, InputStream)");
   }
 

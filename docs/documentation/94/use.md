@@ -28,5 +28,5 @@ import java.sql.*;
 
 ### Note
 
-You should not import the `org.postgresql` package unless you are not using standard
+You should not import the `org.materialize` package unless you are not using standard
 PostgreSQL™ extensions to the JDBC API.

@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication.fluent;
+package org.materialize.replication.fluent;
 
-import org.postgresql.replication.fluent.logical.ChainedLogicalStreamBuilder;
-import org.postgresql.replication.fluent.physical.ChainedPhysicalStreamBuilder;
+import org.materialize.replication.fluent.logical.ChainedLogicalStreamBuilder;
+import org.materialize.replication.fluent.physical.ChainedPhysicalStreamBuilder;
 
 /**
  * Start point for fluent API that build replication stream(logical or physical).

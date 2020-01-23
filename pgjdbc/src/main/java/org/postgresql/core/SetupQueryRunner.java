@@ -4,11 +4,11 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.core;
+package org.materialize.core;
 
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.sql.SQLException;
 import java.sql.SQLWarning;

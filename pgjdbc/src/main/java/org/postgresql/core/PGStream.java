@@ -3,12 +3,12 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core;
+package org.materialize.core;
 
-import org.postgresql.util.GT;
-import org.postgresql.util.HostSpec;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.util.GT;
+import org.materialize.util.HostSpec;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.io.BufferedOutputStream;
 import java.io.Closeable;
@@ -87,7 +87,7 @@ public class PGStream implements Closeable, Flushable {
    * @param socketFactory socket factory
    * @param hostSpec the host and port to connect to
    * @throws IOException if an IOException occurs below it.
-   * @deprecated use {@link #PGStream(SocketFactory, org.postgresql.util.HostSpec, int)}
+   * @deprecated use {@link #PGStream(SocketFactory, org.materialize.util.HostSpec, int)}
    */
   @Deprecated
   public PGStream(SocketFactory socketFactory, HostSpec hostSpec) throws IOException {

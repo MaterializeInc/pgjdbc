@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core;
+package org.materialize.core;
 
-import static org.postgresql.core.SqlCommandType.INSERT;
-import static org.postgresql.core.SqlCommandType.SELECT;
-import static org.postgresql.core.SqlCommandType.WITH;
+import static org.materialize.core.SqlCommandType.INSERT;
+import static org.materialize.core.SqlCommandType.SELECT;
+import static org.materialize.core.SqlCommandType.WITH;
 
 /**
  * Data Modification Language inspection support.

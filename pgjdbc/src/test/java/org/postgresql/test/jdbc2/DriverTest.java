@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package org.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -12,12 +12,12 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.postgresql.Driver;
-import org.postgresql.PGProperty;
-import org.postgresql.test.TestUtil;
-import org.postgresql.util.NullOutputStream;
-import org.postgresql.util.URLCoder;
-import org.postgresql.util.WriterHandler;
+import org.materialize.Driver;
+import org.materialize.PGProperty;
+import org.materialize.test.TestUtil;
+import org.materialize.util.NullOutputStream;
+import org.materialize.util.URLCoder;
+import org.materialize.util.WriterHandler;
 
 import org.junit.Test;
 
@@ -33,7 +33,7 @@ import java.util.logging.Handler;
 import java.util.logging.Logger;
 
 /*
- * Tests the dynamically created class org.postgresql.Driver
+ * Tests the dynamically created class org.materialize.Driver
  *
  */
 public class DriverTest {
@@ -64,7 +64,7 @@ public class DriverTest {
     TestUtil.initDriver(); // Set up log levels, etc.
 
     // Load the driver (note clients should never do it this way!)
-    org.postgresql.Driver drv = new org.postgresql.Driver();
+    org.materialize.Driver drv = new org.materialize.Driver();
     assertNotNull(drv);
 
     // These are always correct
@@ -176,13 +176,13 @@ public class DriverTest {
     TestUtil.initDriver();
 
     // Driver is initially registered because it is automatically done when class is loaded
-    assertTrue(org.postgresql.Driver.isRegistered());
+    assertTrue(org.materialize.Driver.isRegistered());
 
     ArrayList<java.sql.Driver> drivers = Collections.list(DriverManager.getDrivers());
     searchInstanceOf: {
 
       for (java.sql.Driver driver : drivers) {
-        if (driver instanceof org.postgresql.Driver) {
+        if (driver instanceof org.materialize.Driver) {
           break searchInstanceOf;
         }
       }
@@ -195,7 +195,7 @@ public class DriverTest {
 
     drivers = Collections.list(DriverManager.getDrivers());
     for (java.sql.Driver driver : drivers) {
-      if (driver instanceof org.postgresql.Driver) {
+      if (driver instanceof org.materialize.Driver) {
         fail("Driver should be deregistered but it is still present in DriverManager's list");
       }
     }
@@ -206,7 +206,7 @@ public class DriverTest {
 
     drivers = Collections.list(DriverManager.getDrivers());
     for (java.sql.Driver driver : drivers) {
-      if (driver instanceof org.postgresql.Driver) {
+      if (driver instanceof org.materialize.Driver) {
         return;
       }
     }
@@ -235,7 +235,7 @@ public class DriverTest {
       props.setProperty("loggerLevel", "DEBUG");
       con = DriverManager.getConnection(TestUtil.getURL(), props);
 
-      Logger logger = Logger.getLogger("org.postgresql");
+      Logger logger = Logger.getLogger("org.materialize");
       Handler[] handlers = logger.getHandlers();
       assertTrue(handlers[0] instanceof WriterHandler );
       con.close();
@@ -268,7 +268,7 @@ public class DriverTest {
       props.setProperty("loggerLevel", "DEBUG");
       con = DriverManager.getConnection(TestUtil.getURL(), props);
 
-      Logger logger = Logger.getLogger("org.postgresql");
+      Logger logger = Logger.getLogger("org.materialize");
       Handler []handlers = logger.getHandlers();
       assertTrue( handlers[0] instanceof WriterHandler );
       con.close();

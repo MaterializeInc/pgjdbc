@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc3;
+package org.materialize.test.jdbc3;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -12,11 +12,11 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.postgresql.PGStatement;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.test.TestUtil;
-import org.postgresql.test.jdbc2.BaseTest4;
-import org.postgresql.util.PSQLState;
+import org.materialize.PGStatement;
+import org.materialize.core.ServerVersion;
+import org.materialize.test.TestUtil;
+import org.materialize.test.jdbc2.BaseTest4;
+import org.materialize.util.PSQLState;
 
 import org.junit.Assume;
 import org.junit.Test;
@@ -505,7 +505,7 @@ public class GeneratedKeysTest extends BaseTest4 {
       ps.setString(1, "TESTTESTTEST");
       ps.executeUpdate();
     } catch (SQLException e) {
-      // Expected error: org.postgresql.util.PSQLException: ERROR: value
+      // Expected error: org.materialize.util.PSQLException: ERROR: value
       // too long for type character varying(10)
       if (!PSQLState.STRING_DATA_RIGHT_TRUNCATION.getState().equals(e.getSQLState())) {
         throw e;

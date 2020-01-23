@@ -3,15 +3,15 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core.v3.replication;
+package org.materialize.core.v3.replication;
 
-import org.postgresql.copy.CopyDual;
-import org.postgresql.replication.LogSequenceNumber;
-import org.postgresql.replication.PGReplicationStream;
-import org.postgresql.replication.ReplicationType;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.copy.CopyDual;
+import org.materialize.replication.LogSequenceNumber;
+import org.materialize.replication.PGReplicationStream;
+import org.materialize.replication.ReplicationType;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;

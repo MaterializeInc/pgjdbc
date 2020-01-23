@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.ssl;
+package org.materialize.ssl;
 
 import java.util.Properties;
 import javax.net.ssl.SSLSocketFactory;

@@ -3,16 +3,16 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.PGStatement;
-import org.postgresql.core.JavaVersion;
-import org.postgresql.core.Oid;
-import org.postgresql.core.Provider;
-import org.postgresql.util.ByteConverter;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.PGStatement;
+import org.materialize.core.JavaVersion;
+import org.materialize.core.Oid;
+import org.materialize.core.Provider;
+import org.materialize.util.ByteConverter;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.lang.reflect.Field;
 import java.sql.Date;
@@ -1503,7 +1503,7 @@ public class TimestampUtils {
       tz = getDefaultTz();
     }
     // It "getOffset" is UNTESTED
-    // See org.postgresql.jdbc.AbstractJdbc2Statement.setDate(int, java.sql.Date,
+    // See org.materialize.jdbc.AbstractJdbc2Statement.setDate(int, java.sql.Date,
     // java.util.Calendar)
     // The problem is we typically do not know for sure what is the exact required date/timestamp
     // type

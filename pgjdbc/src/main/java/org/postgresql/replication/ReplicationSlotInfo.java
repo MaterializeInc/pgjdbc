@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication;
+package org.materialize.replication;
 
 /**
  * Information returned on replication slot creation.

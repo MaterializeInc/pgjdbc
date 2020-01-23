@@ -3,18 +3,18 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.PGResultSetMetaData;
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.Field;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.util.GT;
-import org.postgresql.util.Gettable;
-import org.postgresql.util.GettableHashMap;
-import org.postgresql.util.JdbcBlackHole;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.PGResultSetMetaData;
+import org.materialize.core.BaseConnection;
+import org.materialize.core.Field;
+import org.materialize.core.ServerVersion;
+import org.materialize.util.GT;
+import org.materialize.util.Gettable;
+import org.materialize.util.GettableHashMap;
+import org.materialize.util.JdbcBlackHole;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;

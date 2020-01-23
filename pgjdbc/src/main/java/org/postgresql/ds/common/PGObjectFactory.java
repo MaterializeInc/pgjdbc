@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.ds.common;
+package org.materialize.ds.common;
 
-import org.postgresql.ds.PGConnectionPoolDataSource;
-import org.postgresql.ds.PGPoolingDataSource;
-import org.postgresql.ds.PGSimpleDataSource;
+import org.materialize.ds.PGConnectionPoolDataSource;
+import org.materialize.ds.PGPoolingDataSource;
+import org.materialize.ds.PGSimpleDataSource;
 
 import java.util.Hashtable;
 
@@ -35,17 +35,17 @@ public class PGObjectFactory implements ObjectFactory {
     Reference ref = (Reference) obj;
     String className = ref.getClassName();
     // Old names are here for those who still use them
-    if (className.equals("org.postgresql.ds.PGSimpleDataSource")
-        || className.equals("org.postgresql.jdbc2.optional.SimpleDataSource")
-        || className.equals("org.postgresql.jdbc3.Jdbc3SimpleDataSource")) {
+    if (className.equals("org.materialize.ds.PGSimpleDataSource")
+        || className.equals("org.materialize.jdbc2.optional.SimpleDataSource")
+        || className.equals("org.materialize.jdbc3.Jdbc3SimpleDataSource")) {
       return loadSimpleDataSource(ref);
-    } else if (className.equals("org.postgresql.ds.PGConnectionPoolDataSource")
-        || className.equals("org.postgresql.jdbc2.optional.ConnectionPool")
-        || className.equals("org.postgresql.jdbc3.Jdbc3ConnectionPool")) {
+    } else if (className.equals("org.materialize.ds.PGConnectionPoolDataSource")
+        || className.equals("org.materialize.jdbc2.optional.ConnectionPool")
+        || className.equals("org.materialize.jdbc3.Jdbc3ConnectionPool")) {
       return loadConnectionPool(ref);
-    } else if (className.equals("org.postgresql.ds.PGPoolingDataSource")
-        || className.equals("org.postgresql.jdbc2.optional.PoolingDataSource")
-        || className.equals("org.postgresql.jdbc3.Jdbc3PoolingDataSource")) {
+    } else if (className.equals("org.materialize.ds.PGPoolingDataSource")
+        || className.equals("org.materialize.jdbc2.optional.PoolingDataSource")
+        || className.equals("org.materialize.jdbc3.Jdbc3PoolingDataSource")) {
       return loadPoolingDataSource(ref);
     } else {
       return null;

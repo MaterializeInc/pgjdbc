@@ -4,16 +4,16 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.core.v3;
+package org.materialize.core.v3;
 
-import org.postgresql.core.Field;
-import org.postgresql.core.NativeQuery;
-import org.postgresql.core.Oid;
-import org.postgresql.core.ParameterList;
-import org.postgresql.core.Query;
-import org.postgresql.core.SqlCommand;
-import org.postgresql.core.Utils;
-import org.postgresql.jdbc.PgResultSet;
+import org.materialize.core.Field;
+import org.materialize.core.NativeQuery;
+import org.materialize.core.Oid;
+import org.materialize.core.ParameterList;
+import org.materialize.core.Query;
+import org.materialize.core.SqlCommand;
+import org.materialize.core.Utils;
+import org.materialize.jdbc.PgResultSet;
 
 import java.lang.ref.PhantomReference;
 import java.util.BitSet;

@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql;
+package org.materialize;
 
 /**
  * A ref cursor based result set.

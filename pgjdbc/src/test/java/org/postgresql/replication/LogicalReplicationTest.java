@@ -3,22 +3,22 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication;
+package org.materialize.replication;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeThat;
 
-import org.postgresql.PGConnection;
-import org.postgresql.PGProperty;
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.test.TestUtil;
-import org.postgresql.test.util.rules.ServerVersionRule;
-import org.postgresql.test.util.rules.annotation.HaveMinimalServerVersion;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.PGConnection;
+import org.materialize.PGProperty;
+import org.materialize.core.BaseConnection;
+import org.materialize.core.ServerVersion;
+import org.materialize.test.TestUtil;
+import org.materialize.test.util.rules.ServerVersionRule;
+import org.materialize.test.util.rules.annotation.HaveMinimalServerVersion;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.After;

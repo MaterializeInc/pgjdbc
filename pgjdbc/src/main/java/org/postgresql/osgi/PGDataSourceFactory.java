@@ -3,16 +3,16 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.osgi;
+package org.materialize.osgi;
 
-import org.postgresql.ds.common.BaseDataSource;
-import org.postgresql.jdbc2.optional.ConnectionPool;
-import org.postgresql.jdbc2.optional.PoolingDataSource;
-import org.postgresql.jdbc2.optional.SimpleDataSource;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
-import org.postgresql.xa.PGXADataSource;
+import org.materialize.ds.common.BaseDataSource;
+import org.materialize.jdbc2.optional.ConnectionPool;
+import org.materialize.jdbc2.optional.PoolingDataSource;
+import org.materialize.jdbc2.optional.SimpleDataSource;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
+import org.materialize.xa.PGXADataSource;
 
 import org.osgi.service.jdbc.DataSourceFactory;
 
@@ -82,7 +82,7 @@ public class PGDataSourceFactory implements DataSourceFactory {
       throw new PSQLException(GT.tr("Unsupported properties: {0}", props.stringPropertyNames()),
           PSQLState.INVALID_PARAMETER_VALUE);
     }
-    return new org.postgresql.Driver();
+    return new org.materialize.Driver();
   }
 
   private DataSource createPoolingDataSource(Properties props) throws SQLException {

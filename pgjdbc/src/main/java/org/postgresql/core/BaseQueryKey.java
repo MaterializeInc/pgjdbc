@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core;
+package org.materialize.core;
 
-import org.postgresql.util.CanEstimateSize;
+import org.materialize.util.CanEstimateSize;
 
 /**
  * This class is used as a cache key for simple statements that have no "returning columns".

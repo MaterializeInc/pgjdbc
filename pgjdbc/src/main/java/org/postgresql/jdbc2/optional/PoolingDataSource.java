@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc2.optional;
+package org.materialize.jdbc2.optional;
 
-import org.postgresql.ds.PGPoolingDataSource;
+import org.materialize.ds.PGPoolingDataSource;
 
 /**
  * @deprecated Since 42.0.0, see {@link PGPoolingDataSource}

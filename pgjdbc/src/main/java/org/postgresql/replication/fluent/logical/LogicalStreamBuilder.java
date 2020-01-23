@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication.fluent.logical;
+package org.materialize.replication.fluent.logical;
 
-import org.postgresql.replication.LogSequenceNumber;
-import org.postgresql.replication.PGReplicationStream;
-import org.postgresql.replication.fluent.AbstractStreamBuilder;
+import org.materialize.replication.LogSequenceNumber;
+import org.materialize.replication.PGReplicationStream;
+import org.materialize.replication.fluent.AbstractStreamBuilder;
 
 import java.sql.SQLException;
 import java.util.Properties;

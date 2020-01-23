@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc4;
+package org.materialize.test.jdbc4;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -12,8 +12,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import org.postgresql.core.ServerVersion;
-import org.postgresql.test.TestUtil;
+import org.materialize.core.ServerVersion;
+import org.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Before;

@@ -3,15 +3,15 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.fastpath;
+package org.materialize.fastpath;
 
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.ParameterList;
-import org.postgresql.core.QueryExecutor;
-import org.postgresql.util.ByteConverter;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.core.BaseConnection;
+import org.materialize.core.ParameterList;
+import org.materialize.core.QueryExecutor;
+import org.materialize.util.ByteConverter;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -133,13 +133,13 @@ public class Fastpath {
    * <p>This is the preferred method to call, as function id's can/may change between versions of the
    * backend.</p>
    *
-   * <p>For an example of how this works, refer to org.postgresql.largeobject.LargeObject</p>
+   * <p>For an example of how this works, refer to org.materialize.largeobject.LargeObject</p>
    *
    * @param name Function name
    * @param args FastpathArguments to pass to fastpath
    * @return null if no data, byte[] otherwise
    * @throws SQLException if name is unknown or if a database-access error occurs.
-   * @see org.postgresql.largeobject.LargeObject
+   * @see org.materialize.largeobject.LargeObject
    */
   public byte[] fastpath(String name, FastpathArg[] args) throws SQLException {
     connection.getLogger().log(Level.FINEST, "Fastpath: calling {0}", name);
@@ -254,7 +254,7 @@ public class Fastpath {
    * HashMap is used. Also, only the function's required are entered into this table, keeping
    * connection times as fast as possible.</p>
    *
-   * <p>The org.postgresql.largeobject.LargeObject class performs a query upon it's startup, and passes
+   * <p>The org.materialize.largeobject.LargeObject class performs a query upon it's startup, and passes
    * the returned ResultSet to the addFunctions() method here.</p>
    *
    * <p>Once this has been done, the LargeObject api refers to the functions by name.</p>
@@ -265,7 +265,7 @@ public class Fastpath {
    *
    * @param rs ResultSet
    * @throws SQLException if a database-access error occurs.
-   * @see org.postgresql.largeobject.LargeObjectManager
+   * @see org.materialize.largeobject.LargeObjectManager
    */
   public void addFunctions(ResultSet rs) throws SQLException {
     while (rs.next()) {

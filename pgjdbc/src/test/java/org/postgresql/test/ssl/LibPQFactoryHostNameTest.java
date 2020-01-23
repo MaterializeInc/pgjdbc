@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.ssl;
+package org.materialize.test.ssl;
 
-import org.postgresql.ssl.PGjdbcHostnameVerifier;
-import org.postgresql.ssl.jdbc4.LibPQFactory;
+import org.materialize.ssl.PGjdbcHostnameVerifier;
+import org.materialize.ssl.jdbc4.LibPQFactory;
 
 import org.junit.Assert;
 import org.junit.Test;

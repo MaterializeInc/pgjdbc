@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication.fluent;
+package org.materialize.replication.fluent;
 
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.util.GT;
+import org.materialize.core.BaseConnection;
+import org.materialize.core.ServerVersion;
+import org.materialize.util.GT;
 
 import java.sql.SQLFeatureNotSupportedException;
 

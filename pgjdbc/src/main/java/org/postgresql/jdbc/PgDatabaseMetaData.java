@@ -3,16 +3,16 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.core.BaseStatement;
-import org.postgresql.core.Field;
-import org.postgresql.core.Oid;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.util.GT;
-import org.postgresql.util.JdbcBlackHole;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.core.BaseStatement;
+import org.materialize.core.Field;
+import org.materialize.core.Oid;
+import org.materialize.core.ServerVersion;
+import org.materialize.util.GT;
+import org.materialize.util.JdbcBlackHole;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.Array;
@@ -149,22 +149,22 @@ public class PgDatabaseMetaData implements DatabaseMetaData {
 
   @Override
   public String getDriverName() {
-    return org.postgresql.util.DriverInfo.DRIVER_NAME;
+    return org.materialize.util.DriverInfo.DRIVER_NAME;
   }
 
   @Override
   public String getDriverVersion() {
-    return org.postgresql.util.DriverInfo.DRIVER_VERSION;
+    return org.materialize.util.DriverInfo.DRIVER_VERSION;
   }
 
   @Override
   public int getDriverMajorVersion() {
-    return org.postgresql.util.DriverInfo.MAJOR_VERSION;
+    return org.materialize.util.DriverInfo.MAJOR_VERSION;
   }
 
   @Override
   public int getDriverMinorVersion() {
-    return org.postgresql.util.DriverInfo.MINOR_VERSION;
+    return org.materialize.util.DriverInfo.MINOR_VERSION;
   }
 
   /**
@@ -2476,7 +2476,7 @@ public class PgDatabaseMetaData implements DatabaseMetaData {
 
   @Override
   public RowIdLifetime getRowIdLifetime() throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "getRowIdLifetime()");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "getRowIdLifetime()");
   }
 
   @Override
@@ -2763,7 +2763,7 @@ public class PgDatabaseMetaData implements DatabaseMetaData {
 
   public ResultSet getPseudoColumns(String catalog, String schemaPattern, String tableNamePattern,
       String columnNamePattern) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(),
+    throw org.materialize.Driver.notImplemented(this.getClass(),
         "getPseudoColumns(String, String, String, String)");
   }
 
@@ -2792,19 +2792,19 @@ public class PgDatabaseMetaData implements DatabaseMetaData {
 
   public ResultSet getSuperTypes(String catalog, String schemaPattern, String typeNamePattern)
       throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(),
+    throw org.materialize.Driver.notImplemented(this.getClass(),
         "getSuperTypes(String,String,String)");
   }
 
   public ResultSet getSuperTables(String catalog, String schemaPattern, String tableNamePattern)
       throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(),
+    throw org.materialize.Driver.notImplemented(this.getClass(),
         "getSuperTables(String,String,String,String)");
   }
 
   public ResultSet getAttributes(String catalog, String schemaPattern, String typeNamePattern,
       String attributeNamePattern) throws SQLException {
-    throw org.postgresql.Driver.notImplemented(this.getClass(),
+    throw org.materialize.Driver.notImplemented(this.getClass(),
         "getAttributes(String,String,String,String)");
   }
 
@@ -2828,12 +2828,12 @@ public class PgDatabaseMetaData implements DatabaseMetaData {
 
   @Override
   public int getJDBCMajorVersion() {
-    return org.postgresql.util.DriverInfo.JDBC_MAJOR_VERSION;
+    return org.materialize.util.DriverInfo.JDBC_MAJOR_VERSION;
   }
 
   @Override
   public int getJDBCMinorVersion() {
-    return org.postgresql.util.DriverInfo.JDBC_MINOR_VERSION;
+    return org.materialize.util.DriverInfo.JDBC_MINOR_VERSION;
   }
 
   public int getSQLStateType() throws SQLException {

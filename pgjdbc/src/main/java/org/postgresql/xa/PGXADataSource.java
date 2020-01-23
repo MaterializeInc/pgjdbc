@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.xa;
+package org.materialize.xa;
 
-import org.postgresql.core.BaseConnection;
-import org.postgresql.ds.common.BaseDataSource;
+import org.materialize.core.BaseConnection;
+import org.materialize.ds.common.BaseDataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -48,7 +48,7 @@ public class PGXADataSource extends BaseDataSource implements XADataSource {
   }
 
   public String getDescription() {
-    return "XA-enabled DataSource from " + org.postgresql.util.DriverInfo.DRIVER_FULL_NAME;
+    return "XA-enabled DataSource from " + org.materialize.util.DriverInfo.DRIVER_FULL_NAME;
   }
 
   /**

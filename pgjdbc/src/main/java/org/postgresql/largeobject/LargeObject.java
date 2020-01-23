@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.largeobject;
+package org.materialize.largeobject;
 
-import org.postgresql.core.BaseConnection;
-import org.postgresql.fastpath.Fastpath;
-import org.postgresql.fastpath.FastpathArg;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.core.BaseConnection;
+import org.materialize.fastpath.Fastpath;
+import org.materialize.fastpath.FastpathArg;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,10 +27,10 @@ import java.sql.SQLException;
  * <p>However, sometimes lower level access to Large Objects are required, that are not supported by
  * the JDBC specification.</p>
  *
- * <p>Refer to org.postgresql.largeobject.LargeObjectManager on how to gain access to a Large Object,
+ * <p>Refer to org.materialize.largeobject.LargeObjectManager on how to gain access to a Large Object,
  * or how to create one.</p>
  *
- * @see org.postgresql.largeobject.LargeObjectManager
+ * @see org.materialize.largeobject.LargeObjectManager
  * @see java.sql.ResultSet#getAsciiStream
  * @see java.sql.ResultSet#getBinaryStream
  * @see java.sql.ResultSet#getUnicodeStream
@@ -82,7 +82,7 @@ public class LargeObject
    * @param commitOnClose commit the transaction when this LOB will be closed (defined in
    *        LargeObjectManager)
    * @throws SQLException if a database-access error occurs.
-   * @see org.postgresql.largeobject.LargeObjectManager
+   * @see org.materialize.largeobject.LargeObjectManager
    */
   protected LargeObject(Fastpath fp, long oid, int mode, BaseConnection conn, boolean commitOnClose)
       throws SQLException {
@@ -111,7 +111,7 @@ public class LargeObject
    * @param oid of the Large Object to open
    * @param mode Mode of opening the large object (defined in LargeObjectManager)
    * @throws SQLException if a database-access error occurs.
-   * @see org.postgresql.largeobject.LargeObjectManager
+   * @see org.materialize.largeobject.LargeObjectManager
    */
   protected LargeObject(Fastpath fp, long oid, int mode) throws SQLException {
     this(fp, oid, mode, null, false);

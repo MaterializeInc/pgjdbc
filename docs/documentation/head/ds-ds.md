@@ -37,11 +37,11 @@ project.
   <tbody>
     <tr>
       <td>No</td>
-      <td>`org.postgresql.ds.PGSimpleDataSource</td>
+      <td>`org.materialize.ds.PGSimpleDataSource</td>
     </tr>
     <tr>
       <td>Yes</td>
-      <td>`org.postgresql.ds.PGPoolingDataSource</td>
+      <td>`org.materialize.ds.PGPoolingDataSource</td>
     </tr>
   </tbody>
 </table>

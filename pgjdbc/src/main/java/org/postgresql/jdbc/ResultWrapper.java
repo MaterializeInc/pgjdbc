@@ -4,7 +4,7 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
 import java.sql.ResultSet;
 

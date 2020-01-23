@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.util.rules;
+package org.materialize.test.util.rules;
 
-import org.postgresql.core.ServerVersion;
-import org.postgresql.core.Version;
-import org.postgresql.jdbc.PgConnection;
-import org.postgresql.test.TestUtil;
-import org.postgresql.test.util.rules.annotation.HaveMinimalServerVersion;
+import org.materialize.core.ServerVersion;
+import org.materialize.core.Version;
+import org.materialize.jdbc.PgConnection;
+import org.materialize.test.TestUtil;
+import org.materialize.test.util.rules.annotation.HaveMinimalServerVersion;
 
 import org.junit.AssumptionViolatedException;
 import org.junit.rules.TestRule;

@@ -3,14 +3,14 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package org.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.TypeInfo;
-import org.postgresql.test.TestUtil;
+import org.materialize.core.BaseConnection;
+import org.materialize.core.TypeInfo;
+import org.materialize.test.TestUtil;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +19,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 /*
- * TestCase to test the internal functionality of org.postgresql.jdbc2.DatabaseMetaData
+ * TestCase to test the internal functionality of org.materialize.jdbc2.DatabaseMetaData
  *
  */
 public class SearchPathLookupTest {

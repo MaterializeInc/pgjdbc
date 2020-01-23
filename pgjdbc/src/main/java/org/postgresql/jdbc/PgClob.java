@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -14,33 +14,33 @@ import java.sql.SQLException;
 
 public class PgClob extends AbstractBlobClob implements java.sql.Clob {
 
-  public PgClob(org.postgresql.core.BaseConnection conn, long oid) throws java.sql.SQLException {
+  public PgClob(org.materialize.core.BaseConnection conn, long oid) throws java.sql.SQLException {
     super(conn, oid);
   }
 
   public synchronized Reader getCharacterStream(long pos, long length) throws SQLException {
     checkFreed();
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "getCharacterStream(long, long)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "getCharacterStream(long, long)");
   }
 
   public synchronized int setString(long pos, String str) throws SQLException {
     checkFreed();
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "setString(long,str)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "setString(long,str)");
   }
 
   public synchronized int setString(long pos, String str, int offset, int len) throws SQLException {
     checkFreed();
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "setString(long,String,int,int)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "setString(long,String,int,int)");
   }
 
   public synchronized java.io.OutputStream setAsciiStream(long pos) throws SQLException {
     checkFreed();
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "setAsciiStream(long)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "setAsciiStream(long)");
   }
 
   public synchronized java.io.Writer setCharacterStream(long pos) throws SQLException {
     checkFreed();
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "setCharacteStream(long)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "setCharacteStream(long)");
   }
 
   public synchronized InputStream getAsciiStream() throws SQLException {
@@ -63,7 +63,7 @@ public class PgClob extends AbstractBlobClob implements java.sql.Clob {
    */
   public synchronized long position(String pattern, long start) throws SQLException {
     checkFreed();
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "position(String,long)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "position(String,long)");
   }
 
   /**
@@ -71,6 +71,6 @@ public class PgClob extends AbstractBlobClob implements java.sql.Clob {
    */
   public synchronized long position(Clob pattern, long start) throws SQLException {
     checkFreed();
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "position(Clob,start)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "position(Clob,start)");
   }
 }

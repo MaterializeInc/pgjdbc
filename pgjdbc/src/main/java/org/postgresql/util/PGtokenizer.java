@@ -3,21 +3,21 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.util;
+package org.materialize.util;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * This class is used to tokenize the text output of org.postgres. It's mainly used by the geometric
- * classes, but is useful in parsing any output from custom data types output from org.postgresql.
+ * classes, but is useful in parsing any output from custom data types output from org.materialize.
  *
- * @see org.postgresql.geometric.PGbox
- * @see org.postgresql.geometric.PGcircle
- * @see org.postgresql.geometric.PGlseg
- * @see org.postgresql.geometric.PGpath
- * @see org.postgresql.geometric.PGpoint
- * @see org.postgresql.geometric.PGpolygon
+ * @see org.materialize.geometric.PGbox
+ * @see org.materialize.geometric.PGcircle
+ * @see org.materialize.geometric.PGlseg
+ * @see org.materialize.geometric.PGpath
+ * @see org.materialize.geometric.PGpoint
+ * @see org.materialize.geometric.PGpolygon
  */
 public class PGtokenizer {
   // Our tokens

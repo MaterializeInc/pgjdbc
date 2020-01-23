@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core;
+package org.materialize.core;
 
-import org.postgresql.util.CanEstimateSize;
+import org.materialize.util.CanEstimateSize;
 
 /**
  * Stores information on the parsed JDBC query. It is used to cut parsing overhead when executing
@@ -13,7 +13,7 @@ import org.postgresql.util.CanEstimateSize;
  */
 public class CachedQuery implements CanEstimateSize {
   /**
-   * Cache key. {@link String} or {@code org.postgresql.util.CanEstimateSize}.
+   * Cache key. {@link String} or {@code org.materialize.util.CanEstimateSize}.
    */
   public final Object key;
   public final Query query;

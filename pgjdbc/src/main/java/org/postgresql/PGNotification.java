@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql;
+package org.materialize;
 
 /**
  * This interface defines the public PostgreSQL extension for Notifications.

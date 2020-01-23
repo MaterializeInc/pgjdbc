@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
 /**
  * <p>Specifies which mode is used to execute queries to database: simple means ('Q' execute, no parse, no bind, text mode only),
@@ -11,7 +11,7 @@ package org.postgresql.jdbc;
  *
  * <p>Note: this is for debugging purposes only.</p>
  *
- * @see org.postgresql.PGProperty#PREFER_QUERY_MODE
+ * @see org.materialize.PGProperty#PREFER_QUERY_MODE
  */
 public enum PreferQueryMode {
   SIMPLE("simple"),

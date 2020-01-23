@@ -3,16 +3,16 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc4;
+package org.materialize.test.jdbc4;
 
 import static org.junit.Assert.assertEquals;
 
-import org.postgresql.PGConnection;
-import org.postgresql.PGResultSetMetaData;
-import org.postgresql.PGStatement;
-import org.postgresql.core.Field;
-import org.postgresql.jdbc.PreferQueryMode;
-import org.postgresql.test.jdbc2.BaseTest4;
+import org.materialize.PGConnection;
+import org.materialize.PGResultSetMetaData;
+import org.materialize.PGStatement;
+import org.materialize.core.Field;
+import org.materialize.jdbc.PreferQueryMode;
+import org.materialize.test.jdbc2.BaseTest4;
 
 import org.junit.Assume;
 import org.junit.Test;

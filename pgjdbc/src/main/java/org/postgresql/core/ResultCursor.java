@@ -4,7 +4,7 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.core;
+package org.materialize.core;
 
 /**
  * Abstraction of a cursor over a returned resultset. This is an opaque interface that only provides

@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.xa;
+package org.materialize.xa;
 
 import javax.transaction.xa.XAException;
 

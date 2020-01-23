@@ -3,30 +3,30 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.Driver;
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.CachedQuery;
-import org.postgresql.core.Oid;
-import org.postgresql.core.ParameterList;
-import org.postgresql.core.Query;
-import org.postgresql.core.QueryExecutor;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.core.TypeInfo;
-import org.postgresql.core.v3.BatchedQuery;
-import org.postgresql.largeobject.LargeObject;
-import org.postgresql.largeobject.LargeObjectManager;
-import org.postgresql.util.ByteConverter;
-import org.postgresql.util.GT;
-import org.postgresql.util.HStoreConverter;
-import org.postgresql.util.PGBinaryObject;
-import org.postgresql.util.PGTime;
-import org.postgresql.util.PGTimestamp;
-import org.postgresql.util.PGobject;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
-import org.postgresql.util.ReaderInputStream;
+import org.materialize.Driver;
+import org.materialize.core.BaseConnection;
+import org.materialize.core.CachedQuery;
+import org.materialize.core.Oid;
+import org.materialize.core.ParameterList;
+import org.materialize.core.Query;
+import org.materialize.core.QueryExecutor;
+import org.materialize.core.ServerVersion;
+import org.materialize.core.TypeInfo;
+import org.materialize.core.v3.BatchedQuery;
+import org.materialize.largeobject.LargeObject;
+import org.materialize.largeobject.LargeObjectManager;
+import org.materialize.util.ByteConverter;
+import org.materialize.util.GT;
+import org.materialize.util.HStoreConverter;
+import org.materialize.util.PGBinaryObject;
+import org.materialize.util.PGTime;
+import org.materialize.util.PGTimestamp;
+import org.materialize.util.PGobject;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
+import org.materialize.util.ReaderInputStream;
 
 import java.io.IOException;
 import java.io.InputStream;

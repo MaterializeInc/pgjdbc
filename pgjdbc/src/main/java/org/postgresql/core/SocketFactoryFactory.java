@@ -3,14 +3,14 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core;
+package org.materialize.core;
 
-import org.postgresql.PGProperty;
-import org.postgresql.ssl.LibPQFactory;
-import org.postgresql.util.GT;
-import org.postgresql.util.ObjectFactory;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.PGProperty;
+import org.materialize.ssl.LibPQFactory;
+import org.materialize.util.GT;
+import org.materialize.util.ObjectFactory;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.util.Properties;
 
@@ -56,8 +56,8 @@ public class SocketFactoryFactory {
   public static SSLSocketFactory getSslSocketFactory(Properties info) throws PSQLException {
     String classname = PGProperty.SSL_FACTORY.get(info);
     if (classname == null
-        || "org.postgresql.ssl.jdbc4.LibPQFactory".equals(classname)
-        || "org.postgresql.ssl.LibPQFactory".equals(classname)) {
+        || "org.materialize.ssl.jdbc4.LibPQFactory".equals(classname)
+        || "org.materialize.ssl.LibPQFactory".equals(classname)) {
       return new LibPQFactory(info);
     }
     try {

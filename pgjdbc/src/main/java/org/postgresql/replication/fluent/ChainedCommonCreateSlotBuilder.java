@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication.fluent;
+package org.materialize.replication.fluent;
 
-import org.postgresql.replication.ReplicationSlotInfo;
+import org.materialize.replication.ReplicationSlotInfo;
 
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;

@@ -3,12 +3,12 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc42;
+package org.materialize.test.jdbc42;
 
-import org.postgresql.PGProperty;
-import org.postgresql.test.TestUtil;
-import org.postgresql.test.jdbc2.BaseTest4;
-import org.postgresql.util.PSQLState;
+import org.materialize.PGProperty;
+import org.materialize.test.TestUtil;
+import org.materialize.test.jdbc2.BaseTest4;
+import org.materialize.util.PSQLState;
 
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -67,7 +67,7 @@ public class LargeCountJdbc42Test extends BaseTest4 {
   }
 
   // ********************* EXECUTE LARGE UPDATES *********************
-  //    FINEST: simple execute, handler=org.postgresql.jdbc.PgStatement$StatementResultHandler@38cccef, maxRows=0, fetchSize=0, flags=21
+  //    FINEST: simple execute, handler=org.materialize.jdbc.PgStatement$StatementResultHandler@38cccef, maxRows=0, fetchSize=0, flags=21
   //    FINEST: FE=> Parse(stmt=null,query="insert into largetable select true from generate_series($1, $2)",oids={20,20})
   //    FINEST: FE=> Bind(stmt=null,portal=null,$1=<1>,$2=<2147483757>)
   //    FINEST: FE=> Describe(portal=null)
@@ -78,7 +78,7 @@ public class LargeCountJdbc42Test extends BaseTest4 {
   //    FINEST: <=BE NoData
   //    FINEST: <=BE CommandStatus(INSERT 0 2147483757)
   //    FINEST: <=BE ReadyForQuery(I)
-  //    FINEST: simple execute, handler=org.postgresql.jdbc.PgStatement$StatementResultHandler@5679c6c6, maxRows=0, fetchSize=0, flags=21
+  //    FINEST: simple execute, handler=org.materialize.jdbc.PgStatement$StatementResultHandler@5679c6c6, maxRows=0, fetchSize=0, flags=21
   //    FINEST: FE=> Parse(stmt=null,query="delete from largetable",oids={})
   //    FINEST: FE=> Bind(stmt=null,portal=null)
   //    FINEST: FE=> Describe(portal=null)
@@ -232,7 +232,7 @@ public class LargeCountJdbc42Test extends BaseTest4 {
   }
 
   // ********************* BATCH LARGE UPDATES *********************
-  //    FINEST: batch execute 3 queries, handler=org.postgresql.jdbc.BatchResultHandler@3d04a311, maxRows=0, fetchSize=0, flags=21
+  //    FINEST: batch execute 3 queries, handler=org.materialize.jdbc.BatchResultHandler@3d04a311, maxRows=0, fetchSize=0, flags=21
   //    FINEST: FE=> Parse(stmt=null,query="insert into largetable select true from generate_series($1, $2)",oids={23,23})
   //    FINEST: FE=> Bind(stmt=null,portal=null,$1=<1>,$2=<200>)
   //    FINEST: FE=> Describe(portal=null)

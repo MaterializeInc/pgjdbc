@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.xa;
+package org.materialize.xa;
 
-import org.postgresql.ds.common.PGObjectFactory;
+import org.materialize.ds.common.PGObjectFactory;
 
 import java.util.Hashtable;
 
@@ -28,7 +28,7 @@ public class PGXADataSourceFactory extends PGObjectFactory {
       Hashtable<?, ?> environment) throws Exception {
     Reference ref = (Reference) obj;
     String className = ref.getClassName();
-    if (className.equals("org.postgresql.xa.PGXADataSource")) {
+    if (className.equals("org.materialize.xa.PGXADataSource")) {
       return loadXADataSource(ref);
     } else {
       return null;

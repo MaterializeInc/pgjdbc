@@ -3,15 +3,15 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql;
+package org.materialize;
 
-import org.postgresql.copy.CopyManager;
-import org.postgresql.fastpath.Fastpath;
-import org.postgresql.jdbc.AutoSave;
-import org.postgresql.jdbc.PreferQueryMode;
-import org.postgresql.largeobject.LargeObjectManager;
-import org.postgresql.replication.PGReplicationConnection;
-import org.postgresql.util.PGobject;
+import org.materialize.copy.CopyManager;
+import org.materialize.fastpath.Fastpath;
+import org.materialize.jdbc.AutoSave;
+import org.materialize.jdbc.PreferQueryMode;
+import org.materialize.largeobject.LargeObjectManager;
+import org.materialize.replication.PGReplicationConnection;
+import org.materialize.util.PGobject;
 
 import java.sql.Array;
 import java.sql.SQLException;
@@ -100,7 +100,7 @@ public interface PGConnection {
   Fastpath getFastpathAPI() throws SQLException;
 
   /**
-   * This allows client code to add a handler for one of org.postgresql's more unique data types. It
+   * This allows client code to add a handler for one of org.materialize's more unique data types. It
    * is approximately equivalent to <code>addDataType(type, Class.forName(name))</code>.
    *
    * @param type JDBC type name
@@ -114,7 +114,7 @@ public interface PGConnection {
   void addDataType(String type, String className);
 
   /**
-   * <p>This allows client code to add a handler for one of org.postgresql's more unique data types.</p>
+   * <p>This allows client code to add a handler for one of org.materialize's more unique data types.</p>
    *
    * <p><b>NOTE:</b> This is not part of JDBC, but an extension.</p>
    *
@@ -122,27 +122,27 @@ public interface PGConnection {
    *
    * <pre>
    * ...
-   * ((org.postgresql.PGConnection)myconn).addDataType("mytype", my.class.name.class);
+   * ((org.materialize.PGConnection)myconn).addDataType("mytype", my.class.name.class);
    * ...
    * </pre>
    *
-   * <p>where myconn is an open Connection to org.postgresql.</p>
+   * <p>where myconn is an open Connection to org.materialize.</p>
    *
-   * <p>The handling class must extend org.postgresql.util.PGobject</p>
+   * <p>The handling class must extend org.materialize.util.PGobject</p>
    *
    * @param type the PostgreSQL type to register
    * @param klass the class implementing the Java representation of the type; this class must
-   *        implement {@link org.postgresql.util.PGobject}).
+   *        implement {@link org.materialize.util.PGobject}).
    * @throws SQLException if <code>klass</code> does not implement
-   *         {@link org.postgresql.util.PGobject}).
-   * @see org.postgresql.util.PGobject
+   *         {@link org.materialize.util.PGobject}).
+   * @see org.materialize.util.PGobject
    * @since 8.0
    */
   void addDataType(String type, Class<? extends PGobject> klass) throws SQLException;
 
   /**
    * Set the default statement reuse threshold before enabling server-side prepare. See
-   * {@link org.postgresql.PGStatement#setPrepareThreshold(int)} for details.
+   * {@link org.materialize.PGStatement#setPrepareThreshold(int)} for details.
    *
    * @param threshold the new threshold
    * @since build 302

@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.largeobject;
+package org.materialize.largeobject;
 
 import java.io.IOException;
 import java.io.InputStream;

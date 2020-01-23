@@ -3,22 +3,22 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.Driver;
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.BaseStatement;
-import org.postgresql.core.CachedQuery;
-import org.postgresql.core.Field;
-import org.postgresql.core.ParameterList;
-import org.postgresql.core.Query;
-import org.postgresql.core.QueryExecutor;
-import org.postgresql.core.ResultCursor;
-import org.postgresql.core.ResultHandlerBase;
-import org.postgresql.core.SqlCommand;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.Driver;
+import org.materialize.core.BaseConnection;
+import org.materialize.core.BaseStatement;
+import org.materialize.core.CachedQuery;
+import org.materialize.core.Field;
+import org.materialize.core.ParameterList;
+import org.materialize.core.Query;
+import org.materialize.core.QueryExecutor;
+import org.materialize.core.ResultCursor;
+import org.materialize.core.ResultHandlerBase;
+import org.materialize.core.SqlCommand;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -38,7 +38,7 @@ public class PgStatement implements Statement, BaseStatement {
    * Default state for use or not binary transfers. Can use only for testing purposes
    */
   private static final boolean DEFAULT_FORCE_BINARY_TRANSFERS =
-      Boolean.getBoolean("org.postgresql.forceBinary");
+      Boolean.getBoolean("org.materialize.forceBinary");
   // only for testing purposes. even single shot statements will use binary transfers
   private boolean forceBinaryTransfers = DEFAULT_FORCE_BINARY_TRANSFERS;
 

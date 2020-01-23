@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core;
+package org.materialize.core;
 
-import org.postgresql.replication.PGReplicationStream;
-import org.postgresql.replication.fluent.logical.LogicalReplicationOptions;
-import org.postgresql.replication.fluent.physical.PhysicalReplicationOptions;
+import org.materialize.replication.PGReplicationStream;
+import org.materialize.replication.fluent.logical.LogicalReplicationOptions;
+import org.materialize.replication.fluent.physical.PhysicalReplicationOptions;
 
 import java.sql.SQLException;
 

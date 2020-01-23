@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.util;
+package org.materialize.test.util;
 
-import org.postgresql.core.ServerVersion;
+import org.materialize.core.ServerVersion;
 
 import org.junit.Assert;
 import org.junit.Test;

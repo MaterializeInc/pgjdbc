@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication;
+package org.materialize.replication;
 
-import org.postgresql.replication.fluent.CommonOptions;
-import org.postgresql.replication.fluent.logical.LogicalReplicationOptions;
+import org.materialize.replication.fluent.CommonOptions;
+import org.materialize.replication.fluent.logical.LogicalReplicationOptions;
 
 import java.nio.ByteBuffer;
 import java.sql.SQLException;

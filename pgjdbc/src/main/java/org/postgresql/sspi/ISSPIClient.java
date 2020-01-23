@@ -4,7 +4,7 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.sspi;
+package org.materialize.sspi;
 
 import java.io.IOException;
 import java.sql.SQLException;

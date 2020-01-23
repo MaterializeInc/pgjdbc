@@ -3,12 +3,12 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core;
+package org.materialize.core;
 
-import org.postgresql.jdbc.EscapedFunctions2;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.jdbc.EscapedFunctions2;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -905,7 +905,7 @@ public class Parser {
       int serverVersion, int protocolVersion) throws SQLException {
     // Mini-parser for JDBC function-call syntax (only)
     // TODO: Merge with escape processing (and parameter parsing?) so we only parse each query once.
-    // RE: frequently used statements are cached (see {@link org.postgresql.jdbc.PgConnection#borrowQuery}), so this "merge" is not that important.
+    // RE: frequently used statements are cached (see {@link org.materialize.jdbc.PgConnection#borrowQuery}), so this "merge" is not that important.
     String sql = jdbcSql;
     boolean isFunction = false;
     boolean outParamBeforeFunc = false;

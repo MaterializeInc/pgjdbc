@@ -4,20 +4,20 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.core.v3;
+package org.materialize.core.v3;
 
-import org.postgresql.core.Oid;
-import org.postgresql.core.PGStream;
-import org.postgresql.core.ParameterList;
-import org.postgresql.core.Utils;
-import org.postgresql.geometric.PGbox;
-import org.postgresql.geometric.PGpoint;
-import org.postgresql.jdbc.UUIDArrayAssistant;
-import org.postgresql.util.ByteConverter;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
-import org.postgresql.util.StreamWrapper;
+import org.materialize.core.Oid;
+import org.materialize.core.PGStream;
+import org.materialize.core.ParameterList;
+import org.materialize.core.Utils;
+import org.materialize.geometric.PGbox;
+import org.materialize.geometric.PGpoint;
+import org.materialize.jdbc.UUIDArrayAssistant;
+import org.materialize.util.ByteConverter;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
+import org.materialize.util.StreamWrapper;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -427,7 +427,7 @@ class SimpleParameterList implements V3ParameterList {
 
   @Override
   public void appendAll(ParameterList list) throws SQLException {
-    if (list instanceof org.postgresql.core.v3.SimpleParameterList ) {
+    if (list instanceof org.materialize.core.v3.SimpleParameterList ) {
       /* only v3.SimpleParameterList is compatible with this type
       we need to create copies of our parameters, otherwise the values can be changed */
       SimpleParameterList spl = (SimpleParameterList) list;

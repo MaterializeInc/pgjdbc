@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication.fluent.physical;
+package org.materialize.replication.fluent.physical;
 
-import org.postgresql.replication.PGReplicationStream;
+import org.materialize.replication.PGReplicationStream;
 
 import java.sql.SQLException;
 

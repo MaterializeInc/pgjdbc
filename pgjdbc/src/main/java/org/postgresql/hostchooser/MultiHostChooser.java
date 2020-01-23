@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.hostchooser;
+package org.materialize.hostchooser;
 
 import static java.util.Collections.shuffle;
 
-import org.postgresql.PGProperty;
-import org.postgresql.util.HostSpec;
-import org.postgresql.util.PSQLException;
+import org.materialize.PGProperty;
+import org.materialize.util.HostSpec;
+import org.materialize.util.PSQLException;
 
 import java.util.AbstractList;
 import java.util.ArrayList;

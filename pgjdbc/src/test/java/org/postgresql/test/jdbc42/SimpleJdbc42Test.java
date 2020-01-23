@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc42;
+package org.materialize.test.jdbc42;
 
 import static org.junit.Assert.assertTrue;
 
-import org.postgresql.test.jdbc2.BaseTest4;
+import org.materialize.test.jdbc2.BaseTest4;
 
 import org.junit.Test;
 

@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.ssl;
+package org.materialize.ssl;
 
-import org.postgresql.util.GT;
+import org.materialize.util.GT;
 
 import java.net.IDN;
 import java.security.cert.CertificateParsingException;

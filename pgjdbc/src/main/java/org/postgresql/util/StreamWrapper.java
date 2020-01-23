@@ -4,7 +4,7 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.util;
+package org.materialize.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

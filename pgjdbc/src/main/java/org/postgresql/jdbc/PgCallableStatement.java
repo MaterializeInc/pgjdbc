@@ -3,14 +3,14 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.Driver;
-import org.postgresql.core.ParameterList;
-import org.postgresql.core.Query;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.Driver;
+import org.materialize.core.ParameterList;
+import org.materialize.core.Query;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.io.InputStream;
 import java.io.Reader;

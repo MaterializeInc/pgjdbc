@@ -3,16 +3,16 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.util;
+package org.materialize.util;
 
-import org.postgresql.Driver;
+import org.materialize.Driver;
 
 public class PGJDBCMain {
 
   public static void main(String[] args) {
 
     java.net.URL url = Driver.class.getResource("/org/postgresql/Driver.class");
-    System.out.printf("%n%s%n", org.postgresql.util.DriverInfo.DRIVER_FULL_NAME);
+    System.out.printf("%n%s%n", org.materialize.util.DriverInfo.DRIVER_FULL_NAME);
     System.out.printf("Found in: %s%n%n", url);
 
     System.out.printf("The PgJDBC driver is not an executable Java program.%n%n"

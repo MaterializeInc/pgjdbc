@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.osgi;
+package org.materialize.osgi;
 
-import org.postgresql.Driver;
+import org.materialize.Driver;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -24,8 +24,8 @@ public class PGBundleActivator implements BundleActivator {
   public void start(BundleContext context) throws Exception {
     Dictionary<String, Object> properties = new Hashtable<String, Object>();
     properties.put(DataSourceFactory.OSGI_JDBC_DRIVER_CLASS, Driver.class.getName());
-    properties.put(DataSourceFactory.OSGI_JDBC_DRIVER_NAME, org.postgresql.util.DriverInfo.DRIVER_NAME);
-    properties.put(DataSourceFactory.OSGI_JDBC_DRIVER_VERSION, org.postgresql.util.DriverInfo.DRIVER_VERSION);
+    properties.put(DataSourceFactory.OSGI_JDBC_DRIVER_NAME, org.materialize.util.DriverInfo.DRIVER_NAME);
+    properties.put(DataSourceFactory.OSGI_JDBC_DRIVER_VERSION, org.materialize.util.DriverInfo.DRIVER_VERSION);
     try {
       registration = context.registerService(DataSourceFactory.class.getName(),
           new PGDataSourceFactory(), properties);

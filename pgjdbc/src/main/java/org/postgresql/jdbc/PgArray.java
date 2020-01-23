@@ -3,19 +3,19 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.BaseStatement;
-import org.postgresql.core.Encoding;
-import org.postgresql.core.Field;
-import org.postgresql.core.Oid;
-import org.postgresql.jdbc2.ArrayAssistant;
-import org.postgresql.jdbc2.ArrayAssistantRegistry;
-import org.postgresql.util.ByteConverter;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.core.BaseConnection;
+import org.materialize.core.BaseStatement;
+import org.materialize.core.Encoding;
+import org.materialize.core.Field;
+import org.materialize.core.Oid;
+import org.materialize.jdbc2.ArrayAssistant;
+import org.materialize.jdbc2.ArrayAssistantRegistry;
+import org.materialize.util.ByteConverter;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -147,7 +147,7 @@ public class PgArray implements java.sql.Array {
 
     // for now maps aren't supported.
     if (map != null && !map.isEmpty()) {
-      throw org.postgresql.Driver.notImplemented(this.getClass(), "getArrayImpl(long,int,Map)");
+      throw org.materialize.Driver.notImplemented(this.getClass(), "getArrayImpl(long,int,Map)");
     }
 
     // array index is out of range
@@ -400,7 +400,7 @@ public class PgArray implements java.sql.Array {
           return arrElemBuilder.baseType();
         }
 
-        throw org.postgresql.Driver.notImplemented(this.getClass(), "readBinaryArray(data,oid)");
+        throw org.materialize.Driver.notImplemented(this.getClass(), "readBinaryArray(data,oid)");
     }
   }
 
@@ -783,7 +783,7 @@ public class PgArray implements java.sql.Array {
         } else if (v == null) {
           oa[length++] = null;
         } else {
-          throw org.postgresql.Driver.notImplemented(this.getClass(), "getArrayImpl(long,int,Map)");
+          throw org.materialize.Driver.notImplemented(this.getClass(), "getArrayImpl(long,int,Map)");
         }
       }
       ret = oa;
@@ -791,7 +791,7 @@ public class PgArray implements java.sql.Array {
       // other datatypes not currently supported
       connection.getLogger().log(Level.FINEST, "getArrayImpl(long,int,Map) with {0}", getBaseTypeName());
 
-      throw org.postgresql.Driver.notImplemented(this.getClass(), "getArrayImpl(long,int,Map)");
+      throw org.materialize.Driver.notImplemented(this.getClass(), "getArrayImpl(long,int,Map)");
     }
 
     return ret;
@@ -833,7 +833,7 @@ public class PgArray implements java.sql.Array {
 
     // for now maps aren't supported.
     if (map != null && !map.isEmpty()) {
-      throw org.postgresql.Driver.notImplemented(this.getClass(), "getResultSetImpl(long,int,Map)");
+      throw org.materialize.Driver.notImplemented(this.getClass(), "getResultSetImpl(long,int,Map)");
     }
 
     // array index is out of range

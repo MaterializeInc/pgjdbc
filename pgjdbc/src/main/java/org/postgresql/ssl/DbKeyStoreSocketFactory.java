@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.ssl;
+package org.materialize.ssl;
 
 import java.io.InputStream;
 import java.security.KeyStore;
@@ -12,7 +12,7 @@ import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManagerFactory;
 
-public abstract class DbKeyStoreSocketFactory extends org.postgresql.ssl.WrappedFactory {
+public abstract class DbKeyStoreSocketFactory extends org.materialize.ssl.WrappedFactory {
   /*
    * Populate the WrappedFactory member factory with an SSL Socket Factory that uses the JKS
    * keystore provided by getKeyStorePassword() and getKeyStoreStream(). A subclass only needs to

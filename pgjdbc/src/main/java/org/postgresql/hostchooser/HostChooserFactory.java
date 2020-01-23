@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.hostchooser;
+package org.materialize.hostchooser;
 
-import org.postgresql.util.HostSpec;
+import org.materialize.util.HostSpec;
 
 import java.util.Properties;
 

@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc3;
+package org.materialize.test.jdbc3;
 
-import org.postgresql.test.TestUtil;
+import org.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Before;

@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.gss;
+package org.materialize.gss;
 
 import java.io.IOException;
 

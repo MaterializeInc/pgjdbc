@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package org.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import org.postgresql.test.TestUtil;
+import org.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Before;
@@ -74,7 +74,7 @@ public class GetXXXTest {
       Object obj = rs.getObject(1, new HashMap<String, Class<?>>());
 
       // it should not be an instance of PGInterval
-      assertTrue(obj instanceof org.postgresql.util.PGInterval);
+      assertTrue(obj instanceof org.materialize.util.PGInterval);
 
     }
 

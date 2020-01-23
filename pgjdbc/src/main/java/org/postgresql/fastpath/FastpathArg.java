@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.fastpath;
+package org.materialize.fastpath;
 
-import org.postgresql.core.ParameterList;
+import org.materialize.core.ParameterList;
 
 import java.sql.SQLException;
 

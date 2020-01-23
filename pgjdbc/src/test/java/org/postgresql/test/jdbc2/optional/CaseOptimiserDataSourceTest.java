@@ -3,15 +3,15 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2.optional;
+package org.materialize.test.jdbc2.optional;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.postgresql.core.BaseConnection;
-import org.postgresql.ds.common.BaseDataSource;
-import org.postgresql.jdbc2.optional.SimpleDataSource;
-import org.postgresql.test.TestUtil;
+import org.materialize.core.BaseConnection;
+import org.materialize.ds.common.BaseDataSource;
+import org.materialize.jdbc2.optional.SimpleDataSource;
+import org.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Before;

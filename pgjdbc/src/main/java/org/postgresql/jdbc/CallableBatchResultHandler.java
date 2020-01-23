@@ -3,12 +3,12 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.core.Field;
-import org.postgresql.core.ParameterList;
-import org.postgresql.core.Query;
-import org.postgresql.core.ResultCursor;
+import org.materialize.core.Field;
+import org.materialize.core.ParameterList;
+import org.materialize.core.Query;
+import org.materialize.core.ResultCursor;
 
 import java.util.List;
 

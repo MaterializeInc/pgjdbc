@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core.v3;
+package org.materialize.core.v3;
 
-import org.postgresql.copy.CopyOut;
+import org.materialize.copy.CopyOut;
 
 import java.sql.SQLException;
 

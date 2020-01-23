@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication.fluent;
+package org.materialize.replication.fluent;
 
-import org.postgresql.replication.LogSequenceNumber;
+import org.materialize.replication.LogSequenceNumber;
 
 /**
  * Common parameters for logical and physical replication.

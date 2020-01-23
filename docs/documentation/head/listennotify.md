@@ -37,7 +37,7 @@ public class NotificationTest
 {
 	public static void main(String args[]) throws Exception
 	{
-		Class.forName("org.postgresql.Driver");
+		Class.forName("org.materialize.Driver");
 		String url = "jdbc:postgresql://localhost:5432/test";
 
 		// Create two distinct connections, one for the notifier
@@ -61,12 +61,12 @@ public class NotificationTest
 class Listener extends Thread
 {
 	private Connection conn;
-	private org.postgresql.PGConnection pgconn;
+	private org.materialize.PGConnection pgconn;
 
 	Listener(Connection conn) throws SQLException
 	{
 		this.conn = conn;
-		this.pgconn = conn.unwrap(org.postgresql.PGConnection.class);
+		this.pgconn = conn.unwrap(org.materialize.PGConnection.class);
 		Statement stmt = conn.createStatement();
 		stmt.execute("LISTEN mymessage");
 		stmt.close();
@@ -78,11 +78,11 @@ class Listener extends Thread
 		{
 			while (true)
 			{
-				org.postgresql.PGNotification notifications[] = pgconn.getNotifications();
+				org.materialize.PGNotification notifications[] = pgconn.getNotifications();
 				
 				// If this thread is the only one that uses the connection, a timeout can be used to 
 				// receive notifications immediately:
-				// org.postgresql.PGNotification notifications[] = pgconn.getNotifications(10000);
+				// org.materialize.PGNotification notifications[] = pgconn.getNotifications(10000);
 				
 				if (notifications != null)
 				{

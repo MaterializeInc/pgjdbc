@@ -3,16 +3,16 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc4;
+package org.materialize.test.jdbc4;
 
-import org.postgresql.core.ServerVersion;
-import org.postgresql.geometric.PGbox;
-import org.postgresql.jdbc.PgConnection;
-import org.postgresql.jdbc.PreferQueryMode;
-import org.postgresql.test.TestUtil;
-import org.postgresql.test.jdbc2.BaseTest4;
-import org.postgresql.util.PGobject;
-import org.postgresql.util.PGtokenizer;
+import org.materialize.core.ServerVersion;
+import org.materialize.geometric.PGbox;
+import org.materialize.jdbc.PgConnection;
+import org.materialize.jdbc.PreferQueryMode;
+import org.materialize.test.TestUtil;
+import org.materialize.test.jdbc2.BaseTest4;
+import org.materialize.util.PGobject;
+import org.materialize.util.PGtokenizer;
 
 import org.junit.Assert;
 import org.junit.Assume;
@@ -342,7 +342,7 @@ public class ArrayTest extends BaseTest4 {
       pstmt.setObject(1, objCopy, Types.ARRAY);
       pstmt.executeUpdate();
       Assert.fail("setObject() with a Java array parameter and Types.ARRAY shouldn't succeed");
-    } catch (org.postgresql.util.PSQLException ex) {
+    } catch (org.materialize.util.PSQLException ex) {
       // Expected failure.
     }
 
@@ -350,7 +350,7 @@ public class ArrayTest extends BaseTest4 {
       pstmt.setObject(1, objCopy);
       pstmt.executeUpdate();
       Assert.fail("setObject() with a Java array parameter and no Types argument shouldn't succeed");
-    } catch (org.postgresql.util.PSQLException ex) {
+    } catch (org.materialize.util.PSQLException ex) {
       // Expected failure.
     }
 

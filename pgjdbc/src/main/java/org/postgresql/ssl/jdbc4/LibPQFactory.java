@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.ssl.jdbc4;
+package org.materialize.ssl.jdbc4;
 
-import org.postgresql.jdbc.SslMode;
-import org.postgresql.ssl.PGjdbcHostnameVerifier;
-import org.postgresql.util.PSQLException;
+import org.materialize.jdbc.SslMode;
+import org.materialize.ssl.PGjdbcHostnameVerifier;
+import org.materialize.util.PSQLException;
 
 import java.net.IDN;
 import java.util.Properties;
@@ -15,17 +15,17 @@ import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
 
 /**
- * @deprecated prefer {@link org.postgresql.ssl.LibPQFactory}
+ * @deprecated prefer {@link org.materialize.ssl.LibPQFactory}
  */
 @Deprecated
-public class LibPQFactory extends org.postgresql.ssl.LibPQFactory implements HostnameVerifier {
+public class LibPQFactory extends org.materialize.ssl.LibPQFactory implements HostnameVerifier {
   private final SslMode sslMode;
 
   /**
    * @param info the connection parameters The following parameters are used:
    *             sslmode,sslcert,sslkey,sslrootcert,sslhostnameverifier,sslpasswordcallback,sslpassword
    * @throws PSQLException if security error appears when initializing factory
-   * @deprecated prefer {@link org.postgresql.ssl.LibPQFactory}
+   * @deprecated prefer {@link org.materialize.ssl.LibPQFactory}
    */
   @Deprecated
   public LibPQFactory(Properties info) throws PSQLException {

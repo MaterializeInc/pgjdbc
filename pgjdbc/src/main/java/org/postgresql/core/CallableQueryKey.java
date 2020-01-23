@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core;
+package org.materialize.core;
 
 /**
  * Serves as a cache key for {@link java.sql.CallableStatement}.

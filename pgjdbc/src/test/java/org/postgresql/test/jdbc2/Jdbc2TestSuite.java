@@ -3,26 +3,26 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package org.materialize.test.jdbc2;
 
-import org.postgresql.core.CommandCompleteParserNegativeTest;
-import org.postgresql.core.CommandCompleteParserTest;
-import org.postgresql.core.OidToStringTest;
-import org.postgresql.core.OidValueOfTest;
-import org.postgresql.core.ParserTest;
-import org.postgresql.core.ReturningParserTest;
-import org.postgresql.core.v3.V3ParameterListTests;
-import org.postgresql.jdbc.DeepBatchedInsertStatementTest;
-import org.postgresql.jdbc.PrimitiveArraySupportTest;
-import org.postgresql.test.core.JavaVersionTest;
-import org.postgresql.test.core.NativeQueryBindLengthTest;
-import org.postgresql.test.core.OptionsPropertyTest;
-import org.postgresql.test.util.ExpressionPropertiesTest;
-import org.postgresql.test.util.HostSpecTest;
-import org.postgresql.test.util.LruCacheTest;
-import org.postgresql.test.util.ServerVersionParseTest;
-import org.postgresql.test.util.ServerVersionTest;
-import org.postgresql.util.ReaderInputStreamTest;
+import org.materialize.core.CommandCompleteParserNegativeTest;
+import org.materialize.core.CommandCompleteParserTest;
+import org.materialize.core.OidToStringTest;
+import org.materialize.core.OidValueOfTest;
+import org.materialize.core.ParserTest;
+import org.materialize.core.ReturningParserTest;
+import org.materialize.core.v3.V3ParameterListTests;
+import org.materialize.jdbc.DeepBatchedInsertStatementTest;
+import org.materialize.jdbc.PrimitiveArraySupportTest;
+import org.materialize.test.core.JavaVersionTest;
+import org.materialize.test.core.NativeQueryBindLengthTest;
+import org.materialize.test.core.OptionsPropertyTest;
+import org.materialize.test.util.ExpressionPropertiesTest;
+import org.materialize.test.util.HostSpecTest;
+import org.materialize.test.util.LruCacheTest;
+import org.materialize.test.util.ServerVersionParseTest;
+import org.materialize.test.util.ServerVersionTest;
+import org.materialize.util.ReaderInputStreamTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

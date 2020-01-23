@@ -3,40 +3,40 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.Driver;
-import org.postgresql.PGNotification;
-import org.postgresql.PGProperty;
-import org.postgresql.copy.CopyManager;
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.BaseStatement;
-import org.postgresql.core.CachedQuery;
-import org.postgresql.core.ConnectionFactory;
-import org.postgresql.core.Encoding;
-import org.postgresql.core.Oid;
-import org.postgresql.core.Provider;
-import org.postgresql.core.Query;
-import org.postgresql.core.QueryExecutor;
-import org.postgresql.core.ReplicationProtocol;
-import org.postgresql.core.ResultHandlerBase;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.core.SqlCommand;
-import org.postgresql.core.TransactionState;
-import org.postgresql.core.TypeInfo;
-import org.postgresql.core.Utils;
-import org.postgresql.core.Version;
-import org.postgresql.fastpath.Fastpath;
-import org.postgresql.largeobject.LargeObjectManager;
-import org.postgresql.replication.PGReplicationConnection;
-import org.postgresql.replication.PGReplicationConnectionImpl;
-import org.postgresql.util.GT;
-import org.postgresql.util.HostSpec;
-import org.postgresql.util.LruCache;
-import org.postgresql.util.PGBinaryObject;
-import org.postgresql.util.PGobject;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.Driver;
+import org.materialize.PGNotification;
+import org.materialize.PGProperty;
+import org.materialize.copy.CopyManager;
+import org.materialize.core.BaseConnection;
+import org.materialize.core.BaseStatement;
+import org.materialize.core.CachedQuery;
+import org.materialize.core.ConnectionFactory;
+import org.materialize.core.Encoding;
+import org.materialize.core.Oid;
+import org.materialize.core.Provider;
+import org.materialize.core.Query;
+import org.materialize.core.QueryExecutor;
+import org.materialize.core.ReplicationProtocol;
+import org.materialize.core.ResultHandlerBase;
+import org.materialize.core.ServerVersion;
+import org.materialize.core.SqlCommand;
+import org.materialize.core.TransactionState;
+import org.materialize.core.TypeInfo;
+import org.materialize.core.Utils;
+import org.materialize.core.Version;
+import org.materialize.fastpath.Fastpath;
+import org.materialize.largeobject.LargeObjectManager;
+import org.materialize.replication.PGReplicationConnection;
+import org.materialize.replication.PGReplicationConnectionImpl;
+import org.materialize.util.GT;
+import org.materialize.util.HostSpec;
+import org.materialize.util.LruCache;
+import org.materialize.util.PGBinaryObject;
+import org.materialize.util.PGobject;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.io.IOException;
 import java.sql.Array;
@@ -180,7 +180,7 @@ public class PgConnection implements BaseConnection {
                       Properties info,
                       String url) throws SQLException {
     // Print out the driver version number
-    LOGGER.log(Level.FINE, org.postgresql.util.DriverInfo.DRIVER_FULL_NAME);
+    LOGGER.log(Level.FINE, org.materialize.util.DriverInfo.DRIVER_FULL_NAME);
 
     this.creatingURL = url;
 
@@ -525,11 +525,11 @@ public class PgConnection implements BaseConnection {
   private LargeObjectManager largeobject = null;
 
   /*
-   * This method is used internally to return an object based around org.postgresql's more unique
+   * This method is used internally to return an object based around org.materialize's more unique
    * data types.
    *
    * <p>It uses an internal HashMap to get the handling class. If the type is not supported, then an
-   * instance of org.postgresql.util.PGobject is returned.
+   * instance of org.materialize.util.PGobject is returned.
    *
    * You can use the getValue() or setValue() methods to handle the returned object. Custom objects
    * can have their own methods.
@@ -561,7 +561,7 @@ public class PgConnection implements BaseConnection {
       // If className is not null, then try to instantiate it,
       // It must be basetype PGobject
 
-      // This is used to implement the org.postgresql unique types (like lseg,
+      // This is used to implement the org.materialize unique types (like lseg,
       // point, etc).
 
       if (klass != null) {
@@ -618,15 +618,15 @@ public class PgConnection implements BaseConnection {
   private void initObjectTypes(Properties info) throws SQLException {
     // Add in the types that come packaged with the driver.
     // These can be overridden later if desired.
-    addDataType("box", org.postgresql.geometric.PGbox.class);
-    addDataType("circle", org.postgresql.geometric.PGcircle.class);
-    addDataType("line", org.postgresql.geometric.PGline.class);
-    addDataType("lseg", org.postgresql.geometric.PGlseg.class);
-    addDataType("path", org.postgresql.geometric.PGpath.class);
-    addDataType("point", org.postgresql.geometric.PGpoint.class);
-    addDataType("polygon", org.postgresql.geometric.PGpolygon.class);
-    addDataType("money", org.postgresql.util.PGmoney.class);
-    addDataType("interval", org.postgresql.util.PGInterval.class);
+    addDataType("box", org.materialize.geometric.PGbox.class);
+    addDataType("circle", org.materialize.geometric.PGcircle.class);
+    addDataType("line", org.materialize.geometric.PGline.class);
+    addDataType("lseg", org.materialize.geometric.PGlseg.class);
+    addDataType("path", org.materialize.geometric.PGpath.class);
+    addDataType("point", org.materialize.geometric.PGpoint.class);
+    addDataType("polygon", org.materialize.geometric.PGpolygon.class);
+    addDataType("money", org.materialize.util.PGmoney.class);
+    addDataType("interval", org.materialize.util.PGInterval.class);
 
     Enumeration<?> e = info.propertyNames();
     while (e.hasMoreElements()) {
@@ -1239,19 +1239,19 @@ public class PgConnection implements BaseConnection {
   @Override
   public Clob createClob() throws SQLException {
     checkClosed();
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "createClob()");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "createClob()");
   }
 
   @Override
   public Blob createBlob() throws SQLException {
     checkClosed();
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "createBlob()");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "createBlob()");
   }
 
   @Override
   public NClob createNClob() throws SQLException {
     checkClosed();
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "createNClob()");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "createNClob()");
   }
 
   @Override
@@ -1263,7 +1263,7 @@ public class PgConnection implements BaseConnection {
   @Override
   public Struct createStruct(String typeName, Object[] attributes) throws SQLException {
     checkClosed();
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "createStruct(String, Object[])");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "createStruct(String, Object[])");
   }
 
   @Override
@@ -1455,7 +1455,7 @@ public class PgConnection implements BaseConnection {
 
   public <T> T createQueryObject(Class<T> ifc) throws SQLException {
     checkClosed();
-    throw org.postgresql.Driver.notImplemented(this.getClass(), "createQueryObject(Class<T>)");
+    throw org.materialize.Driver.notImplemented(this.getClass(), "createQueryObject(Class<T>)");
   }
 
   @Override

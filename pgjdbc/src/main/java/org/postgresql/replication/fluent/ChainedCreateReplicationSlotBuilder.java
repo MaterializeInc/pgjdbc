@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication.fluent;
+package org.materialize.replication.fluent;
 
-import org.postgresql.replication.fluent.logical.ChainedLogicalCreateSlotBuilder;
-import org.postgresql.replication.fluent.physical.ChainedPhysicalCreateSlotBuilder;
+import org.materialize.replication.fluent.logical.ChainedLogicalCreateSlotBuilder;
+import org.materialize.replication.fluent.physical.ChainedPhysicalCreateSlotBuilder;
 
 /**
  * Fluent interface for specify common parameters for Logical and Physical replication.

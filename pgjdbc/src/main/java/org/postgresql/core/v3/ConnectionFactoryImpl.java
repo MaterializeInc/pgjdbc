@@ -4,31 +4,31 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.core.v3;
+package org.materialize.core.v3;
 
-import org.postgresql.PGProperty;
-import org.postgresql.core.ConnectionFactory;
-import org.postgresql.core.PGStream;
-import org.postgresql.core.QueryExecutor;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.core.SetupQueryRunner;
-import org.postgresql.core.SocketFactoryFactory;
-import org.postgresql.core.Utils;
-import org.postgresql.core.Version;
-import org.postgresql.hostchooser.CandidateHost;
-import org.postgresql.hostchooser.GlobalHostStatusTracker;
-import org.postgresql.hostchooser.HostChooser;
-import org.postgresql.hostchooser.HostChooserFactory;
-import org.postgresql.hostchooser.HostRequirement;
-import org.postgresql.hostchooser.HostStatus;
-import org.postgresql.jdbc.SslMode;
-import org.postgresql.sspi.ISSPIClient;
-import org.postgresql.util.GT;
-import org.postgresql.util.HostSpec;
-import org.postgresql.util.MD5Digest;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
-import org.postgresql.util.ServerErrorMessage;
+import org.materialize.PGProperty;
+import org.materialize.core.ConnectionFactory;
+import org.materialize.core.PGStream;
+import org.materialize.core.QueryExecutor;
+import org.materialize.core.ServerVersion;
+import org.materialize.core.SetupQueryRunner;
+import org.materialize.core.SocketFactoryFactory;
+import org.materialize.core.Utils;
+import org.materialize.core.Version;
+import org.materialize.hostchooser.CandidateHost;
+import org.materialize.hostchooser.GlobalHostStatusTracker;
+import org.materialize.hostchooser.HostChooser;
+import org.materialize.hostchooser.HostChooserFactory;
+import org.materialize.hostchooser.HostRequirement;
+import org.materialize.hostchooser.HostStatus;
+import org.materialize.jdbc.SslMode;
+import org.materialize.sspi.ISSPIClient;
+import org.materialize.util.GT;
+import org.materialize.util.HostSpec;
+import org.materialize.util.MD5Digest;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
+import org.materialize.util.ServerErrorMessage;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -72,12 +72,12 @@ public class ConnectionFactoryImpl extends ConnectionFactory {
       boolean enableNegotiate) {
     try {
       @SuppressWarnings("unchecked")
-      Class<ISSPIClient> c = (Class<ISSPIClient>) Class.forName("org.postgresql.sspi.SSPIClient");
+      Class<ISSPIClient> c = (Class<ISSPIClient>) Class.forName("org.materialize.sspi.SSPIClient");
       return c.getDeclaredConstructor(PGStream.class, String.class, boolean.class)
           .newInstance(pgStream, spnServiceClass, enableNegotiate);
     } catch (Exception e) {
       // This catched quite a lot exceptions, but until Java 7 there is no ReflectiveOperationException
-      throw new IllegalStateException("Unable to load org.postgresql.sspi.SSPIClient."
+      throw new IllegalStateException("Unable to load org.materialize.sspi.SSPIClient."
           + " Please check that SSPIClient is included in your pgjdbc distribution.", e);
     }
   }
@@ -438,7 +438,7 @@ public class ConnectionFactoryImpl extends ConnectionFactory {
         LOGGER.log(Level.FINEST, " <=BE SSLOk");
 
         // Server supports ssl
-        org.postgresql.ssl.MakeSSL.convert(pgStream, info);
+        org.materialize.ssl.MakeSSL.convert(pgStream, info);
         return pgStream;
 
       default:
@@ -497,7 +497,7 @@ public class ConnectionFactoryImpl extends ConnectionFactory {
 
     //#if mvn.project.property.postgresql.jdbc.spec >= "JDBC4.1"
     /* SCRAM authentication state, if used */
-    org.postgresql.jre7.sasl.ScramAuthenticator scramAuthenticator = null;
+    org.materialize.jre7.sasl.ScramAuthenticator scramAuthenticator = null;
     //#endif
 
     try {
@@ -644,7 +644,7 @@ public class ConnectionFactoryImpl extends ConnectionFactory {
                   sspiClient.startSSPI();
                 } else {
                   /* Use JGSS's GSSAPI for this request */
-                  org.postgresql.gss.MakeGSS.authenticate(pgStream, host, user, password,
+                  org.materialize.gss.MakeGSS.authenticate(pgStream, host, user, password,
                       PGProperty.JAAS_APPLICATION_NAME.get(info),
                       PGProperty.KERBEROS_SERVER_NAME.get(info), usespnego,
                       PGProperty.JAAS_LOGIN.getBoolean(info));
@@ -662,7 +662,7 @@ public class ConnectionFactoryImpl extends ConnectionFactory {
                 LOGGER.log(Level.FINEST, " <=BE AuthenticationSASL");
 
                 //#if mvn.project.property.postgresql.jdbc.spec >= "JDBC4.1"
-                scramAuthenticator = new org.postgresql.jre7.sasl.ScramAuthenticator(user, password, pgStream);
+                scramAuthenticator = new org.materialize.jre7.sasl.ScramAuthenticator(user, password, pgStream);
                 scramAuthenticator.processServerMechanismsAndInit();
                 scramAuthenticator.sendScramClientFirstMessage();
                 // This works as follows:

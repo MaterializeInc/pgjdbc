@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc2.optional;
+package org.materialize.jdbc2.optional;
 
-import org.postgresql.ds.PGSimpleDataSource;
+import org.materialize.ds.PGSimpleDataSource;
 
 /**
  * @deprecated Please use {@link PGSimpleDataSource}

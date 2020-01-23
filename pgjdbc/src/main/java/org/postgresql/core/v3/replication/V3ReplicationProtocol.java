@@ -3,20 +3,20 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core.v3.replication;
+package org.materialize.core.v3.replication;
 
-import org.postgresql.copy.CopyDual;
-import org.postgresql.core.PGStream;
-import org.postgresql.core.QueryExecutor;
-import org.postgresql.core.ReplicationProtocol;
-import org.postgresql.replication.PGReplicationStream;
-import org.postgresql.replication.ReplicationType;
-import org.postgresql.replication.fluent.CommonOptions;
-import org.postgresql.replication.fluent.logical.LogicalReplicationOptions;
-import org.postgresql.replication.fluent.physical.PhysicalReplicationOptions;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.copy.CopyDual;
+import org.materialize.core.PGStream;
+import org.materialize.core.QueryExecutor;
+import org.materialize.core.ReplicationProtocol;
+import org.materialize.replication.PGReplicationStream;
+import org.materialize.replication.ReplicationType;
+import org.materialize.replication.fluent.CommonOptions;
+import org.materialize.replication.fluent.logical.LogicalReplicationOptions;
+import org.materialize.replication.fluent.physical.PhysicalReplicationOptions;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.io.IOException;
 import java.sql.SQLException;

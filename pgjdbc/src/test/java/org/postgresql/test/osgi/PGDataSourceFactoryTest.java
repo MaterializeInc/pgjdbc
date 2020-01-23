@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.osgi;
+package org.materialize.test.osgi;
 
-import org.postgresql.jdbc2.optional.ConnectionPool;
-import org.postgresql.jdbc2.optional.PoolingDataSource;
-import org.postgresql.jdbc2.optional.SimpleDataSource;
-import org.postgresql.osgi.PGDataSourceFactory;
-import org.postgresql.xa.PGXADataSource;
+import org.materialize.jdbc2.optional.ConnectionPool;
+import org.materialize.jdbc2.optional.PoolingDataSource;
+import org.materialize.jdbc2.optional.SimpleDataSource;
+import org.materialize.osgi.PGDataSourceFactory;
+import org.materialize.xa.PGXADataSource;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -35,7 +35,7 @@ public class PGDataSourceFactoryTest {
   @Test
   public void testCreateDriverDefault() throws Exception {
     Driver driver = dataSourceFactory.createDriver(null);
-    Assert.assertTrue(driver instanceof org.postgresql.Driver);
+    Assert.assertTrue(driver instanceof org.materialize.Driver);
   }
 
   @Test

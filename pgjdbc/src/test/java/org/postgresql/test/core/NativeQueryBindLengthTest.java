@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.core;
+package org.materialize.test.core;
 
-import org.postgresql.core.NativeQuery;
-import org.postgresql.test.jdbc2.BaseTest4;
+import org.materialize.core.NativeQuery;
+import org.materialize.test.jdbc2.BaseTest4;
 
 import org.junit.Assert;
 import org.junit.Test;

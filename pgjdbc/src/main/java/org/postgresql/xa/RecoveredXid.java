@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.xa;
+package org.materialize.xa;
 
-import org.postgresql.util.Base64;
+import org.materialize.util.Base64;
 
 import java.util.Arrays;
 

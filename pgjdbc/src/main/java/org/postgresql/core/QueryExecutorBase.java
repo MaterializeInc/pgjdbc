@@ -3,17 +3,17 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core;
+package org.materialize.core;
 
-import org.postgresql.PGNotification;
-import org.postgresql.PGProperty;
-import org.postgresql.jdbc.AutoSave;
-import org.postgresql.jdbc.PreferQueryMode;
-import org.postgresql.util.HostSpec;
-import org.postgresql.util.LruCache;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
-import org.postgresql.util.ServerErrorMessage;
+import org.materialize.PGNotification;
+import org.materialize.PGProperty;
+import org.materialize.jdbc.AutoSave;
+import org.materialize.jdbc.PreferQueryMode;
+import org.materialize.util.HostSpec;
+import org.materialize.util.LruCache;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
+import org.materialize.util.ServerErrorMessage;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -428,8 +428,8 @@ public abstract class QueryExecutorBase implements QueryExecutor {
    *
    * @param parameterName case-insensitive case-preserving name of parameter to create or update
    * @param parameterStatus new value of parameter
-   * @see org.postgresql.PGConnection#getParameterStatuses
-   * @see org.postgresql.PGConnection#getParameterStatus
+   * @see org.materialize.PGConnection#getParameterStatuses
+   * @see org.materialize.PGConnection#getParameterStatus
    */
   protected void onParameterStatus(String parameterName, String parameterStatus) {
     if (parameterName == null || parameterName.equals("")) {

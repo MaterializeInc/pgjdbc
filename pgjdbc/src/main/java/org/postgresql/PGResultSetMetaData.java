@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql;
+package org.materialize;
 
-import org.postgresql.core.Field;
+import org.materialize.core.Field;
 
 import java.sql.SQLException;
 

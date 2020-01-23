@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication.fluent;
+package org.materialize.replication.fluent;
 
-import org.postgresql.core.BaseConnection;
-import org.postgresql.replication.fluent.logical.ChainedLogicalCreateSlotBuilder;
-import org.postgresql.replication.fluent.logical.LogicalCreateSlotBuilder;
-import org.postgresql.replication.fluent.physical.ChainedPhysicalCreateSlotBuilder;
-import org.postgresql.replication.fluent.physical.PhysicalCreateSlotBuilder;
+import org.materialize.core.BaseConnection;
+import org.materialize.replication.fluent.logical.ChainedLogicalCreateSlotBuilder;
+import org.materialize.replication.fluent.logical.LogicalCreateSlotBuilder;
+import org.materialize.replication.fluent.physical.ChainedPhysicalCreateSlotBuilder;
+import org.materialize.replication.fluent.physical.PhysicalCreateSlotBuilder;
 
 public class ReplicationCreateSlotBuilder implements ChainedCreateReplicationSlotBuilder {
   private final BaseConnection baseConnection;

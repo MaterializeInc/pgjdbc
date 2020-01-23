@@ -3,20 +3,20 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.geometric;
+package org.materialize.geometric;
 
-import org.postgresql.util.GT;
-import org.postgresql.util.PGBinaryObject;
-import org.postgresql.util.PGobject;
-import org.postgresql.util.PGtokenizer;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.util.GT;
+import org.materialize.util.PGBinaryObject;
+import org.materialize.util.PGobject;
+import org.materialize.util.PGtokenizer;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.io.Serializable;
 import java.sql.SQLException;
 
 /**
- * This represents the box datatype within org.postgresql.
+ * This represents the box datatype within org.materialize.
  */
 public class PGbox extends PGobject implements PGBinaryObject, Serializable, Cloneable {
   /**
@@ -150,7 +150,7 @@ public class PGbox extends PGobject implements PGBinaryObject, Serializable, Clo
   }
 
   /**
-   * @return the PGbox in the syntax expected by org.postgresql
+   * @return the PGbox in the syntax expected by org.materialize
    */
   public String getValue() {
     return point[0].toString() + "," + point[1].toString();

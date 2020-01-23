@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package org.postgresql.util;
+package org.materialize.util;
 
 import java.io.Writer;
 

@@ -4,10 +4,10 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.core.v3;
+package org.materialize.core.v3;
 
-import org.postgresql.core.ResultCursor;
-import org.postgresql.core.Utils;
+import org.materialize.core.ResultCursor;
+import org.materialize.core.Utils;
 
 import java.lang.ref.PhantomReference;
 

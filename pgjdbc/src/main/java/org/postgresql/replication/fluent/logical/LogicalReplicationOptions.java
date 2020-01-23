@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication.fluent.logical;
+package org.materialize.replication.fluent.logical;
 
-import org.postgresql.replication.fluent.CommonOptions;
+import org.materialize.replication.fluent.CommonOptions;
 
 import java.util.Properties;
 

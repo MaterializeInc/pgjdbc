@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.util;
+package org.materialize.util;
 
 /**
  * <p>This code is a stripped down version of Robert Harder's Public Domain Base64 implementation. GZIP

@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core.v3;
+package org.materialize.core.v3;
 
-import org.postgresql.core.NativeQuery;
-import org.postgresql.core.ParameterList;
+import org.materialize.core.NativeQuery;
+import org.materialize.core.ParameterList;
 
 /**
  * Purpose of this object is to support batched query re write behaviour. Responsibility for

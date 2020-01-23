@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package org.materialize.jdbc;
 
-import org.postgresql.jdbc2.ArrayAssistant;
-import org.postgresql.util.ByteConverter;
+import org.materialize.jdbc2.ArrayAssistant;
+import org.materialize.util.ByteConverter;
 
 import java.util.UUID;
 

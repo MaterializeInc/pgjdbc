@@ -4,43 +4,43 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.core.v3;
+package org.materialize.core.v3;
 
-import org.postgresql.PGProperty;
-import org.postgresql.copy.CopyIn;
-import org.postgresql.copy.CopyOperation;
-import org.postgresql.copy.CopyOut;
-import org.postgresql.core.CommandCompleteParser;
-import org.postgresql.core.Encoding;
-import org.postgresql.core.EncodingPredictor;
-import org.postgresql.core.Field;
-import org.postgresql.core.NativeQuery;
-import org.postgresql.core.Oid;
-import org.postgresql.core.PGBindException;
-import org.postgresql.core.PGStream;
-import org.postgresql.core.ParameterList;
-import org.postgresql.core.Parser;
-import org.postgresql.core.Query;
-import org.postgresql.core.QueryExecutor;
-import org.postgresql.core.QueryExecutorBase;
-import org.postgresql.core.ReplicationProtocol;
-import org.postgresql.core.ResultCursor;
-import org.postgresql.core.ResultHandler;
-import org.postgresql.core.ResultHandlerBase;
-import org.postgresql.core.ResultHandlerDelegate;
-import org.postgresql.core.SqlCommand;
-import org.postgresql.core.SqlCommandType;
-import org.postgresql.core.TransactionState;
-import org.postgresql.core.Utils;
-import org.postgresql.core.v3.replication.V3ReplicationProtocol;
-import org.postgresql.jdbc.AutoSave;
-import org.postgresql.jdbc.BatchResultHandler;
-import org.postgresql.jdbc.TimestampUtils;
-import org.postgresql.util.GT;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
-import org.postgresql.util.PSQLWarning;
-import org.postgresql.util.ServerErrorMessage;
+import org.materialize.PGProperty;
+import org.materialize.copy.CopyIn;
+import org.materialize.copy.CopyOperation;
+import org.materialize.copy.CopyOut;
+import org.materialize.core.CommandCompleteParser;
+import org.materialize.core.Encoding;
+import org.materialize.core.EncodingPredictor;
+import org.materialize.core.Field;
+import org.materialize.core.NativeQuery;
+import org.materialize.core.Oid;
+import org.materialize.core.PGBindException;
+import org.materialize.core.PGStream;
+import org.materialize.core.ParameterList;
+import org.materialize.core.Parser;
+import org.materialize.core.Query;
+import org.materialize.core.QueryExecutor;
+import org.materialize.core.QueryExecutorBase;
+import org.materialize.core.ReplicationProtocol;
+import org.materialize.core.ResultCursor;
+import org.materialize.core.ResultHandler;
+import org.materialize.core.ResultHandlerBase;
+import org.materialize.core.ResultHandlerDelegate;
+import org.materialize.core.SqlCommand;
+import org.materialize.core.SqlCommandType;
+import org.materialize.core.TransactionState;
+import org.materialize.core.Utils;
+import org.materialize.core.v3.replication.V3ReplicationProtocol;
+import org.materialize.jdbc.AutoSave;
+import org.materialize.jdbc.BatchResultHandler;
+import org.materialize.jdbc.TimestampUtils;
+import org.materialize.util.GT;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
+import org.materialize.util.PSQLWarning;
+import org.materialize.util.ServerErrorMessage;
 
 import java.io.IOException;
 import java.lang.ref.PhantomReference;
@@ -2474,7 +2474,7 @@ public class QueryExecutorImpl extends QueryExecutorBase {
     int pid = pgStream.receiveInteger4();
     String msg = pgStream.receiveString();
     String param = pgStream.receiveString();
-    addNotification(new org.postgresql.core.Notification(msg, pid, param));
+    addNotification(new org.materialize.core.Notification(msg, pid, param));
 
     if (LOGGER.isLoggable(Level.FINEST)) {
       LOGGER.log(Level.FINEST, " <=BE AsyncNotify({0},{1},{2})", new Object[]{pid, msg, param});

@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.util;
+package org.materialize.util;
 
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -17,7 +17,7 @@ public class PGobject implements Serializable, Cloneable {
   protected String value;
 
   /**
-   * This is called by org.postgresql.Connection.getObject() to create the object.
+   * This is called by org.materialize.Connection.getObject() to create the object.
    */
   public PGobject() {
   }
@@ -54,7 +54,7 @@ public class PGobject implements Serializable, Cloneable {
 
   /**
    * This must be overidden, to return the value of the object, in the form required by
-   * org.postgresql.
+   * org.materialize.
    *
    * @return the value of this object
    */
@@ -90,7 +90,7 @@ public class PGobject implements Serializable, Cloneable {
   /**
    * This is defined here, so user code need not overide it.
    *
-   * @return the value of this object, in the syntax expected by org.postgresql
+   * @return the value of this object, in the syntax expected by org.materialize
    */
   public String toString() {
     return getValue();

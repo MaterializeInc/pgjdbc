@@ -40,7 +40,7 @@
 %global parent_poms_builddir	./pgjdbc-parent-poms
 
 %global pgjdbc_mvn_options -DwaffleEnabled=false -DosgiEnabled=false \\\
-	-DexcludePackageNames=org.postgresql.osgi:org.postgresql.sspi
+	-DexcludePackageNames=org.materialize.osgi:org.materialize.sspi
 
 Summary:	JDBC driver for PostgreSQL
 Name:		postgresql-jdbc
@@ -112,13 +112,13 @@ find -name "*.jar" -or -name "*.class" | xargs rm -f
 
 # compat symlink: requested by dtardon (libreoffice), reverts part of
 # 0af97ce32de877 commit.
-%mvn_file org.postgresql:postgresql %{name}/postgresql %{name} postgresql
+%mvn_file org.materialize:postgresql %{name}/postgresql %{name} postgresql
 
 # Parent POMs should not be installed.
 %mvn_package ":*{parent,versions,prevjre}*" __noinstall
 
 # For compat reasons, make Maven artifact available under older coordinates.
-%mvn_alias org.postgresql:postgresql postgresql:postgresql
+%mvn_alias org.materialize:postgresql postgresql:postgresql
 
 # Hack #1!  This directory is missing for some reason, it is most probably some
 # misunderstanding between maven, maven-compiler-plugin and

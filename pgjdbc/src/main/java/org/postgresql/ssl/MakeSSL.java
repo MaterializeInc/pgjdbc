@@ -3,16 +3,16 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.ssl;
+package org.materialize.ssl;
 
-import org.postgresql.PGProperty;
-import org.postgresql.core.PGStream;
-import org.postgresql.core.SocketFactoryFactory;
-import org.postgresql.jdbc.SslMode;
-import org.postgresql.util.GT;
-import org.postgresql.util.ObjectFactory;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.PGProperty;
+import org.materialize.core.PGStream;
+import org.materialize.core.SocketFactoryFactory;
+import org.materialize.jdbc.SslMode;
+import org.materialize.util.GT;
+import org.materialize.util.ObjectFactory;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.io.IOException;
 import java.util.Properties;

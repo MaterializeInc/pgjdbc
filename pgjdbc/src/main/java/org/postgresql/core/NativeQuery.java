@@ -4,7 +4,7 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.core;
+package org.materialize.core;
 
 /**
  * Represents a query that is ready for execution by backend. The main difference from JDBC is ? are

@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core.v3;
+package org.materialize.core.v3;
 
-import org.postgresql.copy.CopyDual;
-import org.postgresql.util.PSQLException;
+import org.materialize.copy.CopyDual;
+import org.materialize.util.PSQLException;
 
 import java.sql.SQLException;
 import java.util.LinkedList;

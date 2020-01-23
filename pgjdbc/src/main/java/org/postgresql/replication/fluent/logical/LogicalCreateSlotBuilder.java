@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication.fluent.logical;
+package org.materialize.replication.fluent.logical;
 
-import org.postgresql.core.BaseConnection;
-import org.postgresql.replication.LogSequenceNumber;
-import org.postgresql.replication.ReplicationSlotInfo;
-import org.postgresql.replication.ReplicationType;
-import org.postgresql.replication.fluent.AbstractCreateSlotBuilder;
+import org.materialize.core.BaseConnection;
+import org.materialize.replication.LogSequenceNumber;
+import org.materialize.replication.ReplicationSlotInfo;
+import org.materialize.replication.ReplicationType;
+import org.materialize.replication.fluent.AbstractCreateSlotBuilder;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

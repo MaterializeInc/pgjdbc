@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.core.v3;
+package org.materialize.core.v3;
 
 /**
  * Information for "pending describe queue".

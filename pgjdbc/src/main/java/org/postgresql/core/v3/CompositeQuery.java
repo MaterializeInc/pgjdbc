@@ -4,11 +4,11 @@
  */
 // Copyright (c) 2004, Open Cloud Limited.
 
-package org.postgresql.core.v3;
+package org.materialize.core.v3;
 
-import org.postgresql.core.ParameterList;
-import org.postgresql.core.Query;
-import org.postgresql.core.SqlCommand;
+import org.materialize.core.ParameterList;
+import org.materialize.core.Query;
+import org.materialize.core.SqlCommand;
 
 import java.util.Map;
 

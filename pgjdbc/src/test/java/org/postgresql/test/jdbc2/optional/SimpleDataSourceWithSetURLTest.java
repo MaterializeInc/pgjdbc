@@ -3,14 +3,14 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2.optional;
+package org.materialize.test.jdbc2.optional;
 
 import static org.junit.Assert.assertEquals;
-import static org.postgresql.Driver.parseURL;
+import static org.materialize.Driver.parseURL;
 
-import org.postgresql.PGProperty;
-import org.postgresql.jdbc2.optional.SimpleDataSource;
-import org.postgresql.test.TestUtil;
+import org.materialize.PGProperty;
+import org.materialize.jdbc2.optional.SimpleDataSource;
+import org.materialize.test.TestUtil;
 
 import org.junit.Test;
 

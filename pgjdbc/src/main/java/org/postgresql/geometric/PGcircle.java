@@ -3,19 +3,19 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.geometric;
+package org.materialize.geometric;
 
-import org.postgresql.util.GT;
-import org.postgresql.util.PGobject;
-import org.postgresql.util.PGtokenizer;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import org.materialize.util.GT;
+import org.materialize.util.PGobject;
+import org.materialize.util.PGtokenizer;
+import org.materialize.util.PSQLException;
+import org.materialize.util.PSQLState;
 
 import java.io.Serializable;
 import java.sql.SQLException;
 
 /**
- * This represents org.postgresql's circle datatype, consisting of a point and a radius.
+ * This represents org.materialize's circle datatype, consisting of a point and a radius.
  */
 public class PGcircle extends PGobject implements Serializable, Cloneable {
   /**
@@ -110,7 +110,7 @@ public class PGcircle extends PGobject implements Serializable, Cloneable {
   }
 
   /**
-   * @return the PGcircle in the syntax expected by org.postgresql
+   * @return the PGcircle in the syntax expected by org.materialize
    */
   public String getValue() {
     return "<" + center + "," + radius + ">";

@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.ds;
+package org.materialize.ds;
 
-import org.postgresql.ds.common.BaseDataSource;
+import org.materialize.ds.common.BaseDataSource;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -27,7 +27,7 @@ public class PGSimpleDataSource extends BaseDataSource implements DataSource, Se
    * Gets a description of this DataSource.
    */
   public String getDescription() {
-    return "Non-Pooling DataSource from " + org.postgresql.util.DriverInfo.DRIVER_FULL_NAME;
+    return "Non-Pooling DataSource from " + org.materialize.util.DriverInfo.DRIVER_FULL_NAME;
   }
 
   private void writeObject(ObjectOutputStream out) throws IOException {
