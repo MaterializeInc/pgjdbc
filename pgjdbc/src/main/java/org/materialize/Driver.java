@@ -69,6 +69,7 @@ public class Driver implements java.sql.Driver {
       // because some clients call the driver themselves (I know, as
       // my early jdbc work did - and that was based on other examples).
       // Placing it here, means that the driver is registered once only.
+      System.out.println("TRYING TO REGISTER");
       register();
     } catch (SQLException e) {
       throw new ExceptionInInitializerError(e);
