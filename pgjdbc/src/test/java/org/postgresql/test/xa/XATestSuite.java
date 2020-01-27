@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.xa;
+package io.materialize.test.xa;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

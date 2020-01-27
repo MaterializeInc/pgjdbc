@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc3;
+package io.materialize.test.jdbc3;
 
 import static org.junit.Assert.assertEquals;
 
-import org.postgresql.core.NativeQuery;
-import org.postgresql.core.Parser;
-import org.postgresql.core.SqlCommandType;
+import io.materialize.core.NativeQuery;
+import io.materialize.core.Parser;
+import io.materialize.core.SqlCommandType;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

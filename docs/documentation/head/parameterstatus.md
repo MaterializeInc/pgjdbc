@@ -34,7 +34,7 @@ applications via the PGConnection extensions interface.
 
 ## Methods
 
-Two methods on `org.postgresql.PGConnection` provide the client interface to
+Two methods on `io.materialize.PGConnection` provide the client interface to
 reported parameters. Parameter names are case-insensitive and case-preserving.
 
 * `Map PGConnection.getParameterStatuses()` - return a map of all reported
@@ -49,7 +49,7 @@ See the `PGConnection` JavaDoc for details.
 
 If you're working directly with a `java.sql.Connection` you can
 
-    import org.postgresql.PGConnection;
+    import io.materialize.PGConnection;
 
     void my_function(Connection conn) {
 

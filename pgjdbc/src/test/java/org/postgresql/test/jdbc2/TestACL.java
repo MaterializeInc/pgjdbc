@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package io.materialize.test.jdbc2;
 
-import org.postgresql.jdbc.PgConnection;
-import org.postgresql.jdbc.PgDatabaseMetaData;
+import io.materialize.jdbc.PgConnection;
+import io.materialize.jdbc.PgDatabaseMetaData;
 
 import org.junit.Test;
 

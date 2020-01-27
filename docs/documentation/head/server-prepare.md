@@ -206,7 +206,7 @@ and it forces the driver to invalidate and re-prepare server side statement.
 
 Recommendation is to use the consistent datatype for each bind placeholder, and use the same type
 for `setNull`.
-Check out `org.postgresql.test.jdbc2.PreparedStatementTest.testAlternatingBindType` example for more details.
+Check out `io.materialize.test.jdbc2.PreparedStatementTest.testAlternatingBindType` example for more details.
 
 #### Debugging
 
@@ -215,7 +215,7 @@ the following might be helpful to debug the case.
 
 1. Client logging. If you add `loggerLevel=TRACE&loggerFile=pgjdbc-trace.log`, you would get trace
 of the messages send between the driver and the backend
-1. You might check `org.postgresql.test.jdbc2.AutoRollbackTestSuite` as it verifies lots of combinations
+1. You might check `io.materialize.test.jdbc2.AutoRollbackTestSuite` as it verifies lots of combinations
 
 <a name="server-prepared-statement-example"></a>
 **Example 9.3. Using server side prepared statements**
@@ -228,14 +228,14 @@ public class ServerSidePreparedStatement
 
 	public static void main(String args[]) throws Exception
 	{
-		Class.forName("org.postgresql.Driver");
+		Class.forName("io.materialize.Driver");
 		String url = "jdbc:postgresql://localhost:5432/test";
 		Connection conn = DriverManager.getConnection(url,"test","");
 
 		PreparedStatement pstmt = conn.prepareStatement("SELECT ?");
 
 		// cast to the pg extension interface
-		org.postgresql.PGStatement pgstmt = pstmt.unwrap(org.postgresql.PGStatement.class);
+		io.materialize.PGStatement pgstmt = pstmt.unwrap(io.materialize.PGStatement.class);
 
 		// on the third execution start using server side statements
 		pgstmt.setPrepareThreshold(3);
@@ -279,25 +279,25 @@ the value will be the default for all of it's children.
 
 ```java
 // pg extension interfaces
-org.postgresql.PGConnection pgconn;
-org.postgresql.PGStatement pgstmt;
+io.materialize.PGConnection pgconn;
+io.materialize.PGStatement pgstmt;
 
 // set a prepared statement threshold for connections created from this url
 String url = "jdbc:postgresql://localhost:5432/test?prepareThreshold=3";
 
 // see that the connection has picked up the correct threshold from the url
 Connection conn = DriverManager.getConnection(url,"test","");
-pgconn = conn.unwrap(org.postgresql.PGConnection.class);
+pgconn = conn.unwrap(io.materialize.PGConnection.class);
 System.out.println(pgconn.getPrepareThreshold()); // Should be 3
 
 // see that the statement has picked up the correct threshold from the connection
 PreparedStatement pstmt = conn.prepareStatement("SELECT ?");
-pgstmt = pstmt.unwrap(org.postgresql.PGStatement.class);
+pgstmt = pstmt.unwrap(io.materialize.PGStatement.class);
 System.out.println(pgstmt.getPrepareThreshold()); // Should be 3
 
 // change the connection's threshold and ensure that new statements pick it up
 pgconn.setPrepareThreshold(5);
 PreparedStatement pstmt = conn.prepareStatement("SELECT ?");
-pgstmt = pstmt.unwrap(org.postgresql.PGStatement.class);
+pgstmt = pstmt.unwrap(io.materialize.PGStatement.class);
 System.out.println(pgstmt.getPrepareThreshold()); // Should be 5
 ```

@@ -3,26 +3,26 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package io.materialize.test.jdbc2;
 
-import org.postgresql.core.CommandCompleteParserNegativeTest;
-import org.postgresql.core.CommandCompleteParserTest;
-import org.postgresql.core.OidToStringTest;
-import org.postgresql.core.OidValueOfTest;
-import org.postgresql.core.ParserTest;
-import org.postgresql.core.ReturningParserTest;
-import org.postgresql.core.v3.V3ParameterListTests;
-import org.postgresql.jdbc.DeepBatchedInsertStatementTest;
-import org.postgresql.jdbc.PrimitiveArraySupportTest;
-import org.postgresql.test.core.JavaVersionTest;
-import org.postgresql.test.core.NativeQueryBindLengthTest;
-import org.postgresql.test.core.OptionsPropertyTest;
-import org.postgresql.test.util.ExpressionPropertiesTest;
-import org.postgresql.test.util.HostSpecTest;
-import org.postgresql.test.util.LruCacheTest;
-import org.postgresql.test.util.ServerVersionParseTest;
-import org.postgresql.test.util.ServerVersionTest;
-import org.postgresql.util.ReaderInputStreamTest;
+import io.materialize.core.CommandCompleteParserNegativeTest;
+import io.materialize.core.CommandCompleteParserTest;
+import io.materialize.core.OidToStringTest;
+import io.materialize.core.OidValueOfTest;
+import io.materialize.core.ParserTest;
+import io.materialize.core.ReturningParserTest;
+import io.materialize.core.v3.V3ParameterListTests;
+import io.materialize.jdbc.DeepBatchedInsertStatementTest;
+import io.materialize.jdbc.PrimitiveArraySupportTest;
+import io.materialize.test.core.JavaVersionTest;
+import io.materialize.test.core.NativeQueryBindLengthTest;
+import io.materialize.test.core.OptionsPropertyTest;
+import io.materialize.test.util.ExpressionPropertiesTest;
+import io.materialize.test.util.HostSpecTest;
+import io.materialize.test.util.LruCacheTest;
+import io.materialize.test.util.ServerVersionParseTest;
+import io.materialize.test.util.ServerVersionTest;
+import io.materialize.util.ReaderInputStreamTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

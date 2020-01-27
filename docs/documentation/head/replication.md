@@ -104,8 +104,8 @@ execute SQL commands, and can only be used with replication API. This is a restr
     PGConnection replConnection = con.unwrap(PGConnection.class);
 ```
 
-The entire replication API is grouped in `org.postgresql.replication.PGReplicationConnection` and is available
-via `org.postgresql.PGConnection#getReplicationAPI`.
+The entire replication API is grouped in `io.materialize.replication.PGReplicationConnection` and is available
+via `io.materialize.PGConnection#getReplicationAPI`.
 
 Before you can start replication protocol, you need to have replication slot, which can be also created via pgjdbc API.
 
@@ -194,8 +194,8 @@ It is recommended to send feedback(ping) to the database more often than configu
 ```
 
 After create `PGReplicationStream`, it's time to start receive changes in real-time. Changes can be received from
-stream as blocking(`org.postgresql.replication.PGReplicationStream#read`)
-or as non-blocking(`org.postgresql.replication.PGReplicationStream#readPending`).
+stream as blocking(`io.materialize.replication.PGReplicationStream#read`)
+or as non-blocking(`io.materialize.replication.PGReplicationStream#readPending`).
 Both methods receive changes as a `java.nio.ByteBuffer` with the payload from the send output plugin. We can't receive
 part of message, only the full message that was sent by the output plugin. ByteBuffer contains message in format that is defined by the decoding output plugin, it can be simple String, json, or whatever the plugin determines. That why pgjdbc returns the raw ByteBuffer instead of making assumptions.
 
@@ -227,12 +227,12 @@ OutputPluginWrite(ctx, true);
 ```
 
 As mentioned previously, replication stream should periodically send feedback to the database to prevent disconnect via
-timeout. Feedback is automatically sent when `read` or `readPending` are called if it's time to send feedback. Feedback can also be sent via `org.postgresql.replication.PGReplicationStream#forceUpdateStatus()` regardless of the timeout. Another important duty of feedback is to provide the  server with the Logial Sequence Number (LSN) that has been successfully received and applied to consumer, it is necessary for monitoring and to truncate/archive WAL's that that are no longer needed. In the event that replication has been restarted, it's will start from last successfully processed LSN that was sent via feedback to database.
+timeout. Feedback is automatically sent when `read` or `readPending` are called if it's time to send feedback. Feedback can also be sent via `io.materialize.replication.PGReplicationStream#forceUpdateStatus()` regardless of the timeout. Another important duty of feedback is to provide the  server with the Logial Sequence Number (LSN) that has been successfully received and applied to consumer, it is necessary for monitoring and to truncate/archive WAL's that that are no longer needed. In the event that replication has been restarted, it's will start from last successfully processed LSN that was sent via feedback to database.
 
 The API provides the following feedback mechanism to indicate the successfully applied LSN by the current consumer. LSN's before this can be truncated or archived.
-`org.postgresql.replication.PGReplicationStream#setFlushedLSN` and
-`org.postgresql.replication.PGReplicationStream#setAppliedLSN`. You always can get last receive LSN via
-`org.postgresql.replication.PGReplicationStream#getLastReceiveLSN`.
+`io.materialize.replication.PGReplicationStream#setFlushedLSN` and
+`io.materialize.replication.PGReplicationStream#setAppliedLSN`. You always can get last receive LSN via
+`io.materialize.replication.PGReplicationStream#getLastReceiveLSN`.
 
 **Example 9.13. Add feedback indicating a successfully process LSN**
 

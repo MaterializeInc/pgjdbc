@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.util;
+package io.materialize.test.util;
 
-import org.postgresql.core.ServerVersion;
-import org.postgresql.core.Version;
+import io.materialize.core.ServerVersion;
+import io.materialize.core.Version;
 
 import org.junit.Assert;
 import org.junit.Test;

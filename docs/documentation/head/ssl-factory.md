@@ -17,7 +17,7 @@ class to use for creating the `SSLSocketFactory`. The class name specified by `s
 must extend ` javax.net.ssl.SSLSocketFactory` and be available to the driver's classloader.
 
 This class must have a zero argument constructor or a single argument constructor preferentially taking
-a `Properties` argument. There is a simple `org.postgresql.ssl.DefaultJavaSSLFactory` provided which uses the
+a `Properties` argument. There is a simple `io.materialize.ssl.DefaultJavaSSLFactory` provided which uses the
 default java SSLFactory.
 
 Information on how to actually implement such a class is beyond the scope of this

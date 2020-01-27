@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2.optional;
+package io.materialize.test.jdbc2.optional;
 
-import org.postgresql.ds.PGSimpleDataSource;
-import org.postgresql.jdbc2.optional.SimpleDataSource;
+import io.materialize.ds.PGSimpleDataSource;
+import io.materialize.jdbc2.optional.SimpleDataSource;
 
 import org.junit.Test;
 

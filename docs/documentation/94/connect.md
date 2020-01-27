@@ -142,7 +142,7 @@ connection.
 
 	Set the amount of logging information printed to the DriverManager's
 	current value for LogStream or LogWriter. It currently supports values
-	of `org.postgresql.Driver.DEBUG` (2) and `org.postgresql.Driver.INFO` (1).
+	of `io.materialize.Driver.DEBUG` (2) and `io.materialize.Driver.INFO` (1).
 	`INFO` will log very little information while `DEBUG` will produce significant
 	detail. This property is only really useful if you are a developer or
 	are having problems with the driver.

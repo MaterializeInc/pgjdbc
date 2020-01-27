@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.ssl;
+package io.materialize.test.ssl;
 
-import org.postgresql.PGProperty;
-import org.postgresql.jdbc.SslMode;
-import org.postgresql.test.TestUtil;
-import org.postgresql.test.jdbc2.BaseTest4;
-import org.postgresql.util.PSQLState;
+import io.materialize.PGProperty;
+import io.materialize.jdbc.SslMode;
+import io.materialize.test.TestUtil;
+import io.materialize.test.jdbc2.BaseTest4;
+import io.materialize.util.PSQLState;
 
 import org.junit.Assert;
 import org.junit.Test;

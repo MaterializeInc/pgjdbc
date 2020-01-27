@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -12,8 +12,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.postgresql.PGConnection;
-import org.postgresql.test.TestUtil;
+import io.materialize.PGConnection;
+import io.materialize.test.TestUtil;
 
 import org.junit.Assert;
 import org.junit.Assume;

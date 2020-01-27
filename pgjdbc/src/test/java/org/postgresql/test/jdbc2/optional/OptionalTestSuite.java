@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2.optional;
+package io.materialize.test.jdbc2.optional;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

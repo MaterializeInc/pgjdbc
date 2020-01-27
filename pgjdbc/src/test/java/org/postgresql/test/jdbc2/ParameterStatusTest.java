@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package io.materialize.test.jdbc2;
 
-import org.postgresql.PGConnection;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.test.TestUtil;
+import io.materialize.PGConnection;
+import io.materialize.core.ServerVersion;
+import io.materialize.test.TestUtil;
 
 import org.hamcrest.core.StringStartsWith;
 

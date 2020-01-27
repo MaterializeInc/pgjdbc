@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc42;
+package io.materialize.test.jdbc42;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -11,11 +11,11 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
 
-import org.postgresql.core.ServerVersion;
-import org.postgresql.test.TestUtil;
-import org.postgresql.test.jdbc2.BaseTest4;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import io.materialize.core.ServerVersion;
+import io.materialize.test.TestUtil;
+import io.materialize.test.jdbc2.BaseTest4;
+import io.materialize.util.PSQLException;
+import io.materialize.util.PSQLState;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

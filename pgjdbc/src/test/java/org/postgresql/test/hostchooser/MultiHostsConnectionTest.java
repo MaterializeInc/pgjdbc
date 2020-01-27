@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.hostchooser;
+package io.materialize.test.hostchooser;
 
 import static java.lang.Integer.parseInt;
 import static java.util.Arrays.asList;
@@ -13,19 +13,19 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeTrue;
-import static org.postgresql.hostchooser.HostRequirement.any;
-import static org.postgresql.hostchooser.HostRequirement.master;
-import static org.postgresql.hostchooser.HostRequirement.preferSecondary;
-import static org.postgresql.hostchooser.HostRequirement.secondary;
-import static org.postgresql.hostchooser.HostStatus.Master;
-import static org.postgresql.hostchooser.HostStatus.Secondary;
-import static org.postgresql.test.TestUtil.closeDB;
+import static io.materialize.hostchooser.HostRequirement.any;
+import static io.materialize.hostchooser.HostRequirement.master;
+import static io.materialize.hostchooser.HostRequirement.preferSecondary;
+import static io.materialize.hostchooser.HostRequirement.secondary;
+import static io.materialize.hostchooser.HostStatus.Master;
+import static io.materialize.hostchooser.HostStatus.Secondary;
+import static io.materialize.test.TestUtil.closeDB;
 
-import org.postgresql.hostchooser.GlobalHostStatusTracker;
-import org.postgresql.hostchooser.HostRequirement;
-import org.postgresql.test.TestUtil;
-import org.postgresql.util.HostSpec;
-import org.postgresql.util.PSQLException;
+import io.materialize.hostchooser.GlobalHostStatusTracker;
+import io.materialize.hostchooser.HostRequirement;
+import io.materialize.test.TestUtil;
+import io.materialize.util.HostSpec;
+import io.materialize.util.PSQLException;
 
 import org.junit.Before;
 import org.junit.BeforeClass;

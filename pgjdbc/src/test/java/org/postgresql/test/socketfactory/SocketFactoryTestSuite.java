@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.socketfactory;
+package io.materialize.test.socketfactory;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import org.postgresql.PGProperty;
-import org.postgresql.test.TestUtil;
+import io.materialize.PGProperty;
+import io.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Before;

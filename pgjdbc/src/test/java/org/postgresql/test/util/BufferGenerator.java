@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.util;
+package io.materialize.test.util;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

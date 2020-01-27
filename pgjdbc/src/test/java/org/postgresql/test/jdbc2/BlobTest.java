@@ -3,17 +3,17 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.postgresql.core.ServerVersion;
-import org.postgresql.largeobject.LargeObject;
-import org.postgresql.largeobject.LargeObjectManager;
-import org.postgresql.test.TestUtil;
+import io.materialize.core.ServerVersion;
+import io.materialize.largeobject.LargeObject;
+import io.materialize.largeobject.LargeObjectManager;
+import io.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Before;
@@ -163,7 +163,7 @@ public class BlobTest {
     ResultSet rs = stmt.executeQuery("SELECT lo FROM testblob");
     assertTrue(rs.next());
 
-    LargeObjectManager lom = ((org.postgresql.PGConnection) con).getLargeObjectAPI();
+    LargeObjectManager lom = ((io.materialize.PGConnection) con).getLargeObjectAPI();
 
     long oid = rs.getLong(1);
     LargeObject blob = lom.open(oid);
@@ -267,7 +267,7 @@ public class BlobTest {
    * works, and we can use it as a base to test the new methods.
    */
   private long uploadFile(String file, int method) throws Exception {
-    LargeObjectManager lom = ((org.postgresql.PGConnection) con).getLargeObjectAPI();
+    LargeObjectManager lom = ((io.materialize.PGConnection) con).getLargeObjectAPI();
 
     InputStream fis = getClass().getResourceAsStream(file);
 
@@ -322,7 +322,7 @@ public class BlobTest {
   private boolean compareBlobsLOAPI() throws Exception {
     boolean result = true;
 
-    LargeObjectManager lom = ((org.postgresql.PGConnection) con).getLargeObjectAPI();
+    LargeObjectManager lom = ((io.materialize.PGConnection) con).getLargeObjectAPI();
 
     Statement st = con.createStatement();
     ResultSet rs = st.executeQuery(TestUtil.selectSQL("testblob", "id,lo"));

@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -11,8 +11,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.postgresql.jdbc.PgConnection;
-import org.postgresql.test.TestUtil;
+import io.materialize.jdbc.PgConnection;
+import io.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Before;
@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * TestCase to test the internal functionality of org.postgresql.jdbc2.Connection and it's
+ * TestCase to test the internal functionality of io.materialize.jdbc2.Connection and it's
  * superclass.
  */
 public class ConnectionTest {
@@ -181,7 +181,7 @@ public class ConnectionTest {
     String testStr = "This Is OuR TeSt message";
 
     // The connection must be ours!
-    assertTrue(con instanceof org.postgresql.PGConnection);
+    assertTrue(con instanceof io.materialize.PGConnection);
 
     // Clear any existing warnings
     con.clearWarnings();

@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -11,12 +11,12 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.postgresql.PGStatement;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.jdbc.PgStatement;
-import org.postgresql.jdbc.PreferQueryMode;
-import org.postgresql.test.TestUtil;
-import org.postgresql.test.util.BrokenInputStream;
+import io.materialize.PGStatement;
+import io.materialize.core.ServerVersion;
+import io.materialize.jdbc.PgStatement;
+import io.materialize.jdbc.PreferQueryMode;
+import io.materialize.test.TestUtil;
+import io.materialize.test.util.BrokenInputStream;
 
 import org.junit.Assert;
 import org.junit.Assume;
@@ -286,7 +286,7 @@ public class PreparedStatementTest extends BaseTest4 {
     pstmt.executeUpdate();
 
     // valid: setObject() with partial type info and a typed "null object instance"
-    org.postgresql.util.PGobject dummy = new org.postgresql.util.PGobject();
+    io.materialize.util.PGobject dummy = new io.materialize.util.PGobject();
     dummy.setType("text");
     dummy.setValue(null);
     pstmt.setObject(1, dummy, Types.OTHER);
@@ -633,7 +633,7 @@ public class PreparedStatementTest extends BaseTest4 {
 
   public void testBoolean(int prepareThreshold) throws SQLException {
     PreparedStatement pstmt = con.prepareStatement("insert into bool_tab values (?,?,?,?,?,?,?,?)");
-    ((org.postgresql.PGStatement) pstmt).setPrepareThreshold(prepareThreshold);
+    ((io.materialize.PGStatement) pstmt).setPrepareThreshold(prepareThreshold);
 
     // Test TRUE values
     pstmt.setBoolean(1, true);
@@ -681,7 +681,7 @@ public class PreparedStatementTest extends BaseTest4 {
     pstmt.close();
 
     pstmt = con.prepareStatement("select * from bool_tab");
-    ((org.postgresql.PGStatement) pstmt).setPrepareThreshold(prepareThreshold);
+    ((io.materialize.PGStatement) pstmt).setPrepareThreshold(prepareThreshold);
     ResultSet rs = pstmt.executeQuery();
 
     assertTrue(rs.next());
@@ -721,14 +721,14 @@ public class PreparedStatementTest extends BaseTest4 {
       pstmt.setObject(1, "this is not boolean", Types.BOOLEAN);
       fail();
     } catch (SQLException e) {
-      assertEquals(org.postgresql.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
+      assertEquals(io.materialize.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
       assertEquals("Cannot cast to boolean: \"this is not boolean\"", e.getMessage());
     }
     try {
       pstmt.setObject(1, 'X', Types.BOOLEAN);
       fail();
     } catch (SQLException e) {
-      assertEquals(org.postgresql.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
+      assertEquals(io.materialize.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
       assertEquals("Cannot cast to boolean: \"X\"", e.getMessage());
     }
     try {
@@ -736,63 +736,63 @@ public class PreparedStatementTest extends BaseTest4 {
       pstmt.setObject(1, obj, Types.BOOLEAN);
       fail();
     } catch (SQLException e) {
-      assertEquals(org.postgresql.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
+      assertEquals(io.materialize.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
       assertEquals("Cannot cast to boolean", e.getMessage());
     }
     try {
       pstmt.setObject(1, "1.0", Types.BOOLEAN);
       fail();
     } catch (SQLException e) {
-      assertEquals(org.postgresql.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
+      assertEquals(io.materialize.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
       assertEquals("Cannot cast to boolean: \"1.0\"", e.getMessage());
     }
     try {
       pstmt.setObject(1, "-1", Types.BOOLEAN);
       fail();
     } catch (SQLException e) {
-      assertEquals(org.postgresql.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
+      assertEquals(io.materialize.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
       assertEquals("Cannot cast to boolean: \"-1\"", e.getMessage());
     }
     try {
       pstmt.setObject(1, "ok", Types.BOOLEAN);
       fail();
     } catch (SQLException e) {
-      assertEquals(org.postgresql.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
+      assertEquals(io.materialize.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
       assertEquals("Cannot cast to boolean: \"ok\"", e.getMessage());
     }
     try {
       pstmt.setObject(1, 0.99f, Types.BOOLEAN);
       fail();
     } catch (SQLException e) {
-      assertEquals(org.postgresql.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
+      assertEquals(io.materialize.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
       assertEquals("Cannot cast to boolean: \"0.99\"", e.getMessage());
     }
     try {
       pstmt.setObject(1, -0.01d, Types.BOOLEAN);
       fail();
     } catch (SQLException e) {
-      assertEquals(org.postgresql.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
+      assertEquals(io.materialize.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
       assertEquals("Cannot cast to boolean: \"-0.01\"", e.getMessage());
     }
     try {
       pstmt.setObject(1, new java.sql.Date(0), Types.BOOLEAN);
       fail();
     } catch (SQLException e) {
-      assertEquals(org.postgresql.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
+      assertEquals(io.materialize.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
       assertEquals("Cannot cast to boolean", e.getMessage());
     }
     try {
       pstmt.setObject(1, new java.math.BigInteger("1000"), Types.BOOLEAN);
       fail();
     } catch (SQLException e) {
-      assertEquals(org.postgresql.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
+      assertEquals(io.materialize.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
       assertEquals("Cannot cast to boolean: \"1000\"", e.getMessage());
     }
     try {
       pstmt.setObject(1, Math.PI, Types.BOOLEAN);
       fail();
     } catch (SQLException e) {
-      assertEquals(org.postgresql.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
+      assertEquals(io.materialize.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
       assertEquals("Cannot cast to boolean: \"3.141592653589793\"", e.getMessage());
     }
     pstmt.close();
@@ -1445,7 +1445,7 @@ public class PreparedStatementTest extends BaseTest4 {
     assumeBinaryModeForce();
     PreparedStatement ps = con.prepareStatement("SELECT /*testAlternatingBindType*/ ?");
     ResultSet rs;
-    Logger log = Logger.getLogger("org.postgresql.core.v3.SimpleQuery");
+    Logger log = Logger.getLogger("io.materialize.core.v3.SimpleQuery");
     Level prevLevel = log.getLevel();
     if (prevLevel == null || prevLevel.intValue() > Level.FINER.intValue()) {
       log.setLevel(Level.FINER);

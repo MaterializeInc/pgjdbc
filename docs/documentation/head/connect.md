@@ -136,11 +136,11 @@ Connection conn = DriverManager.getConnection(url);
 
 * **sslhostnameverifier** = String
 
-	Class name of hostname verifier. Defaults to using `org.postgresql.ssl.PGjdbcHostnameVerifier`
+	Class name of hostname verifier. Defaults to using `io.materialize.ssl.PGjdbcHostnameVerifier`
 
 * **sslpasswordcallback** = String
 
-	Class name of the SSL password provider. Defaults to `org.postgresql.ssl.jdbc4.LibPQFactory.ConsoleCallbackHandler`
+	Class name of the SSL password provider. Defaults to `io.materialize.ssl.jdbc4.LibPQFactory.ConsoleCallbackHandler`
 
 * **sslpassword** = String
 

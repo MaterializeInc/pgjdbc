@@ -3,17 +3,17 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc3;
+package io.materialize.test.jdbc3;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.postgresql.PGConnection;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.jdbc.PreferQueryMode;
-import org.postgresql.test.TestUtil;
-import org.postgresql.util.PGobject;
+import io.materialize.PGConnection;
+import io.materialize.core.ServerVersion;
+import io.materialize.jdbc.PreferQueryMode;
+import io.materialize.test.TestUtil;
+import io.materialize.util.PGobject;
 
 import org.junit.After;
 import org.junit.Assume;

@@ -3,15 +3,15 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication;
+package io.materialize.replication;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import org.postgresql.PGConnection;
-import org.postgresql.PGProperty;
-import org.postgresql.test.TestUtil;
-import org.postgresql.test.util.rules.annotation.HaveMinimalServerVersion;
+import io.materialize.PGConnection;
+import io.materialize.PGProperty;
+import io.materialize.test.TestUtil;
+import io.materialize.test.util.rules.annotation.HaveMinimalServerVersion;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.After;

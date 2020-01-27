@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.util;
+package io.materialize.util;
 
 import static org.junit.Assert.assertEquals;
 

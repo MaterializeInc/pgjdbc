@@ -3,19 +3,19 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package io.materialize.test.jdbc2;
 
-import org.postgresql.PGConnection;
-import org.postgresql.PGProperty;
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.ResultHandler;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.core.TransactionState;
-import org.postgresql.jdbc.AutoSave;
-import org.postgresql.jdbc.PgConnection;
-import org.postgresql.jdbc.PreferQueryMode;
-import org.postgresql.test.TestUtil;
-import org.postgresql.util.PSQLState;
+import io.materialize.PGConnection;
+import io.materialize.PGProperty;
+import io.materialize.core.BaseConnection;
+import io.materialize.core.ResultHandler;
+import io.materialize.core.ServerVersion;
+import io.materialize.core.TransactionState;
+import io.materialize.jdbc.AutoSave;
+import io.materialize.jdbc.PgConnection;
+import io.materialize.jdbc.PreferQueryMode;
+import io.materialize.test.TestUtil;
+import io.materialize.util.PSQLState;
 
 import org.junit.Assert;
 import org.junit.Assume;
@@ -56,8 +56,8 @@ public class AutoRollbackTestSuite extends BaseTest4 {
     /**
      * Executes DEALLOCATE ALL.
      * Mitigation:
-     *  1) QueryExecutor tracks "DEALLOCATE ALL" responses ({@see org.postgresql.core.QueryExecutor#setFlushCacheOnDeallocate(boolean)}
-     *  2) QueryExecutor tracks "prepared statement name is invalid" and unprepares relevant statements ({@link org.postgresql.core.v3.QueryExecutorImpl#processResults(ResultHandler, int)}
+     *  1) QueryExecutor tracks "DEALLOCATE ALL" responses ({@see io.materialize.core.QueryExecutor#setFlushCacheOnDeallocate(boolean)}
+     *  2) QueryExecutor tracks "prepared statement name is invalid" and unprepares relevant statements ({@link io.materialize.core.v3.QueryExecutorImpl#processResults(ResultHandler, int)}
      *  3) "autosave in (always, conservative)"
      *  4) Non-transactional cases are healed by retry (when no transaction present, just retry is possible)
      */

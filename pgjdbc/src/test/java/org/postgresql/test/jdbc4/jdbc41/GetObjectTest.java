@@ -3,26 +3,26 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc4.jdbc41;
+package io.materialize.test.jdbc4.jdbc41;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.postgresql.core.BaseConnection;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.geometric.PGbox;
-import org.postgresql.geometric.PGcircle;
-import org.postgresql.geometric.PGline;
-import org.postgresql.geometric.PGlseg;
-import org.postgresql.geometric.PGpath;
-import org.postgresql.geometric.PGpoint;
-import org.postgresql.geometric.PGpolygon;
-import org.postgresql.test.TestUtil;
-import org.postgresql.util.PGInterval;
-import org.postgresql.util.PGmoney;
-import org.postgresql.util.PGobject;
+import io.materialize.core.BaseConnection;
+import io.materialize.core.ServerVersion;
+import io.materialize.geometric.PGbox;
+import io.materialize.geometric.PGcircle;
+import io.materialize.geometric.PGline;
+import io.materialize.geometric.PGlseg;
+import io.materialize.geometric.PGpath;
+import io.materialize.geometric.PGpoint;
+import io.materialize.geometric.PGpolygon;
+import io.materialize.test.TestUtil;
+import io.materialize.util.PGInterval;
+import io.materialize.util.PGmoney;
+import io.materialize.util.PGobject;
 
 import org.junit.After;
 import org.junit.Before;

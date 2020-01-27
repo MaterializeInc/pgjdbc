@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package io.materialize.test.jdbc2;
 
-import org.postgresql.PGProperty;
-import org.postgresql.PGStatement;
-import org.postgresql.test.TestUtil;
+import io.materialize.PGProperty;
+import io.materialize.PGStatement;
+import io.materialize.test.TestUtil;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -475,7 +475,7 @@ public class BatchExecuteTest extends BaseTest4 {
    *
    * "Received resultset tuples, but no field structure for them"
    *
-   * at org.postgresql.core.v3.QueryExecutorImpl.processResults
+   * at io.materialize.core.v3.QueryExecutorImpl.processResults
    *
    * Prior to 245b388 it would instead Assert.fail with a NullPointerException in
    * AbstractJdbc2ResultSet.checkColumnIndex
@@ -658,7 +658,7 @@ Here's the log
 11:33:10.711 (1)  <=BE NoData
 11:33:10.711 (1)  <=BE CommandStatus(CREATE TABLE)
 11:33:10.711 (1)  <=BE ReadyForQuery(I)
-11:33:10.716 (1) batch execute 1 queries, handler=org.postgresql.jdbc.PgStatement$BatchResultHandler@4629104a, maxRows=0, fetchSize=0, flags=5
+11:33:10.716 (1) batch execute 1 queries, handler=io.materialize.jdbc.PgStatement$BatchResultHandler@4629104a, maxRows=0, fetchSize=0, flags=5
 11:33:10.716 (1)  FE=> Parse(stmt=null,query="BEGIN",oids={})
 11:33:10.717 (1)  FE=> Bind(stmt=null,portal=null)
 11:33:10.717 (1)  FE=> Execute(portal=null,limit=0)
@@ -675,7 +675,7 @@ Here's the log
 11:33:10.720 (1)  <=BE NoData
 11:33:10.720 (1)  <=BE CommandStatus(INSERT 0 1)
 11:33:10.720 (1)  <=BE ReadyForQuery(T)
-11:33:10.721 (1) batch execute 2 queries, handler=org.postgresql.jdbc.PgStatement$BatchResultHandler@27f8302d, maxRows=0, fetchSize=0, flags=5
+11:33:10.721 (1) batch execute 2 queries, handler=io.materialize.jdbc.PgStatement$BatchResultHandler@27f8302d, maxRows=0, fetchSize=0, flags=5
 11:33:10.721 (1)  FE=> Parse(stmt=null,query="insert into prep(a, d) values($1, $2)",oids={701,0})
 11:33:10.723 (1)  FE=> Bind(stmt=null,portal=null,$1=<43.0>:B:701,$2=<'1970-1-1 +3:0:0'>:T:0)
 11:33:10.723 (1)  FE=> Describe(portal=null)
@@ -694,7 +694,7 @@ Here's the log
 11:33:10.726 (1)  <=BE NoData
 11:33:10.726 (1)  <=BE CommandStatus(INSERT 0 1)
 11:33:10.726 (1)  <=BE ReadyForQuery(T)
-11:33:10.726 (1) batch execute 2 queries, handler=org.postgresql.jdbc.PgStatement$BatchResultHandler@4d76f3f8, maxRows=0, fetchSize=0, flags=516
+11:33:10.726 (1) batch execute 2 queries, handler=io.materialize.jdbc.PgStatement$BatchResultHandler@4d76f3f8, maxRows=0, fetchSize=0, flags=516
 11:33:10.726 (1)  FE=> Parse(stmt=S_1,query="insert into prep(a, d) values($1, $2)",oids={701,0})
 11:33:10.727 (1)  FE=> Describe(statement=S_1)
 11:33:10.728 (1)  FE=> Bind(stmt=S_1,portal=null,$1=<45.0>:B:701,$2=<'1970-1-1 +3:0:0'>:T:0)
@@ -716,18 +716,18 @@ Here's the log
 11:33:10.730 (1)  <=BE NoData
 11:33:10.731 (1)  <=BE CommandStatus(INSERT 0 1)
 11:33:10.731 (1)  <=BE ReadyForQuery(T)
-11:33:10.731 (1) batch execute 1 queries, handler=org.postgresql.jdbc.PgStatement$BatchResultHandler@4534b60d, maxRows=0, fetchSize=0, flags=516
+11:33:10.731 (1) batch execute 1 queries, handler=io.materialize.jdbc.PgStatement$BatchResultHandler@4534b60d, maxRows=0, fetchSize=0, flags=516
 11:33:10.731 (1)  FE=> Bind(stmt=S_2,portal=null,$1=<47.0>:B:701,$2=<'1970-1-1 +3:0:0'>:T:1082)
 11:33:10.731 (1)  FE=> Describe(portal=null)
 11:33:10.731 (1)  FE=> Execute(portal=null,limit=1)
 11:33:10.731 (1)  FE=> Sync
 11:33:10.732 (1)  <=BE ErrorMessage(ERROR: incorrect binary data format in bind parameter 1)
-org.postgresql.util.PSQLException: ERROR: incorrect binary data format in bind parameter 1
-  at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2185)
-  at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:1914)
-  at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:338)
-  at org.postgresql.jdbc.PgStatement.executeBatch(PgStatement.java:2534)
-  at org.postgresql.test.jdbc2.BatchExecuteTest.testBatchWithAlternatingTypes2(BatchExecuteTest.java:460)
+io.materialize.util.PSQLException: ERROR: incorrect binary data format in bind parameter 1
+  at io.materialize.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2185)
+  at io.materialize.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:1914)
+  at io.materialize.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:338)
+  at io.materialize.jdbc.PgStatement.executeBatch(PgStatement.java:2534)
+  at io.materialize.test.jdbc2.BatchExecuteTest.testBatchWithAlternatingTypes2(BatchExecuteTest.java:460)
     */
   }
 
@@ -795,7 +795,7 @@ Trace before the fix:
 23:00:30.301 (1)  <=BE ParameterStatus(TimeZone = Europe/Volgograd)
 23:00:30.301 (1)  <=BE BackendKeyData(pid=81221,ckey=2048823749)
 23:00:30.301 (1)  <=BE ReadyForQuery(I)
-23:00:30.304 (1) simple execute, handler=org.postgresql.core.SetupQueryRunner$SimpleResultHandler@531d72ca, maxRows=0, fetchSize=0, flags=23
+23:00:30.304 (1) simple execute, handler=io.materialize.core.SetupQueryRunner$SimpleResultHandler@531d72ca, maxRows=0, fetchSize=0, flags=23
 23:00:30.304 (1)  FE=> Parse(stmt=null,query="SET extra_float_digits = 3",oids={})
 23:00:30.304 (1)  FE=> Bind(stmt=null,portal=null)
 23:00:30.305 (1)  FE=> Execute(portal=null,limit=1)
@@ -810,7 +810,7 @@ Trace before the fix:
 23:00:30.309 (1)     types using binary send = TIMESTAMPTZ,UUID,INT2_ARRAY,INT4_ARRAY,BYTEA,TEXT_ARRAY,TIMETZ,INT8,INT2,INT4,VARCHAR_ARRAY,INT8_ARRAY,POINT,TIMESTAMP,TIME,BOX,FLOAT4,FLOAT8,FLOAT4_ARRAY,FLOAT8_ARRAY
 23:00:30.310 (1)     types using binary receive = TIMESTAMPTZ,UUID,INT2_ARRAY,INT4_ARRAY,BYTEA,TEXT_ARRAY,TIMETZ,INT8,INT2,INT4,VARCHAR_ARRAY,INT8_ARRAY,POINT,DATE,TIMESTAMP,TIME,BOX,FLOAT4,FLOAT8,FLOAT4_ARRAY,FLOAT8_ARRAY
 23:00:30.310 (1)     integer date/time = true
-23:00:30.331 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@255316f2, maxRows=0, fetchSize=0, flags=21
+23:00:30.331 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@255316f2, maxRows=0, fetchSize=0, flags=21
 23:00:30.331 (1)  FE=> Parse(stmt=null,query="DROP TABLE testbatch CASCADE ",oids={})
 23:00:30.331 (1)  FE=> Bind(stmt=null,portal=null)
 23:00:30.331 (1)  FE=> Describe(portal=null)
@@ -823,7 +823,7 @@ Trace before the fix:
 Location: File: tablecmds.c, Routine: DropErrorMsgNonExistent, Line: 727
 Server SQLState: 42P01)
 23:00:30.335 (1)  <=BE ReadyForQuery(I)
-23:00:30.335 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@4b9af9a9, maxRows=0, fetchSize=0, flags=21
+23:00:30.335 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@4b9af9a9, maxRows=0, fetchSize=0, flags=21
 23:00:30.336 (1)  FE=> Parse(stmt=null,query="CREATE TABLE testbatch (pk INTEGER, col1 INTEGER) ",oids={})
 23:00:30.336 (1)  FE=> Bind(stmt=null,portal=null)
 23:00:30.336 (1)  FE=> Describe(portal=null)
@@ -834,7 +834,7 @@ Server SQLState: 42P01)
 23:00:30.339 (1)  <=BE NoData
 23:00:30.339 (1)  <=BE CommandStatus(CREATE TABLE)
 23:00:30.339 (1)  <=BE ReadyForQuery(I)
-23:00:30.339 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@5387f9e0, maxRows=0, fetchSize=0, flags=21
+23:00:30.339 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@5387f9e0, maxRows=0, fetchSize=0, flags=21
 23:00:30.339 (1)  FE=> Parse(stmt=null,query="INSERT INTO testbatch VALUES (1, 0)",oids={})
 23:00:30.340 (1)  FE=> Bind(stmt=null,portal=null)
 23:00:30.340 (1)  FE=> Describe(portal=null)
@@ -845,7 +845,7 @@ Server SQLState: 42P01)
 23:00:30.341 (1)  <=BE NoData
 23:00:30.341 (1)  <=BE CommandStatus(INSERT 0 1)
 23:00:30.341 (1)  <=BE ReadyForQuery(I)
-23:00:30.341 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@6e5e91e4, maxRows=0, fetchSize=0, flags=21
+23:00:30.341 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@6e5e91e4, maxRows=0, fetchSize=0, flags=21
 23:00:30.341 (1)  FE=> Parse(stmt=null,query="DROP TABLE prep CASCADE ",oids={})
 23:00:30.341 (1)  FE=> Bind(stmt=null,portal=null)
 23:00:30.341 (1)  FE=> Describe(portal=null)
@@ -856,7 +856,7 @@ Server SQLState: 42P01)
 23:00:30.343 (1)  <=BE NoData
 23:00:30.344 (1)  <=BE CommandStatus(DROP TABLE)
 23:00:30.344 (1)  <=BE ReadyForQuery(I)
-23:00:30.344 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@2cdf8d8a, maxRows=0, fetchSize=0, flags=21
+23:00:30.344 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@2cdf8d8a, maxRows=0, fetchSize=0, flags=21
 23:00:30.344 (1)  FE=> Parse(stmt=null,query="CREATE TABLE prep (a integer, b integer) ",oids={})
 23:00:30.344 (1)  FE=> Bind(stmt=null,portal=null)
 23:00:30.344 (1)  FE=> Describe(portal=null)
@@ -867,7 +867,7 @@ Server SQLState: 42P01)
 23:00:30.345 (1)  <=BE NoData
 23:00:30.345 (1)  <=BE CommandStatus(CREATE TABLE)
 23:00:30.346 (1)  <=BE ReadyForQuery(I)
-23:00:30.346 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@30946e09, maxRows=0, fetchSize=0, flags=1
+23:00:30.346 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@30946e09, maxRows=0, fetchSize=0, flags=1
 23:00:30.346 (1)  FE=> Parse(stmt=null,query="BEGIN",oids={})
 23:00:30.346 (1)  FE=> Bind(stmt=null,portal=null)
 23:00:30.346 (1)  FE=> Execute(portal=null,limit=0)
@@ -887,7 +887,7 @@ Location: File: xact.c, Routine: BeginTransactionBlock, Line: 3279
 Server SQLState: 25001)
 23:00:30.348 (1)  <=BE CommandStatus(BEGIN)
 23:00:30.348 (1)  <=BE ReadyForQuery(T)
-23:00:30.351 (1) batch execute 6 queries, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$BatchResultHandler@5cb0d902, maxRows=0, fetchSize=0, flags=516
+23:00:30.351 (1) batch execute 6 queries, handler=io.materialize.jdbc2.AbstractJdbc2Statement$BatchResultHandler@5cb0d902, maxRows=0, fetchSize=0, flags=516
 23:00:30.351 (1)  FE=> Parse(stmt=S_1,query="insert into prep(a,b)  values($1::int4,$2)",oids={23,23})
 23:00:30.351 (1)  FE=> Bind(stmt=S_1,portal=null,$1=<2>,$2=<2>)
 23:00:30.351 (1)  FE=> Describe(portal=null)
@@ -930,7 +930,7 @@ Server SQLState: 25001)
 23:00:30.356 (1)  <=BE NoData
 23:00:30.356 (1)  <=BE CommandStatus(INSERT 0 1)
 23:00:30.356 (1)  <=BE ReadyForQuery(T)
-23:00:30.356 (1) batch execute 1 queries, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$BatchResultHandler@5ef04b5, maxRows=0, fetchSize=0, flags=516
+23:00:30.356 (1) batch execute 1 queries, handler=io.materialize.jdbc2.AbstractJdbc2Statement$BatchResultHandler@5ef04b5, maxRows=0, fetchSize=0, flags=516
 23:00:30.356 (1)  FE=> CloseStatement(S_2)
 23:00:30.356 (1)  FE=> Bind(stmt=S_2,portal=null,$1=<'2'>,$2=<2>)
 23:00:30.356 (1)  FE=> Describe(portal=null)
@@ -941,7 +941,7 @@ Server SQLState: 25001)
 Location: File: prepare.c, Routine: FetchPreparedStatement, Line: 505
 Server SQLState: 26000)
 23:00:30.358 (1)  <=BE ReadyForQuery(E)
-23:00:30.358 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Connection$TransactionCommandHandler@5f4da5c3, maxRows=0, fetchSize=0, flags=22
+23:00:30.358 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Connection$TransactionCommandHandler@5f4da5c3, maxRows=0, fetchSize=0, flags=22
 23:00:30.358 (1)  FE=> Parse(stmt=S_3,query="COMMIT",oids={})
 23:00:30.358 (1)  FE=> Bind(stmt=S_3,portal=null)
 23:00:30.358 (1)  FE=> Execute(portal=null,limit=1)
@@ -950,7 +950,7 @@ Server SQLState: 26000)
 23:00:30.359 (1)  <=BE BindComplete [unnamed]
 23:00:30.359 (1)  <=BE CommandStatus(ROLLBACK)
 23:00:30.359 (1)  <=BE ReadyForQuery(I)
-23:00:30.359 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@14514713, maxRows=0, fetchSize=0, flags=21
+23:00:30.359 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@14514713, maxRows=0, fetchSize=0, flags=21
 23:00:30.359 (1)  FE=> Parse(stmt=null,query="DROP TABLE testbatch CASCADE ",oids={})
 23:00:30.359 (1)  FE=> Bind(stmt=null,portal=null)
 23:00:30.359 (1)  FE=> Describe(portal=null)
@@ -963,15 +963,15 @@ Server SQLState: 26000)
 23:00:30.361 (1)  <=BE ReadyForQuery(I)
 23:00:30.361 (1)  FE=> Terminate
 
-org.postgresql.util.PSQLException: ERROR: prepared statement "S_2" does not exist
+io.materialize.util.PSQLException: ERROR: prepared statement "S_2" does not exist
 Location: File: prepare.c, Routine: FetchPreparedStatement, Line: 505
 Server SQLState: 26000
 
-at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2183)
-at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:1912)
-at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:338)
-at org.postgresql.jdbc2.AbstractJdbc2Statement.executeBatch(AbstractJdbc2Statement.java:2959)
-at org.postgresql.test.jdbc2.BatchExecuteTest.testBatchWithAlternatingTypes(BatchExecuteTest.java:457)
+at io.materialize.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2183)
+at io.materialize.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:1912)
+at io.materialize.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:338)
+at io.materialize.jdbc2.AbstractJdbc2Statement.executeBatch(AbstractJdbc2Statement.java:2959)
+at io.materialize.test.jdbc2.BatchExecuteTest.testBatchWithAlternatingTypes(BatchExecuteTest.java:457)
      */
 
     /*
@@ -995,7 +995,7 @@ at org.postgresql.test.jdbc2.BatchExecuteTest.testBatchWithAlternatingTypes(Batc
 23:15:33.828 (1)  <=BE ParameterStatus(TimeZone = Europe/Volgograd)
 23:15:33.828 (1)  <=BE BackendKeyData(pid=82726,ckey=1081936502)
 23:15:33.828 (1)  <=BE ReadyForQuery(I)
-23:15:33.832 (1) simple execute, handler=org.postgresql.core.SetupQueryRunner$SimpleResultHandler@531d72ca, maxRows=0, fetchSize=0, flags=23
+23:15:33.832 (1) simple execute, handler=io.materialize.core.SetupQueryRunner$SimpleResultHandler@531d72ca, maxRows=0, fetchSize=0, flags=23
 23:15:33.832 (1)  FE=> Parse(stmt=null,query="SET extra_float_digits = 3",oids={})
 23:15:33.833 (1)  FE=> Bind(stmt=null,portal=null)
 23:15:33.833 (1)  FE=> Execute(portal=null,limit=1)
@@ -1010,7 +1010,7 @@ at org.postgresql.test.jdbc2.BatchExecuteTest.testBatchWithAlternatingTypes(Batc
 23:15:33.839 (1)     types using binary send = TIMESTAMPTZ,UUID,INT2_ARRAY,INT4_ARRAY,BYTEA,TEXT_ARRAY,TIMETZ,INT8,INT2,INT4,VARCHAR_ARRAY,INT8_ARRAY,POINT,TIMESTAMP,TIME,BOX,FLOAT4,FLOAT8,FLOAT4_ARRAY,FLOAT8_ARRAY
 23:15:33.841 (1)     types using binary receive = TIMESTAMPTZ,UUID,INT2_ARRAY,INT4_ARRAY,BYTEA,TEXT_ARRAY,TIMETZ,INT8,INT2,INT4,VARCHAR_ARRAY,INT8_ARRAY,POINT,DATE,TIMESTAMP,TIME,BOX,FLOAT4,FLOAT8,FLOAT4_ARRAY,FLOAT8_ARRAY
 23:15:33.841 (1)     integer date/time = true
-23:15:33.899 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@255316f2, maxRows=0, fetchSize=0, flags=21
+23:15:33.899 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@255316f2, maxRows=0, fetchSize=0, flags=21
 23:15:33.899 (1)  FE=> Parse(stmt=null,query="DROP TABLE testbatch CASCADE ",oids={})
 23:15:33.899 (1)  FE=> Bind(stmt=null,portal=null)
 23:15:33.899 (1)  FE=> Describe(portal=null)
@@ -1023,7 +1023,7 @@ at org.postgresql.test.jdbc2.BatchExecuteTest.testBatchWithAlternatingTypes(Batc
 Location: File: tablecmds.c, Routine: DropErrorMsgNonExistent, Line: 727
 Server SQLState: 42P01)
 23:15:33.906 (1)  <=BE ReadyForQuery(I)
-23:15:33.906 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@4b9af9a9, maxRows=0, fetchSize=0, flags=21
+23:15:33.906 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@4b9af9a9, maxRows=0, fetchSize=0, flags=21
 23:15:33.906 (1)  FE=> Parse(stmt=null,query="CREATE TABLE testbatch (pk INTEGER, col1 INTEGER) ",oids={})
 23:15:33.907 (1)  FE=> Bind(stmt=null,portal=null)
 23:15:33.907 (1)  FE=> Describe(portal=null)
@@ -1034,7 +1034,7 @@ Server SQLState: 42P01)
 23:15:33.912 (1)  <=BE NoData
 23:15:33.912 (1)  <=BE CommandStatus(CREATE TABLE)
 23:15:33.912 (1)  <=BE ReadyForQuery(I)
-23:15:33.912 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@5387f9e0, maxRows=0, fetchSize=0, flags=21
+23:15:33.912 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@5387f9e0, maxRows=0, fetchSize=0, flags=21
 23:15:33.912 (1)  FE=> Parse(stmt=null,query="INSERT INTO testbatch VALUES (1, 0)",oids={})
 23:15:33.913 (1)  FE=> Bind(stmt=null,portal=null)
 23:15:33.913 (1)  FE=> Describe(portal=null)
@@ -1045,7 +1045,7 @@ Server SQLState: 42P01)
 23:15:33.914 (1)  <=BE NoData
 23:15:33.914 (1)  <=BE CommandStatus(INSERT 0 1)
 23:15:33.914 (1)  <=BE ReadyForQuery(I)
-23:15:33.914 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@6e5e91e4, maxRows=0, fetchSize=0, flags=21
+23:15:33.914 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@6e5e91e4, maxRows=0, fetchSize=0, flags=21
 23:15:33.914 (1)  FE=> Parse(stmt=null,query="DROP TABLE prep CASCADE ",oids={})
 23:15:33.914 (1)  FE=> Bind(stmt=null,portal=null)
 23:15:33.914 (1)  FE=> Describe(portal=null)
@@ -1056,7 +1056,7 @@ Server SQLState: 42P01)
 23:15:33.916 (1)  <=BE NoData
 23:15:33.917 (1)  <=BE CommandStatus(DROP TABLE)
 23:15:33.917 (1)  <=BE ReadyForQuery(I)
-23:15:33.917 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@2cdf8d8a, maxRows=0, fetchSize=0, flags=21
+23:15:33.917 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@2cdf8d8a, maxRows=0, fetchSize=0, flags=21
 23:15:33.917 (1)  FE=> Parse(stmt=null,query="CREATE TABLE prep (a integer, b integer) ",oids={})
 23:15:33.917 (1)  FE=> Bind(stmt=null,portal=null)
 23:15:33.917 (1)  FE=> Describe(portal=null)
@@ -1067,7 +1067,7 @@ Server SQLState: 42P01)
 23:15:33.919 (1)  <=BE NoData
 23:15:33.919 (1)  <=BE CommandStatus(CREATE TABLE)
 23:15:33.919 (1)  <=BE ReadyForQuery(I)
-23:15:33.919 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@30946e09, maxRows=0, fetchSize=0, flags=1
+23:15:33.919 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@30946e09, maxRows=0, fetchSize=0, flags=1
 23:15:33.919 (1)  FE=> Parse(stmt=null,query="BEGIN",oids={})
 23:15:33.920 (1)  FE=> Bind(stmt=null,portal=null)
 23:15:33.920 (1)  FE=> Execute(portal=null,limit=0)
@@ -1087,7 +1087,7 @@ Location: File: xact.c, Routine: BeginTransactionBlock, Line: 3279
 Server SQLState: 25001)
 23:15:33.922 (1)  <=BE CommandStatus(BEGIN)
 23:15:33.922 (1)  <=BE ReadyForQuery(T)
-23:15:33.924 (1) batch execute 6 queries, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$BatchResultHandler@5cb0d902, maxRows=0, fetchSize=0, flags=516
+23:15:33.924 (1) batch execute 6 queries, handler=io.materialize.jdbc2.AbstractJdbc2Statement$BatchResultHandler@5cb0d902, maxRows=0, fetchSize=0, flags=516
 23:15:33.924 (1)  FE=> Parse(stmt=S_1,query="insert into prep(a,b)  values($1::int4,$2)",oids={23,23})
 23:15:33.925 (1)  FE=> Bind(stmt=S_1,portal=null,$1=<2>,$2=<2>)
 23:15:33.925 (1)  FE=> Describe(portal=null)
@@ -1132,7 +1132,7 @@ Server SQLState: 25001)
 23:15:33.929 (1)  <=BE NoData
 23:15:33.930 (1)  <=BE CommandStatus(INSERT 0 1)
 23:15:33.930 (1)  <=BE ReadyForQuery(T)
-23:15:33.930 (1) batch execute 1 queries, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$BatchResultHandler@5ef04b5, maxRows=0, fetchSize=0, flags=516
+23:15:33.930 (1) batch execute 1 queries, handler=io.materialize.jdbc2.AbstractJdbc2Statement$BatchResultHandler@5ef04b5, maxRows=0, fetchSize=0, flags=516
 23:15:33.930 (1)  FE=> Bind(stmt=S_2,portal=null,$1=<'2'>,$2=<2>)
 23:15:33.930 (1)  FE=> Describe(portal=null)
 23:15:33.930 (1)  FE=> Execute(portal=null,limit=1)
@@ -1141,7 +1141,7 @@ Server SQLState: 25001)
 23:15:33.931 (1)  <=BE NoData
 23:15:33.931 (1)  <=BE CommandStatus(INSERT 0 1)
 23:15:33.931 (1)  <=BE ReadyForQuery(T)
-23:15:33.931 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@5f4da5c3, maxRows=0, fetchSize=0, flags=1
+23:15:33.931 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@5f4da5c3, maxRows=0, fetchSize=0, flags=1
 23:15:33.931 (1)  FE=> Parse(stmt=null,query="COMMIT",oids={})
 23:15:33.931 (1)  FE=> Bind(stmt=null,portal=null)
 23:15:33.931 (1)  FE=> Describe(portal=null)
@@ -1152,7 +1152,7 @@ Server SQLState: 25001)
 23:15:33.932 (1)  <=BE NoData
 23:15:33.932 (1)  <=BE CommandStatus(COMMIT)
 23:15:33.932 (1)  <=BE ReadyForQuery(I)
-23:15:33.932 (1) simple execute, handler=org.postgresql.jdbc2.AbstractJdbc2Statement$StatementResultHandler@443b7951, maxRows=0, fetchSize=0, flags=21
+23:15:33.932 (1) simple execute, handler=io.materialize.jdbc2.AbstractJdbc2Statement$StatementResultHandler@443b7951, maxRows=0, fetchSize=0, flags=21
 23:15:33.932 (1)  FE=> Parse(stmt=null,query="DROP TABLE testbatch CASCADE ",oids={})
 23:15:33.933 (1)  FE=> Bind(stmt=null,portal=null)
 23:15:33.933 (1)  FE=> Describe(portal=null)

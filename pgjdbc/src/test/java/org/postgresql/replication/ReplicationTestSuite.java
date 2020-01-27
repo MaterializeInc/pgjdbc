@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.replication;
+package io.materialize.replication;
 
-import org.postgresql.core.ServerVersion;
-import org.postgresql.test.TestUtil;
-import org.postgresql.test.jdbc2.CopyBothResponseTest;
+import io.materialize.core.ServerVersion;
+import io.materialize.test.TestUtil;
+import io.materialize.test.jdbc2.CopyBothResponseTest;
 
 import org.junit.AssumptionViolatedException;
 import org.junit.BeforeClass;

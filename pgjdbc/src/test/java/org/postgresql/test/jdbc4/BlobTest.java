@@ -3,14 +3,14 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc4;
+package io.materialize.test.jdbc4;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.postgresql.test.TestUtil;
+import io.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Before;
@@ -27,7 +27,7 @@ import java.sql.Statement;
 
 /**
  * This test-case is only for JDBC4 blob methods. Take a look at
- * {@link org.postgresql.test.jdbc2.BlobTest} for base tests concerning blobs
+ * {@link io.materialize.test.jdbc2.BlobTest} for base tests concerning blobs
  */
 public class BlobTest {
 

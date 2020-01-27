@@ -46,7 +46,7 @@ conf/server.xml
 	</parameter>
 	<parameter>
 		<name>driverClassName</name>
-		<value>org.postgresql.Driver</value>
+		<value>io.materialize.Driver</value>
 	</parameter>
 	<parameter>
 		<name>username</name>

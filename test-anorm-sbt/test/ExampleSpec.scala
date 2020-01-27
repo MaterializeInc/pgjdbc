@@ -56,11 +56,11 @@ class ExampleSpec extends PlaySpec with OneAppPerSuite {
     ) = anorm.Column.nonNull { (value, meta) =>
       val MetaDataItem(columnName, nullable, clazz) = meta
       value match {
-        case json: org.postgresql.util.PGobject => parseJson(f, columnName.qualified, json.getValue)
+        case json: io.materialize.util.PGobject => parseJson(f, columnName.qualified, json.getValue)
         case _=> {
           Left(
             TypeDoesNotMatch(
-              s"Column[${columnName.qualified}] error converting $value to Json. Expected class to be[org.postgresql.util.PGobject] and not[${value.asInstanceOf[AnyRef].getClass}"
+              s"Column[${columnName.qualified}] error converting $value to Json. Expected class to be[io.materialize.util.PGobject] and not[${value.asInstanceOf[AnyRef].getClass}"
             )
           )
         }

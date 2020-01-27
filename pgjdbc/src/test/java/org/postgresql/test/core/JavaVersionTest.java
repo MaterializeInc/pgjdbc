@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.core;
+package io.materialize.test.core;
 
-import org.postgresql.core.JavaVersion;
+import io.materialize.core.JavaVersion;
 
 import org.junit.Assert;
 import org.junit.Test;

@@ -3,21 +3,21 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.postgresql.PGConnection;
-import org.postgresql.copy.CopyIn;
-import org.postgresql.copy.CopyManager;
-import org.postgresql.copy.CopyOut;
-import org.postgresql.copy.PGCopyOutputStream;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.test.TestUtil;
-import org.postgresql.util.PSQLState;
+import io.materialize.PGConnection;
+import io.materialize.copy.CopyIn;
+import io.materialize.copy.CopyManager;
+import io.materialize.copy.CopyOut;
+import io.materialize.copy.PGCopyOutputStream;
+import io.materialize.core.ServerVersion;
+import io.materialize.test.TestUtil;
+import io.materialize.util.PSQLState;
 
 import org.junit.After;
 import org.junit.Before;

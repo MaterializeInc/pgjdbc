@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.util;
+package io.materialize.util;
 
 import java.io.OutputStream;
 import java.io.PrintStream;

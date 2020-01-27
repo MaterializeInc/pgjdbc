@@ -3,15 +3,15 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 
-import org.postgresql.PGConnection;
-import org.postgresql.copy.CopyManager;
-import org.postgresql.test.TestUtil;
-import org.postgresql.test.util.BufferGenerator;
-import org.postgresql.test.util.StrangeInputStream;
+import io.materialize.PGConnection;
+import io.materialize.copy.CopyManager;
+import io.materialize.test.TestUtil;
+import io.materialize.test.util.BufferGenerator;
+import io.materialize.test.util.StrangeInputStream;
 
 import org.junit.After;
 import org.junit.Before;

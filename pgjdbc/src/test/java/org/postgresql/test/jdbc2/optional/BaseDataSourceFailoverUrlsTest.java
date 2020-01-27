@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2.optional;
+package io.materialize.test.jdbc2.optional;
 
 import static org.junit.Assert.assertEquals;
 
-import org.postgresql.ds.common.BaseDataSource;
+import io.materialize.ds.common.BaseDataSource;
 
 import org.junit.Test;
 

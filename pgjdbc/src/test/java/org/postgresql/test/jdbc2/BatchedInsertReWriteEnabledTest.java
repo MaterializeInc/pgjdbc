@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package io.materialize.test.jdbc2;
 
-import org.postgresql.PGProperty;
-import org.postgresql.test.TestUtil;
+import io.materialize.PGProperty;
+import io.materialize.test.TestUtil;
 
 import org.junit.Assert;
 import org.junit.Test;

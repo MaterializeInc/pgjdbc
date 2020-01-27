@@ -3,15 +3,15 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.extensions;
+package io.materialize.test.extensions;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.postgresql.core.ServerVersion;
-import org.postgresql.jdbc.PreferQueryMode;
-import org.postgresql.test.jdbc2.BaseTest4;
+import io.materialize.core.ServerVersion;
+import io.materialize.jdbc.PreferQueryMode;
+import io.materialize.test.jdbc2.BaseTest4;
 
 import org.junit.Assume;
 import org.junit.Test;

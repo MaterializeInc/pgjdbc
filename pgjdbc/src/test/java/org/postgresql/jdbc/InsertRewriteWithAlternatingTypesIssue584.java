@@ -3,15 +3,15 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.jdbc;
+package io.materialize.jdbc;
 
-import org.postgresql.PGProperty;
-import org.postgresql.core.CachedQuery;
-import org.postgresql.core.ParameterList;
-import org.postgresql.core.Query;
-import org.postgresql.core.v3.BatchedQuery;
-import org.postgresql.test.TestUtil;
-import org.postgresql.test.jdbc2.BaseTest4;
+import io.materialize.PGProperty;
+import io.materialize.core.CachedQuery;
+import io.materialize.core.ParameterList;
+import io.materialize.core.Query;
+import io.materialize.core.v3.BatchedQuery;
+import io.materialize.test.TestUtil;
+import io.materialize.test.jdbc2.BaseTest4;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -146,7 +146,7 @@ public class InsertRewriteWithAlternatingTypesIssue584 extends BaseTest4 {
     Query query;
     BatchedQuery[] bqds = transformBQD(pst);
     if (bqds == null) {
-      Field preparedQueryField = Class.forName("org.postgresql.jdbc.PgPreparedStatement")
+      Field preparedQueryField = Class.forName("io.materialize.jdbc.PgPreparedStatement")
           .getDeclaredField("preparedQuery");
       preparedQueryField.setAccessible(true);
       CachedQuery preparedQuery = (CachedQuery) preparedQueryField.get(pst);
@@ -155,7 +155,7 @@ public class InsertRewriteWithAlternatingTypesIssue584 extends BaseTest4 {
       query = bqds[0];
     }
     Field statementNameField =
-        Class.forName("org.postgresql.core.v3.SimpleQuery").getDeclaredField("statementName");
+        Class.forName("io.materialize.core.v3.SimpleQuery").getDeclaredField("statementName");
     statementNameField.setAccessible(true);
     return (String) statementNameField.get(query);
   }

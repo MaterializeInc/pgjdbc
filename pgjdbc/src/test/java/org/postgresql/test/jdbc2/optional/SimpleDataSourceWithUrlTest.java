@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2.optional;
+package io.materialize.test.jdbc2.optional;
 
-import org.postgresql.jdbc2.optional.SimpleDataSource;
-import org.postgresql.test.TestUtil;
+import io.materialize.jdbc2.optional.SimpleDataSource;
+import io.materialize.test.TestUtil;
 
 /**
  * Performs the basic tests defined in the superclass. Just adds the configuration logic.

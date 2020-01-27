@@ -3,12 +3,12 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.postgresql.test.TestUtil;
+import io.materialize.test.TestUtil;
 
 import org.junit.Before;
 import org.junit.Test;

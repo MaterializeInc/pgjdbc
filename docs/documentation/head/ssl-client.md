@@ -118,5 +118,5 @@ an option to establish a SSL connection without doing any validation, but please
 understand the risk involved before enabling this option.
 
 A non-validating connection is established via a custom `SSLSocketFactory` class that is provided
-with the driver. Setting the connection URL parameter `sslfactory=org.postgresql.ssl.NonValidatingFactory`
+with the driver. Setting the connection URL parameter `sslfactory=io.materialize.ssl.NonValidatingFactory`
 will turn off all SSL validation.

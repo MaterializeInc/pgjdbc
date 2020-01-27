@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.sspi;
+package io.materialize.test.sspi;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
@@ -11,9 +11,9 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeThat;
 
-import org.postgresql.test.TestUtil;
-import org.postgresql.util.PSQLException;
-import org.postgresql.util.PSQLState;
+import io.materialize.test.TestUtil;
+import io.materialize.util.PSQLException;
+import io.materialize.util.PSQLState;
 
 import org.junit.BeforeClass;
 import org.junit.Test;

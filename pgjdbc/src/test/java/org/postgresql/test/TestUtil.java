@@ -3,12 +3,12 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test;
+package io.materialize.test;
 
-import org.postgresql.PGProperty;
-import org.postgresql.core.ServerVersion;
-import org.postgresql.core.Version;
-import org.postgresql.jdbc.PgConnection;
+import io.materialize.PGProperty;
+import io.materialize.core.ServerVersion;
+import io.materialize.core.Version;
+import io.materialize.jdbc.PgConnection;
 
 import org.junit.Assert;
 

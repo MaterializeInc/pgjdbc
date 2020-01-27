@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.postgresql.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -12,10 +12,10 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeTrue;
 
-import org.postgresql.core.ServerVersion;
-import org.postgresql.jdbc.PreferQueryMode;
-import org.postgresql.test.TestUtil;
-import org.postgresql.util.PGobject;
+import io.materialize.core.ServerVersion;
+import io.materialize.jdbc.PreferQueryMode;
+import io.materialize.test.TestUtil;
+import io.materialize.util.PGobject;
 
 import org.junit.Test;
 
@@ -283,7 +283,7 @@ public class ResultSetTest extends BaseTest4 {
 
   public void testBoolean(String table, int prepareThreshold) throws SQLException {
     PreparedStatement pstmt = con.prepareStatement("select a, b from " + table);
-    ((org.postgresql.PGStatement) pstmt).setPrepareThreshold(prepareThreshold);
+    ((io.materialize.PGStatement) pstmt).setPrepareThreshold(prepareThreshold);
     ResultSet rs = pstmt.executeQuery();
     while (rs.next()) {
       rs.getBoolean(2);
@@ -296,7 +296,7 @@ public class ResultSetTest extends BaseTest4 {
           rs.getBoolean(1);
           fail();
         } catch (SQLException e) {
-          assertEquals(org.postgresql.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
+          assertEquals(io.materialize.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
         }
       }
     }
@@ -334,7 +334,7 @@ public class ResultSetTest extends BaseTest4 {
       rs.getBoolean(3);
       fail();
     } catch (SQLException e) {
-      assertEquals(org.postgresql.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
+      assertEquals(io.materialize.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
       assertEquals("Cannot cast to boolean: \"2\"", e.getMessage());
     }
     rs.close();
@@ -364,7 +364,7 @@ public class ResultSetTest extends BaseTest4 {
       rs.getBoolean(1);
       fail();
     } catch (SQLException e) {
-      assertEquals(org.postgresql.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
+      assertEquals(io.materialize.util.PSQLState.CANNOT_COERCE.getState(), e.getSQLState());
       assertEquals("Cannot cast to boolean: \"" + value + "\"", e.getMessage());
     }
     rs.close();

@@ -11,7 +11,7 @@ next: largeobjects.html
 
 PostgreSQL™ has a set of data types that can store geometric features into a
 table. These include single points, lines, and polygons.  We support these types
-in Java with the org.postgresql.geometric package. Please consult the Javadoc
+in Java with the io.materialize.geometric package. Please consult the Javadoc
 mentioned in [Chapter 13, *Further Reading*](reading.html) for details of
 available classes and features.
 
@@ -21,8 +21,8 @@ available classes and features.
 ```java
 import java.sql.*;
 
-import org.postgresql.geometric.PGpoint;
-import org.postgresql.geometric.PGcircle;
+import io.materialize.geometric.PGpoint;
+import io.materialize.geometric.PGcircle;
 
 public class GeometricTest {
     public static void main(String args[]) throws Exception {
