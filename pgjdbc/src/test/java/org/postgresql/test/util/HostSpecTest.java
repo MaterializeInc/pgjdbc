@@ -3,12 +3,12 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.util;
+package io.materialize.test.util;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.materialize.util.HostSpec;
+import io.materialize.util.HostSpec;
 
 import org.junit.After;
 import org.junit.Test;

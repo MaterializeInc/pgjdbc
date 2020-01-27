@@ -3,19 +3,19 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import org.materialize.PGConnection;
-import org.materialize.core.BaseConnection;
-import org.materialize.geometric.PGbox;
-import org.materialize.geometric.PGpoint;
-import org.materialize.jdbc.PgArray;
-import org.materialize.jdbc.PreferQueryMode;
-import org.materialize.test.TestUtil;
-import org.materialize.util.PSQLException;
+import io.materialize.PGConnection;
+import io.materialize.core.BaseConnection;
+import io.materialize.geometric.PGbox;
+import io.materialize.geometric.PGpoint;
+import io.materialize.jdbc.PgArray;
+import io.materialize.jdbc.PreferQueryMode;
+import io.materialize.test.TestUtil;
+import io.materialize.util.PSQLException;
 
 import org.junit.Assert;
 import org.junit.Test;

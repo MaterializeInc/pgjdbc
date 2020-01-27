@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2;
+package io.materialize.test.jdbc2;
 
-import org.materialize.PGProperty;
-import org.materialize.geometric.PGbox;
+import io.materialize.PGProperty;
+import io.materialize.geometric.PGbox;
 
 import org.junit.Assert;
 import org.junit.Test;

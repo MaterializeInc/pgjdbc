@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc42;
+package io.materialize.test.jdbc42;
 
-import org.materialize.core.ServerVersion;
-import org.materialize.test.TestUtil;
-import org.materialize.test.jdbc2.BaseTest4;
+import io.materialize.core.ServerVersion;
+import io.materialize.test.TestUtil;
+import io.materialize.test.jdbc2.BaseTest4;
 
 import org.junit.Assert;
 import org.junit.Assume;
@@ -68,7 +68,7 @@ public class GetObject310InfinityTests extends BaseTest4 {
               continue;
             }
             if (klass.equals(LocalDateTime.class) && pgType.equals("timestamp with time zone")) {
-              // org.materialize.util.PSQLException: Cannot convert the column of type TIMESTAMPTZ to requested type timestamp.
+              // io.materialize.util.PSQLException: Cannot convert the column of type TIMESTAMPTZ to requested type timestamp.
               continue;
             }
             Field field = null;

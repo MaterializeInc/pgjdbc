@@ -3,17 +3,17 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc4;
+package io.materialize.test.jdbc4;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.materialize.PGConnection;
-import org.materialize.PGStatement;
-import org.materialize.ds.PGSimpleDataSource;
-import org.materialize.test.TestUtil;
+import io.materialize.PGConnection;
+import io.materialize.PGStatement;
+import io.materialize.ds.PGSimpleDataSource;
+import io.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Before;

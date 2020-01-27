@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.util;
+package io.materialize.test.util;
 
-import org.materialize.util.ExpressionProperties;
+import io.materialize.util.ExpressionProperties;
 
 import org.junit.Assert;
 import org.junit.Test;

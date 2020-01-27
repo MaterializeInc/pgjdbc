@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.core;
+package io.materialize.core;
 
-import org.materialize.util.PSQLException;
+import io.materialize.util.PSQLException;
 
 import org.junit.Assert;
 import org.junit.Test;

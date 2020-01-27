@@ -120,7 +120,7 @@ To insert an image, you would use:
 conn.setAutoCommit(false);
 
 // Get the Large Object Manager to perform operations with
-LargeObjectManager lobj = conn.unwrap(org.materialize.PGConnection.class).getLargeObjectAPI();
+LargeObjectManager lobj = conn.unwrap(io.materialize.PGConnection.class).getLargeObjectAPI();
 
 // Create a new large object
 long oid = lobj.createLO(LargeObjectManager.READ | LargeObjectManager.WRITE);
@@ -163,7 +163,7 @@ Retrieving the image from the Large Object:
 conn.setAutoCommit(false);
 
 // Get the Large Object Manager to perform operations with
-LargeObjectManager lobj = conn.unwrap(org.materialize.PGConnection.class).getLargeObjectAPI();
+LargeObjectManager lobj = conn.unwrap(io.materialize.PGConnection.class).getLargeObjectAPI();
 
 PreparedStatement ps = conn.prepareStatement("SELECT imgoid FROM imageslo WHERE imgname = ?");
 ps.setString(1, "myimage.gif");

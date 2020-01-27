@@ -15,7 +15,7 @@ methods available, and it depends on your code which is the best one to use.
 In the first method, your code implicitly loads the driver using the `Class.forName()`
 method. For PostgreSQL™, you would use:
 
-Class.forName("org.materialize.Driver");
+Class.forName("io.materialize.Driver");
 
 This will load the driver, and while loading, the driver will automatically
 register itself with JDBC.
@@ -32,7 +32,7 @@ use any PostgreSQL™-specific extensions, then the second method is advisable.
 The second method passes the driver as a parameter to the JVM as it starts, using
 the `-D` argument. Example:
 
-`java -Djdbc.drivers=org.materialize.Driver example.ImageViewer`
+`java -Djdbc.drivers=io.materialize.Driver example.ImageViewer`
 
 In this example, the JVM will attempt to load the driver as part of its initialization.
 Once done, the ImageViewer is started.

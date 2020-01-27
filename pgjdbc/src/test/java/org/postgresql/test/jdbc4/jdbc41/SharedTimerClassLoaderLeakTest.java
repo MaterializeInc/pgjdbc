@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc4.jdbc41;
+package io.materialize.test.jdbc4.jdbc41;
 
-import org.materialize.Driver;
+import io.materialize.Driver;
 
 import org.junit.After;
 import org.junit.Test;
@@ -15,8 +15,8 @@ import se.jiderhamn.classloader.leak.JUnitClassloaderRunner;
 import se.jiderhamn.classloader.leak.Leaks;
 
 /**
- * <p>Test case that verifies that the use of {@link org.materialize.util.SharedTimer} within
- * {@link org.materialize.Driver} does not cause ClassLoader leaks.</p>
+ * <p>Test case that verifies that the use of {@link io.materialize.util.SharedTimer} within
+ * {@link io.materialize.Driver} does not cause ClassLoader leaks.</p>
  *
  * <p>The class is placed in {@code jdbc41} package so it won't be tested in JRE6 build.
  * {@link JUnitClassloaderRunner} does not support JRE6, so we have to skip the test there.</p>
@@ -24,10 +24,10 @@ import se.jiderhamn.classloader.leak.Leaks;
  * @author Mattias Jiderhamn
  */
 @RunWith(JUnitClassloaderRunner.class)
-@PackagesLoadedOutsideClassLoader(packages = "org.materialize", addToDefaults = true)
+@PackagesLoadedOutsideClassLoader(packages = "io.materialize", addToDefaults = true)
 public class SharedTimerClassLoaderLeakTest {
 
-  /** Starting a {@link org.materialize.util.SharedTimer} should not cause ClassLoader leaks. */
+  /** Starting a {@link io.materialize.util.SharedTimer} should not cause ClassLoader leaks. */
   @Leaks(false)
   @Test
   public void sharedTimerDoesNotCauseLeak() {

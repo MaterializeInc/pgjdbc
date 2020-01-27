@@ -202,7 +202,7 @@ thrown to caller to be dealt with so no need to log at this verbosity by pgjdbc 
 ### Fixed
 - Fix data being truncated in setCharacterStream (bug introduced in 42.0.0) [PR 802](https://github.com/pgjdbc/pgjdbc/pull/802)
 - Fix calculation of lastReceiveLSN for logical replication [PR 801](https://github.com/pgjdbc/pgjdbc/pull/801)
-- Make sure org.materialize.Driver is loaded when accessing though DataSource interface [Issue 768](https://github.com/pgjdbc/pgjdbc/issues/768)
+- Make sure io.materialize.Driver is loaded when accessing though DataSource interface [Issue 768](https://github.com/pgjdbc/pgjdbc/issues/768)
 
 ### Regressions
 - There's no 42.1.0.jre6 version due to infinity handling bug. Fixed in 42.1.1.jre6

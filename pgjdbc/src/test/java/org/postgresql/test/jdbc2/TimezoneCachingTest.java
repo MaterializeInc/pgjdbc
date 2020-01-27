@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 
-import org.materialize.core.BaseConnection;
-import org.materialize.jdbc.TimestampUtils;
-import org.materialize.test.TestUtil;
+import io.materialize.core.BaseConnection;
+import io.materialize.jdbc.TimestampUtils;
+import io.materialize.test.TestUtil;
 
 import org.junit.Assume;
 import org.junit.Test;

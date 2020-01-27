@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.ssl;
+package io.materialize.test.ssl;
 
-import org.materialize.test.TestUtil;
+import io.materialize.test.TestUtil;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -201,7 +201,7 @@ public class SingleCertValidatingFactoryTestSuite {
   public void connectSSLWithValidationWrongCert() throws SQLException, IOException {
     Properties info = new Properties();
     info.setProperty("ssl", "true");
-    info.setProperty("sslfactory", "org.materialize.ssl.SingleCertValidatingFactory");
+    info.setProperty("sslfactory", "io.materialize.ssl.SingleCertValidatingFactory");
     info.setProperty("sslfactoryarg", "file:" + badServerCertPath);
     testConnect(info, true, javax.net.ssl.SSLHandshakeException.class);
   }
@@ -210,7 +210,7 @@ public class SingleCertValidatingFactoryTestSuite {
   public void fileCertInvalid() throws SQLException, IOException {
     Properties info = new Properties();
     info.setProperty("ssl", "true");
-    info.setProperty("sslfactory", "org.materialize.ssl.SingleCertValidatingFactory");
+    info.setProperty("sslfactory", "io.materialize.ssl.SingleCertValidatingFactory");
     info.setProperty("sslfactoryarg", "file:foo/bar/baz");
     testConnect(info, true, java.io.FileNotFoundException.class);
   }
@@ -219,7 +219,7 @@ public class SingleCertValidatingFactoryTestSuite {
   public void stringCertInvalid() throws SQLException, IOException {
     Properties info = new Properties();
     info.setProperty("ssl", "true");
-    info.setProperty("sslfactory", "org.materialize.ssl.SingleCertValidatingFactory");
+    info.setProperty("sslfactory", "io.materialize.ssl.SingleCertValidatingFactory");
     info.setProperty("sslfactoryarg", "foobar!");
     testConnect(info, true, java.security.GeneralSecurityException.class);
   }
@@ -233,7 +233,7 @@ public class SingleCertValidatingFactoryTestSuite {
   public void connectSSLWithValidationProperCertFile() throws SQLException, IOException {
     Properties info = new Properties();
     info.setProperty("ssl", "true");
-    info.setProperty("sslfactory", "org.materialize.ssl.SingleCertValidatingFactory");
+    info.setProperty("sslfactory", "io.materialize.ssl.SingleCertValidatingFactory");
     info.setProperty("sslfactoryarg", "file:" + goodServerCertPath);
     testConnect(info, true);
   }
@@ -247,7 +247,7 @@ public class SingleCertValidatingFactoryTestSuite {
   public void connectSSLWithValidationProperCertString() throws SQLException, IOException {
     Properties info = new Properties();
     info.setProperty("ssl", "true");
-    info.setProperty("sslfactory", "org.materialize.ssl.SingleCertValidatingFactory");
+    info.setProperty("sslfactory", "io.materialize.ssl.SingleCertValidatingFactory");
     info.setProperty("sslfactoryarg", getGoodServerCert());
     testConnect(info, true);
   }
@@ -259,14 +259,14 @@ public class SingleCertValidatingFactoryTestSuite {
   @Test
   public void connectSSLWithValidationProperCertSysProp() throws SQLException, IOException {
     // System property name we're using for the SSL cert. This can be anything.
-    String sysPropName = "org.materialize.jdbc.test.sslcert";
+    String sysPropName = "io.materialize.jdbc.test.sslcert";
 
     try {
       System.setProperty(sysPropName, getGoodServerCert());
 
       Properties info = new Properties();
       info.setProperty("ssl", "true");
-      info.setProperty("sslfactory", "org.materialize.ssl.SingleCertValidatingFactory");
+      info.setProperty("sslfactory", "io.materialize.ssl.SingleCertValidatingFactory");
       info.setProperty("sslfactoryarg", "sys:" + sysPropName);
       testConnect(info, true);
     } finally {
@@ -295,7 +295,7 @@ public class SingleCertValidatingFactoryTestSuite {
 
     Properties info = new Properties();
     info.setProperty("ssl", "true");
-    info.setProperty("sslfactory", "org.materialize.ssl.SingleCertValidatingFactory");
+    info.setProperty("sslfactory", "io.materialize.ssl.SingleCertValidatingFactory");
     info.setProperty("sslfactoryarg", "env:" + envVarName);
     testConnect(info, true);
   }
@@ -307,14 +307,14 @@ public class SingleCertValidatingFactoryTestSuite {
   @Test
   public void connectSSLWithValidationMissingSysProp() throws SQLException, IOException {
     // System property name we're using for the SSL cert. This can be anything.
-    String sysPropName = "org.materialize.jdbc.test.sslcert";
+    String sysPropName = "io.materialize.jdbc.test.sslcert";
 
     try {
       System.setProperty(sysPropName, "");
 
       Properties info = new Properties();
       info.setProperty("ssl", "true");
-      info.setProperty("sslfactory", "org.materialize.ssl.SingleCertValidatingFactory");
+      info.setProperty("sslfactory", "io.materialize.ssl.SingleCertValidatingFactory");
       info.setProperty("sslfactoryarg", "sys:" + sysPropName);
       testConnect(info, true, java.security.GeneralSecurityException.class);
     } finally {
@@ -339,7 +339,7 @@ public class SingleCertValidatingFactoryTestSuite {
 
     Properties info = new Properties();
     info.setProperty("ssl", "true");
-    info.setProperty("sslfactory", "org.materialize.ssl.SingleCertValidatingFactory");
+    info.setProperty("sslfactory", "io.materialize.ssl.SingleCertValidatingFactory");
     info.setProperty("sslfactoryarg", "env:" + envVarName);
     testConnect(info, true, java.security.GeneralSecurityException.class);
   }

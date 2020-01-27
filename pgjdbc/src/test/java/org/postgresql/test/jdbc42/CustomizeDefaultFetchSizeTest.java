@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc42;
+package io.materialize.test.jdbc42;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.fail;
 
-import org.materialize.PGProperty;
-import org.materialize.test.TestUtil;
+import io.materialize.PGProperty;
+import io.materialize.test.TestUtil;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.After;

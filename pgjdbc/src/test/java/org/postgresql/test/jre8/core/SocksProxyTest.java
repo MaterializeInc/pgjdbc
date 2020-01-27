@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jre8.core;
+package io.materialize.test.jre8.core;
 
 import static org.junit.Assert.assertNotNull;
 
-import org.materialize.test.TestUtil;
+import io.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Test;

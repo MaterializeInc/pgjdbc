@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.util;
+package io.materialize.util;
 
 import static org.junit.Assert.assertTrue;
 
-import org.materialize.test.TestUtil;
+import io.materialize.test.TestUtil;
 
 import org.junit.Test;
 

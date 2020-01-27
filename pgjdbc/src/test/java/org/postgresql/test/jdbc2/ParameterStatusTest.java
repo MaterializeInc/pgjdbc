@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2;
+package io.materialize.test.jdbc2;
 
-import org.materialize.PGConnection;
-import org.materialize.core.ServerVersion;
-import org.materialize.test.TestUtil;
+import io.materialize.PGConnection;
+import io.materialize.core.ServerVersion;
+import io.materialize.test.TestUtil;
 
 import org.hamcrest.core.StringStartsWith;
 

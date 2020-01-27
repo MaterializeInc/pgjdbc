@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2;
+package io.materialize.test.jdbc2;
 
-import org.materialize.PGConnection;
-import org.materialize.PGProperty;
-import org.materialize.core.Version;
-import org.materialize.jdbc.PreferQueryMode;
-import org.materialize.test.TestUtil;
+import io.materialize.PGConnection;
+import io.materialize.PGProperty;
+import io.materialize.core.Version;
+import io.materialize.jdbc.PreferQueryMode;
+import io.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Assume;

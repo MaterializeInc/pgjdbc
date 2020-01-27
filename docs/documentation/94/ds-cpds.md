@@ -10,7 +10,7 @@ next: ds-ds.html
 ---
 
 PostgreSQL™ includes one implementation of `ConnectionPoolDataSource` named
-`org.materialize.ds.PGConnectionPoolDataSource`.
+`io.materialize.ds.PGConnectionPoolDataSource`.
 
 JDBC requires that a `ConnectionPoolDataSource` be configured via JavaBean
 properties, shown in [Table 11.1, “`ConnectionPoolDataSource` Configuration Properties”](ds-cpds.html#ds-cpds-props),

@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc4.jdbc41;
+package io.materialize.test.jdbc4.jdbc41;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.materialize.test.TestUtil;
+import io.materialize.test.TestUtil;
 
 import org.junit.Test;
 

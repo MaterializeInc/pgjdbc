@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.xa;
+package io.materialize.test.xa;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -11,9 +11,9 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeTrue;
 
-import org.materialize.test.TestUtil;
-import org.materialize.test.jdbc2.optional.BaseDataSourceTest;
-import org.materialize.xa.PGXADataSource;
+import io.materialize.test.TestUtil;
+import io.materialize.test.jdbc2.optional.BaseDataSourceTest;
+import io.materialize.xa.PGXADataSource;
 
 import org.junit.After;
 import org.junit.Before;

@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.hostchooser;
+package io.materialize.test.hostchooser;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

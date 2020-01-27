@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;

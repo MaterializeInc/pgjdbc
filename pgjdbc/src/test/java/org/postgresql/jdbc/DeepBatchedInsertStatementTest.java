@@ -3,17 +3,17 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.jdbc;
+package io.materialize.jdbc;
 
 import static org.junit.Assert.assertEquals;
 
-import org.materialize.PGProperty;
-import org.materialize.core.ParameterList;
-import org.materialize.core.Query;
-import org.materialize.core.v3.BatchedQuery;
-import org.materialize.test.TestUtil;
-import org.materialize.test.jdbc2.BaseTest4;
-import org.materialize.test.jdbc2.BatchExecuteTest;
+import io.materialize.PGProperty;
+import io.materialize.core.ParameterList;
+import io.materialize.core.Query;
+import io.materialize.core.v3.BatchedQuery;
+import io.materialize.test.TestUtil;
+import io.materialize.test.jdbc2.BaseTest4;
+import io.materialize.test.jdbc2.BatchExecuteTest;
 
 import org.junit.Test;
 
@@ -311,7 +311,7 @@ public class DeepBatchedInsertStatementTest extends BaseTest4 {
    */
   private byte[] getEncodedStatementName(BatchedQuery bqd)
       throws Exception {
-    Class<?> clazz = Class.forName("org.materialize.core.v3.SimpleQuery");
+    Class<?> clazz = Class.forName("io.materialize.core.v3.SimpleQuery");
     Method mESN = clazz.getDeclaredMethod("getEncodedStatementName");
     mESN.setAccessible(true);
     return (byte[]) mESN.invoke(bqd);

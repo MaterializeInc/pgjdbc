@@ -3,26 +3,26 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc4.jdbc41;
+package io.materialize.test.jdbc4.jdbc41;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.materialize.core.BaseConnection;
-import org.materialize.core.ServerVersion;
-import org.materialize.geometric.PGbox;
-import org.materialize.geometric.PGcircle;
-import org.materialize.geometric.PGline;
-import org.materialize.geometric.PGlseg;
-import org.materialize.geometric.PGpath;
-import org.materialize.geometric.PGpoint;
-import org.materialize.geometric.PGpolygon;
-import org.materialize.test.TestUtil;
-import org.materialize.util.PGInterval;
-import org.materialize.util.PGmoney;
-import org.materialize.util.PGobject;
+import io.materialize.core.BaseConnection;
+import io.materialize.core.ServerVersion;
+import io.materialize.geometric.PGbox;
+import io.materialize.geometric.PGcircle;
+import io.materialize.geometric.PGline;
+import io.materialize.geometric.PGlseg;
+import io.materialize.geometric.PGpath;
+import io.materialize.geometric.PGpoint;
+import io.materialize.geometric.PGpolygon;
+import io.materialize.test.TestUtil;
+import io.materialize.util.PGInterval;
+import io.materialize.util.PGmoney;
+import io.materialize.util.PGobject;
 
 import org.junit.After;
 import org.junit.Before;

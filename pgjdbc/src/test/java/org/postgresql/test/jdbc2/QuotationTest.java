@@ -3,9 +3,9 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2;
+package io.materialize.test.jdbc2;
 
-import org.materialize.test.TestUtil;
+import io.materialize.test.TestUtil;
 
 import org.junit.Assert;
 import org.junit.Test;

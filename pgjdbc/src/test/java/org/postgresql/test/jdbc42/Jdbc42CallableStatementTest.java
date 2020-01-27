@@ -3,12 +3,12 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc42;
+package io.materialize.test.jdbc42;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import org.materialize.test.jdbc2.BaseTest4;
+import io.materialize.test.jdbc2.BaseTest4;
 
 import org.junit.Test;
 
@@ -23,7 +23,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Tests for JDBC 4.2 features in {@link org.materialize.jdbc.PgCallableStatement}.
+ * Tests for JDBC 4.2 features in {@link io.materialize.jdbc.PgCallableStatement}.
  */
 public class Jdbc42CallableStatementTest extends BaseTest4 {
 

@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.util;
+package io.materialize.test.util;
 
 import java.io.FileNotFoundException;
 import java.io.FilterInputStream;
@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  * {@link InputStream} implementation that reads less data than is provided in the destination
- * array. This allows to stress test {@link org.materialize.copy.CopyManager} or other consumers.
+ * array. This allows to stress test {@link io.materialize.copy.CopyManager} or other consumers.
  */
 public class StrangeInputStream extends FilterInputStream {
   private Random rand; // generator of fun events

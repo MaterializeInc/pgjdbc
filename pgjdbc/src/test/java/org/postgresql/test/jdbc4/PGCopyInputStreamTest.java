@@ -3,15 +3,15 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc4;
+package io.materialize.test.jdbc4;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.materialize.PGConnection;
-import org.materialize.copy.PGCopyInputStream;
-import org.materialize.core.ServerVersion;
-import org.materialize.test.TestUtil;
+import io.materialize.PGConnection;
+import io.materialize.copy.PGCopyInputStream;
+import io.materialize.core.ServerVersion;
+import io.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Before;

@@ -3,21 +3,21 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-import org.materialize.PGConnection;
-import org.materialize.PGProperty;
-import org.materialize.copy.CopyDual;
-import org.materialize.copy.CopyManager;
-import org.materialize.core.BaseConnection;
-import org.materialize.core.ServerVersion;
-import org.materialize.replication.LogSequenceNumber;
-import org.materialize.test.TestUtil;
-import org.materialize.test.util.rules.ServerVersionRule;
-import org.materialize.test.util.rules.annotation.HaveMinimalServerVersion;
+import io.materialize.PGConnection;
+import io.materialize.PGProperty;
+import io.materialize.copy.CopyDual;
+import io.materialize.copy.CopyManager;
+import io.materialize.core.BaseConnection;
+import io.materialize.core.ServerVersion;
+import io.materialize.replication.LogSequenceNumber;
+import io.materialize.test.TestUtil;
+import io.materialize.test.util.rules.ServerVersionRule;
+import io.materialize.test.util.rules.annotation.HaveMinimalServerVersion;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.After;

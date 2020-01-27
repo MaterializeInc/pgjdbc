@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -12,13 +12,13 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
-import org.materialize.Driver;
-import org.materialize.PGProperty;
-import org.materialize.ds.PGSimpleDataSource;
-import org.materialize.ds.common.BaseDataSource;
-import org.materialize.jdbc.AutoSave;
-import org.materialize.test.TestUtil;
-import org.materialize.util.URLCoder;
+import io.materialize.Driver;
+import io.materialize.PGProperty;
+import io.materialize.ds.PGSimpleDataSource;
+import io.materialize.ds.common.BaseDataSource;
+import io.materialize.jdbc.AutoSave;
+import io.materialize.test.TestUtil;
+import io.materialize.util.URLCoder;
 
 import org.junit.After;
 import org.junit.Before;

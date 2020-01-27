@@ -3,14 +3,14 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2.optional;
+package io.materialize.test.jdbc2.optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.fail;
 
-import org.materialize.ds.common.BaseDataSource;
-import org.materialize.jdbc2.optional.PoolingDataSource;
+import io.materialize.ds.common.BaseDataSource;
+import io.materialize.jdbc2.optional.PoolingDataSource;
 
 import org.junit.Test;
 

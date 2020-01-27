@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2.optional;
+package io.materialize.test.jdbc2.optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -12,10 +12,10 @@ import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.fail;
 
-import org.materialize.PGConnection;
-import org.materialize.ds.common.BaseDataSource;
-import org.materialize.test.TestUtil;
-import org.materialize.test.util.MiniJndiContextFactory;
+import io.materialize.PGConnection;
+import io.materialize.ds.common.BaseDataSource;
+import io.materialize.test.TestUtil;
+import io.materialize.test.util.MiniJndiContextFactory;
 
 import org.junit.After;
 import org.junit.Before;

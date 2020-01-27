@@ -35,7 +35,7 @@ public class NotificationTest
 {
 	public static void main(String args[]) throws Exception
 	{
-		Class.forName("org.materialize.Driver");
+		Class.forName("io.materialize.Driver");
 		String url = "jdbc:postgresql://localhost:5432/test";
 
 		// Create two distinct connections, one for the notifier
@@ -61,12 +61,12 @@ public class NotificationTest
 class Listener extends Thread
 {
 	private Connection conn;
-	private org.materialize.PGConnection pgconn;
+	private io.materialize.PGConnection pgconn;
 
 	Listener(Connection conn) throws SQLException
 	{
 		this.conn = conn;
-		this.pgconn = conn.unwrap(org.materialize.PGConnection.class);
+		this.pgconn = conn.unwrap(io.materialize.PGConnection.class);
 		Statement stmt = conn.createStatement();
 		stmt.execute("LISTEN mymessage");
 		stmt.close();
@@ -86,7 +86,7 @@ class Listener extends Thread
 				rs.close();
 				stmt.close();
 
-				org.materialize.PGNotification notifications[] = pgconn.getNotifications();
+				io.materialize.PGNotification notifications[] = pgconn.getNotifications();
 				
 				if (notifications != null)
 				{

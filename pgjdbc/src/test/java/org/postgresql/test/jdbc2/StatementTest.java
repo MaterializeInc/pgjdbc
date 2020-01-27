@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -12,10 +12,10 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.materialize.core.ServerVersion;
-import org.materialize.jdbc.PgStatement;
-import org.materialize.test.TestUtil;
-import org.materialize.util.PSQLState;
+import io.materialize.core.ServerVersion;
+import io.materialize.jdbc.PgStatement;
+import io.materialize.test.TestUtil;
+import io.materialize.util.PSQLState;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -807,7 +807,7 @@ public class StatementTest {
 
   @Test
   public void testMultipleCancels() throws Exception {
-    org.materialize.util.SharedTimer sharedTimer = org.materialize.Driver.getSharedTimer();
+    io.materialize.util.SharedTimer sharedTimer = io.materialize.Driver.getSharedTimer();
 
     Connection connA = null;
     Connection connB = null;

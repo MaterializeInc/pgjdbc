@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2;
+package io.materialize.test.jdbc2;
 
-import org.materialize.test.TestUtil;
-import org.materialize.util.PSQLState;
+import io.materialize.test.TestUtil;
+import io.materialize.util.PSQLState;
 
 import org.junit.Assert;
 import org.junit.Test;

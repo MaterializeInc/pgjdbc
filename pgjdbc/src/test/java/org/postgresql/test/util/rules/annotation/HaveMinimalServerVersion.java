@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.util.rules.annotation;
+package io.materialize.test.util.rules.annotation;
 
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;
@@ -20,7 +20,7 @@ import java.lang.annotation.Target;
 public @interface HaveMinimalServerVersion {
   /**
    * @return not null sever version in form x.y.z like 9.4, 9.5.3, etc.
-   * @see org.materialize.core.ServerVersion
+   * @see io.materialize.core.ServerVersion
    */
   String value();
 }

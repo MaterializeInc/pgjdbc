@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc4.jdbc41;
+package io.materialize.test.jdbc4.jdbc41;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -11,10 +11,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
-import org.materialize.PGProperty;
-import org.materialize.test.TestUtil;
-import org.materialize.util.PSQLException;
-import org.materialize.util.PSQLState;
+import io.materialize.PGProperty;
+import io.materialize.test.TestUtil;
+import io.materialize.util.PSQLException;
+import io.materialize.util.PSQLState;
 
 import org.junit.After;
 import org.junit.Before;

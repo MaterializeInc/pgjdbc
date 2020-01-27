@@ -3,14 +3,14 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc3;
+package io.materialize.test.jdbc3;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import org.materialize.jdbc.PreferQueryMode;
-import org.materialize.test.TestUtil;
-import org.materialize.test.jdbc2.BaseTest4;
+import io.materialize.jdbc.PreferQueryMode;
+import io.materialize.test.TestUtil;
+import io.materialize.test.jdbc2.BaseTest4;
 
 import org.junit.Assume;
 import org.junit.Test;
@@ -54,7 +54,7 @@ public class ParameterMetaDataTest extends BaseTest4 {
     assertEquals("java.lang.String", pmd.getParameterClassName(2));
     assertEquals(Types.OTHER, pmd.getParameterType(3));
     assertEquals("point", pmd.getParameterTypeName(3));
-    assertEquals("org.materialize.geometric.PGpoint", pmd.getParameterClassName(3));
+    assertEquals("io.materialize.geometric.PGpoint", pmd.getParameterClassName(3));
 
     pstmt.close();
   }

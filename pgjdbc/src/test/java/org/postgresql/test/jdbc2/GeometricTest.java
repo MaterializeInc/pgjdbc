@@ -3,23 +3,23 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.materialize.core.ServerVersion;
-import org.materialize.geometric.PGbox;
-import org.materialize.geometric.PGcircle;
-import org.materialize.geometric.PGline;
-import org.materialize.geometric.PGlseg;
-import org.materialize.geometric.PGpath;
-import org.materialize.geometric.PGpoint;
-import org.materialize.geometric.PGpolygon;
-import org.materialize.test.TestUtil;
-import org.materialize.util.PGobject;
-import org.materialize.util.PSQLException;
+import io.materialize.core.ServerVersion;
+import io.materialize.geometric.PGbox;
+import io.materialize.geometric.PGcircle;
+import io.materialize.geometric.PGline;
+import io.materialize.geometric.PGlseg;
+import io.materialize.geometric.PGpath;
+import io.materialize.geometric.PGpoint;
+import io.materialize.geometric.PGpolygon;
+import io.materialize.test.TestUtil;
+import io.materialize.util.PGobject;
+import io.materialize.util.PSQLException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

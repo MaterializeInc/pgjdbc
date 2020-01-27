@@ -3,17 +3,17 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.materialize.PGProperty;
-import org.materialize.PGResultSetMetaData;
-import org.materialize.core.ServerVersion;
-import org.materialize.jdbc.PreferQueryMode;
-import org.materialize.test.TestUtil;
+import io.materialize.PGProperty;
+import io.materialize.PGResultSetMetaData;
+import io.materialize.core.ServerVersion;
+import io.materialize.jdbc.PreferQueryMode;
+import io.materialize.test.TestUtil;
 
 import org.junit.Assert;
 import org.junit.Assume;

@@ -3,11 +3,11 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc42;
+package io.materialize.test.jdbc42;
 
-import org.materialize.PGProperty;
-import org.materialize.test.TestUtil;
-import org.materialize.test.jdbc2.BaseTest4;
+import io.materialize.PGProperty;
+import io.materialize.test.TestUtil;
+import io.materialize.test.jdbc2.BaseTest4;
 
 import org.junit.Assert;
 import org.junit.Test;

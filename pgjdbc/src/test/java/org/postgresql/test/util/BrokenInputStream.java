@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.util;
+package io.materialize.test.util;
 
 import java.io.IOException;
 import java.io.InputStream;

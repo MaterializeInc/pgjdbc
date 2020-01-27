@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2.optional;
+package io.materialize.test.jdbc2.optional;
 
-import org.materialize.jdbc2.optional.SimpleDataSource;
-import org.materialize.test.TestUtil;
+import io.materialize.jdbc2.optional.SimpleDataSource;
+import io.materialize.test.TestUtil;
 
 /**
  * Performs the basic tests defined in the superclass. Just adds the configuration logic.

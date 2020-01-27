@@ -3,15 +3,15 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc2;
+package io.materialize.test.jdbc2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.materialize.PGStatement;
-import org.materialize.jdbc.PreferQueryMode;
-import org.materialize.test.TestUtil;
+import io.materialize.PGStatement;
+import io.materialize.jdbc.PreferQueryMode;
+import io.materialize.test.TestUtil;
 
 import org.junit.Assume;
 import org.junit.Test;
@@ -96,7 +96,7 @@ public class ServerPreparedStmtTest extends BaseTest4 {
     // Verify that using the statement still works after turning off prepares
 
 
-    if (Boolean.getBoolean("org.materialize.forceBinary")) {
+    if (Boolean.getBoolean("io.materialize.forceBinary")) {
       return;
     }
     ((PGStatement) pstmt).setUseServerPrepare(false);
@@ -130,7 +130,7 @@ public class ServerPreparedStmtTest extends BaseTest4 {
     rs.close();
 
     // Verify that using the statement still works after turning off prepares
-    if (Boolean.getBoolean("org.materialize.forceBinary")) {
+    if (Boolean.getBoolean("io.materialize.forceBinary")) {
       return;
     }
 

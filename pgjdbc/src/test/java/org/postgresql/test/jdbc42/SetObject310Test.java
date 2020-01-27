@@ -3,15 +3,15 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jdbc42;
+package io.materialize.test.jdbc42;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
 
-import org.materialize.test.TestUtil;
-import org.materialize.test.jdbc2.BaseTest4;
+import io.materialize.test.TestUtil;
+import io.materialize.test.jdbc2.BaseTest4;
 
 import org.junit.After;
 import org.junit.Before;
@@ -396,7 +396,7 @@ public class SetObject310Test extends BaseTest4 {
   @Test
   public void testSetLocalTimeAndReadBack() throws SQLException {
     // TODO: fix for binary mode.
-    //  Avoid micros truncation in org.materialize.jdbc.PgResultSet#internalGetObject
+    //  Avoid micros truncation in io.materialize.jdbc.PgResultSet#internalGetObject
     assumeBinaryModeRegular();
     LocalTime data = LocalTime.parse("16:21:51.123456");
 

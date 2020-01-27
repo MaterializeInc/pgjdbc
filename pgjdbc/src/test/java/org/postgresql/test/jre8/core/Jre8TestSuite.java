@@ -3,7 +3,7 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.jre8.core;
+package io.materialize.test.jre8.core;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

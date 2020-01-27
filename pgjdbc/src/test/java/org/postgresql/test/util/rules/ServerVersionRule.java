@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.util.rules;
+package io.materialize.test.util.rules;
 
-import org.materialize.core.ServerVersion;
-import org.materialize.core.Version;
-import org.materialize.jdbc.PgConnection;
-import org.materialize.test.TestUtil;
-import org.materialize.test.util.rules.annotation.HaveMinimalServerVersion;
+import io.materialize.core.ServerVersion;
+import io.materialize.core.Version;
+import io.materialize.jdbc.PgConnection;
+import io.materialize.test.TestUtil;
+import io.materialize.test.util.rules.annotation.HaveMinimalServerVersion;
 
 import org.junit.AssumptionViolatedException;
 import org.junit.rules.TestRule;

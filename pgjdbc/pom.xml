@@ -97,7 +97,7 @@
               <outputDirectory>${project.build.sourceDirectory}</outputDirectory>
               <keysFile>messages.pot</keysFile>
               <poDirectory>src/main/java/org/postgresql/translation</poDirectory>
-              <targetBundle>org.materialize.translation.messages</targetBundle>
+              <targetBundle>io.materialize.translation.messages</targetBundle>
               <keywords>-kGT.tr</keywords>
               <msgmergeCmd>msgmerge</msgmergeCmd>
             </configuration>
@@ -246,7 +246,7 @@
         <configuration>
           <archive>
             <manifestEntries>
-              <Automatic-Module-Name>org.materialize.jdbc</Automatic-Module-Name>
+              <Automatic-Module-Name>io.materialize.jdbc</Automatic-Module-Name>
             </manifestEntries>
           </archive>
         </configuration>
@@ -294,7 +294,7 @@
               <relocations>
                 <relocation>
                   <pattern>com.ongres</pattern>
-                  <shadedPattern>org.materialize.shaded.com.ongres</shadedPattern>
+                  <shadedPattern>io.materialize.shaded.com.ongres</shadedPattern>
                 </relocation>
               </relocations>
             </configuration>

@@ -50,7 +50,7 @@ control to enable the tracing in the driver. Keep in mind that if you use an App
 as most Application Servers use dynamic configuration control which makes easy to enable/disable
 logging at runtime.
 
-The root logger used by the PgJDBC driver is `org.materialize`.
+The root logger used by the PgJDBC driver is `io.materialize`.
 
 <a name="conprop"></a>
 ## Enable logging by using connection properties
@@ -132,7 +132,7 @@ java.util.logging.FileHandler.level = FINEST
 java.util.logging.SimpleFormatter.format = %1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS %4$s %2$s %5$s%6$s%n
 
 # Facility specific properties.
-org.materialize.level = FINEST
+io.materialize.level = FINEST
 ```
 
 And when you run your application you pass the system property:

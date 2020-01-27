@@ -3,10 +3,10 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.core;
+package io.materialize.test.core;
 
-import org.materialize.PGProperty;
-import org.materialize.test.TestUtil;
+import io.materialize.PGProperty;
+import io.materialize.test.TestUtil;
 
 import org.junit.After;
 import org.junit.Assert;

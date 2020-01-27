@@ -3,13 +3,13 @@
  * See the LICENSE file in the project root for more information.
  */
 
-package org.materialize.test.ssl;
+package io.materialize.test.ssl;
 
-import org.materialize.PGProperty;
-import org.materialize.jdbc.SslMode;
-import org.materialize.test.TestUtil;
-import org.materialize.test.jdbc2.BaseTest4;
-import org.materialize.util.PSQLState;
+import io.materialize.PGProperty;
+import io.materialize.jdbc.SslMode;
+import io.materialize.test.TestUtil;
+import io.materialize.test.jdbc2.BaseTest4;
+import io.materialize.util.PSQLState;
 
 import org.junit.Assert;
 import org.junit.Test;
