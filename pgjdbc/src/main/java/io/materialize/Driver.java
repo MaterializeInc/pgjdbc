@@ -212,7 +212,7 @@ public class Driver implements java.sql.Driver {
     // get defaults
     Properties defaults;
 
-    if (!url.startsWith("jdbc:postgresql:")) {
+    if (!url.startsWith("jdbc:materialize:")) {
       return null;
     }
     try {
@@ -554,11 +554,11 @@ public class Driver implements java.sql.Driver {
       urlArgs = url.substring(qPos + 1);
     }
 
-    if (!urlServer.startsWith("jdbc:postgresql:")) {
-      LOGGER.log(Level.FINE, "JDBC URL must start with \"jdbc:postgresql:\" but was: {0}", url);
+    if (!urlServer.startsWith("jdbc:materialize:")) {
+      LOGGER.log(Level.FINE, "JDBC URL must start with \"jdbc:materialize:\" but was: {0}", url);
       return null;
     }
-    urlServer = urlServer.substring("jdbc:postgresql:".length());
+    urlServer = urlServer.substring("jdbc:materialize:".length());
 
     if (urlServer.startsWith("//")) {
       urlServer = urlServer.substring(2);
