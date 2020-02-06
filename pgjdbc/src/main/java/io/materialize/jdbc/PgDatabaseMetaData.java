@@ -1266,7 +1266,7 @@ public class PgDatabaseMetaData implements DatabaseMetaData {
     headers[7] = header("SELF_REFERENCING_COL_NAME");
     headers[8] = header("REF_GENERATION");
 
-    String[][] queries = {{"SHOW TABLES", "TABLE"}, {"SHOW VIEWS", "VIEW"}};
+    String[][] queries = {{"SHOW MATERIALIZED VIEWS", "MATERIALIZED VIEWS"}};
     for (String[] select_output : queries) {
       String select = select_output[0];
       String output = select_output[1];
