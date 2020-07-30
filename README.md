@@ -1,6 +1,14 @@
 <img height="90" alt="Slonik Duke" align="right" src="docs/media/img/slonik_duke.png" />
 
-# PostgreSQL JDBC Driver
+# PostgreSQL JDBC Driver for Materialized
+
+See [materialize.io](https://materialize.io/) for an introduction to materialize.
+
+This is a _temporary_ fork of PgJDBC to support materialized's schema introspection. As
+we converge on 100% support for `pg_catalog` and related functionality we expect to
+deprecate and eventually delete this library.
+
+---
 
 PostgreSQL JDBC Driver (PgJDBC for short) allows Java programs to connect to a PostgreSQL database using standard, database independent Java code. Is an open source JDBC driver written in Pure Java (Type 4), and communicates in the PostgreSQL native network protocol.
 
