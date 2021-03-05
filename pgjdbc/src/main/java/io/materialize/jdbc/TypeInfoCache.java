@@ -102,18 +102,28 @@ public class TypeInfoCache implements TypeInfo {
 
   static {
     typeAliases = new HashMap<String, String>();
-    typeAliases.put("smallint", "int2");
-    typeAliases.put("integer", "int4");
-    typeAliases.put("int", "int4");
-    typeAliases.put("bigint", "int8");
-    typeAliases.put("float", "float8");
     typeAliases.put("boolean", "bool");
-    typeAliases.put("decimal", "numeric");
+
+    typeAliases.put("smallint", "int2");
 
     typeAliases.put("i32", "int4");
+    typeAliases.put("integer", "int4");
+    typeAliases.put("int", "int4");
+
     typeAliases.put("i64", "int8");
+    typeAliases.put("bigint", "int8");
+
     typeAliases.put("f32", "float4");
+    typeAliases.put("real", "float4");
+
     typeAliases.put("f64", "float8");
+    typeAliases.put("double precision", "float8");
+    typeAliases.put("double", "float8");
+    typeAliases.put("float", "float8");
+
+    typeAliases.put("decimal", "numeric");
+
+    typeAliases.put("text", "varchar");
     typeAliases.put("string", "varchar");
   }
 
