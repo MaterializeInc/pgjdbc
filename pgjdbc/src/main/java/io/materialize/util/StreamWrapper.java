@@ -117,7 +117,11 @@ public class StreamWrapper {
             // forcibly close it because super.finalize() may keep the FD open, which may prevent
             // file deletion
             close();
-            super.finalize();
+            try {
+              super.finalize();
+            } catch (Throwable t) {
+              throw new IOException(t);
+            }
           }
         };
       } else {
