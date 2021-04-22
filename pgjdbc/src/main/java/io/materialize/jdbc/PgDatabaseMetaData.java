@@ -1389,17 +1389,17 @@ public class PgDatabaseMetaData implements DatabaseMetaData {
 
   @Override
   public ResultSet getSchemas(String catalog, String schemaPattern) throws SQLException {
-    int numberOfFields = 2;
-    Field[] headers = new Field[numberOfFields];
-    headers[0] = header("TABLE_SCHEM");
-    headers[1] = header("TABLE_CATALOG");
-    List<byte[][]> output = new ArrayList<>();
-    byte[][] row = new byte[numberOfFields][];
-    row[0] = null;
-    row[1] = null;
-    output.add(row);
-    System.out.println("returning empty schemas");
-    return ((BaseStatement) createMetaDataStatement()).createDriverResultSet(headers, output);
+    String sql;
+    sql = "SELECT nspname AS TABLE_SCHEM, NULL AS TABLE_CATALOG FROM pg_catalog.pg_namespace "
+          + " WHERE nspname <> 'pg_toast' AND (nspname !~ '^pg_temp_' "
+          + " OR nspname = (pg_catalog.current_schemas(true))[1]) AND (nspname !~ '^pg_toast_temp_' "
+          + " OR nspname = replace((pg_catalog.current_schemas(true))[1], 'pg_temp_', 'pg_toast_temp_')) ";
+    if (schemaPattern != null && !schemaPattern.isEmpty()) {
+      sql += " AND nspname LIKE " + escapeQuotes(schemaPattern);
+    }
+    sql += " ORDER BY TABLE_SCHEM";
+
+    return createMetaDataStatement().executeQuery(sql);
   }
 
   /**
