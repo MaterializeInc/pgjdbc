@@ -1248,52 +1248,77 @@ public class PgDatabaseMetaData implements DatabaseMetaData {
   @Override
   public ResultSet getTables(String catalog, String schemaPattern, String tableNamePattern,
                              String[] types) throws SQLException {
-    List<String> ts = null;
-    if (types != null) {
-      ts = Arrays.asList(types);
-    }
-    int numberOfFields = 9;
-    List<byte[][]> values = new ArrayList<byte[][]>(); // The new ResultSet tuple stuff
-    Field[] headers = new Field[numberOfFields];
-    // see the docs on the interface function for the definition of these
-    headers[0] = header("TABLE_SCHEM");
-    headers[1] = header("TABLE_NAME");
-    headers[2] = header("TABLE_TYPE"); // Typical types are "TABLE", "VIEW",
-    headers[3] = header("REMARKS");
-    headers[4] = header("TYPE_CAT");
-    headers[5] = header("TYPE_SCHEM");
-    headers[6] = header("TYPE_NAME");
-    headers[7] = header("SELF_REFERENCING_COL_NAME");
-    headers[8] = header("REF_GENERATION");
+    String select;
+    String orderby;
+    String useSchemas = "SCHEMAS";
+    select = "SELECT NULL AS TABLE_CAT, n.nspname AS TABLE_SCHEM, c.relname AS TABLE_NAME, "
+             + " CASE n.nspname ~ '^pg_' OR n.nspname = 'information_schema' "
+             + " WHEN true THEN CASE "
+             + " WHEN n.nspname = 'pg_catalog' OR n.nspname = 'information_schema' THEN CASE c.relkind "
+             + "  WHEN 'r' THEN 'SYSTEM TABLE' "
+             + "  WHEN 'v' THEN 'SYSTEM VIEW' "
+             + "  WHEN 'i' THEN 'SYSTEM INDEX' "
+             + "  ELSE NULL "
+             + "  END "
+             + " WHEN n.nspname = 'pg_toast' THEN CASE c.relkind "
+             + "  WHEN 'r' THEN 'SYSTEM TOAST TABLE' "
+             + "  WHEN 'i' THEN 'SYSTEM TOAST INDEX' "
+             + "  ELSE NULL "
+             + "  END "
+             + " ELSE CASE c.relkind "
+             + "  WHEN 'r' THEN 'TEMPORARY TABLE' "
+             + "  WHEN 'p' THEN 'TEMPORARY TABLE' "
+             + "  WHEN 'i' THEN 'TEMPORARY INDEX' "
+             + "  WHEN 'S' THEN 'TEMPORARY SEQUENCE' "
+             + "  WHEN 'v' THEN 'TEMPORARY VIEW' "
+             + "  ELSE NULL "
+             + "  END "
+             + " END "
+             + " WHEN false THEN CASE c.relkind "
+             + " WHEN 'r' THEN 'TABLE' "
+             + " WHEN 'p' THEN 'TABLE' "
+             + " WHEN 'i' THEN 'INDEX' "
+             + " WHEN 'S' THEN 'SEQUENCE' "
+             + " WHEN 'v' THEN 'VIEW' "
+             + " WHEN 'c' THEN 'TYPE' "
+             + " WHEN 'f' THEN 'FOREIGN TABLE' "
+             + " WHEN 'm' THEN 'MATERIALIZED VIEW' "
+             + " ELSE NULL "
+             + " END "
+             + " ELSE NULL "
+             + " END "
+             + " AS TABLE_TYPE, d.description AS REMARKS, "
+             + " '' as TYPE_CAT, '' as TYPE_SCHEM, '' as TYPE_NAME, "
+             + "'' AS SELF_REFERENCING_COL_NAME, '' AS REF_GENERATION "
+             + " FROM pg_catalog.pg_namespace n, pg_catalog.pg_class c "
+             + " LEFT JOIN pg_catalog.pg_description d ON (c.oid = d.objoid AND d.objsubid = 0) "
+             + " LEFT JOIN pg_catalog.pg_class dc ON (d.classoid=dc.oid AND dc.relname='pg_class') "
+             + " LEFT JOIN pg_catalog.pg_namespace dn ON (dn.oid=dc.relnamespace AND dn.nspname='pg_catalog') "
+             + " WHERE c.relnamespace = n.oid ";
 
-    String[][] queries = {{"SHOW MATERIALIZED VIEWS", "MATERIALIZED VIEWS"}};
-    for (String[] select_output : queries) {
-      String select = select_output[0];
-      String output = select_output[1];
-      final byte[] output_ty = connection.encodeString(output);
-      try (
-        Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery(select);
-      ) {
-        int count = 0;
-        while (rs.next()) {
-          count += 1;
-          byte[][] tuple = new byte[numberOfFields][];
-          tuple[0] = null;
-          // `SHOW <OBJECT>` only returns a single column and there 1 indexed
-          tuple[1] = rs.getBytes(1);
-          tuple[2] = output_ty;
-          tuple[3] = null;
-          tuple[4] = null;
-          tuple[5] = null;
-          tuple[6] = null;
-          tuple[7] = null;
-          tuple[8] = null;
-          values.add(tuple);
+    if (schemaPattern != null && !schemaPattern.isEmpty()) {
+      select += " AND n.nspname LIKE " + escapeQuotes(schemaPattern);
+    }
+    orderby = " ORDER BY TABLE_TYPE,TABLE_SCHEM,TABLE_NAME ";
+
+    if (tableNamePattern != null && !tableNamePattern.isEmpty()) {
+      select += " AND c.relname LIKE " + escapeQuotes(tableNamePattern);
+    }
+    if (types != null) {
+      select += " AND (false ";
+      StringBuilder orclause = new StringBuilder();
+      for (String type : types) {
+        Map<String, String> clauses = tableTypeClauses.get(type);
+        if (clauses != null) {
+          String clause = clauses.get(useSchemas);
+          orclause.append(" OR ( ").append(clause).append(" ) ");
         }
       }
+      select += orclause.toString() + ") ";
     }
-    return ((BaseStatement) createMetaDataStatement()).createDriverResultSet(headers, values);
+    String sql = select + orderby;
+
+    return createMetaDataStatement().executeQuery(sql);
   }
 
   /**
@@ -1468,66 +1493,73 @@ public class PgDatabaseMetaData implements DatabaseMetaData {
     f[23] = new Field( "IS_GENERATEDCOLUMN", Oid.VARCHAR);
 
     // materialize does not support `SHOW TABLES LIKE ..`, so do it here
+    Pattern schemaNameRe = Pattern.compile(schemaPattern.replace("%", ".*"));
     Pattern tableNameRe = Pattern.compile(tableNamePattern.replace("%", ".*"));
 
-    String[] queries = {"SHOW TABLES", "SHOW VIEWS"};
-    for (String query : queries) {
-      try (
-        Statement tablesStmt = connection.createStatement();
-        ResultSet rs = tablesStmt.executeQuery(query)
-      ) {
-        while (rs.next()) {
-          String tableName = rs.getString(1);
-          if (!tableNameRe.matcher(tableName).matches()) {
-            continue;
-          }
-          String columnQuery = String.format("SHOW COLUMNS FROM %s", tableName);
-          try (
-            Statement columnsStmt = connection.createStatement();
-            ResultSet crs = columnsStmt.executeQuery(columnQuery)
-          ) {
-            int columnIdx = 0; // TODO: maybe we shouldn't rely on the output order of SHOW TABLES for this?
-            while (crs.next()) {
-              columnIdx += 1;
-              byte[][] tuple = new byte[numberOfFields][];
+    String query = "select mz_schemas.name, mz_relations.name from mz_relations join mz_schemas on mz_relations.schema_id = mz_schemas.id where mz_relations.type != 'source'";
+    if (schemaPattern != null && !schemaPattern.isEmpty()) {
+      query += " AND mz_schemas.name LIKE " + escapeQuotes(schemaPattern);
+    }
+    if (tableNamePattern != null && !tableNamePattern.isEmpty()) {
+      query += " AND mz_relations.name LIKE " + escapeQuotes(tableNamePattern);
+    }
 
-              // SHOW COLUMNS returns a table with NAME NULLABLE TYPE fields
-              byte[] name = crs.getBytes(1);
-              boolean nullable = crs.getBoolean(2);
-              String typeName = crs.getString(3);
+    try (
+      Statement tablesStmt = connection.createStatement();
+      ResultSet rs = tablesStmt.executeQuery(query)
+    ) {
+      while (rs.next()) {
+        String schemaName = rs.getString(1);
+        String tableName = rs.getString(2);
+        if (!tableNameRe.matcher(tableName).matches()) {
+          continue;
+        }
+        String columnQuery = String.format("SHOW COLUMNS FROM %s.%s", schemaName, tableName);
+        try (
+          Statement columnsStmt = connection.createStatement();
+          ResultSet crs = columnsStmt.executeQuery(columnQuery)
+        ) {
+          int columnIdx = 0; // TODO: maybe we shouldn't rely on the output order of SHOW TABLES for this?
+          while (crs.next()) {
+            columnIdx += 1;
+            byte[][] tuple = new byte[numberOfFields][];
 
-              tuple[0] = null;
-              tuple[1] = null;
-              tuple[2] = connection.encodeString(tableName);
-              tuple[3] = name;
-              int theType = connection.getTypeInfo().getSQLType(typeName);
-              tuple[4] = connection.encodeString(Integer.toString(theType));
-              tuple[5] = connection.encodeString(typeName);
-              int theOid = connection.getTypeInfo().getPGType(typeName);
-              tuple[6] = connection.encodeString(Integer.toString(theOid));
-              tuple[7] = null; // Not used
-              // TODO: extract digits
-              tuple[8] = connection.encodeString("0");
-              // everything is base 10
-              tuple[9] = connection.encodeString("10");
-              tuple[10] = connection.encodeString(Integer.toString(nullable
-                ? java.sql.DatabaseMetaData.columnNoNulls : java.sql.DatabaseMetaData.columnNullable)); // Nullable
-              tuple[11] = null;
-              tuple[12] = null; // materialize does not supply defaults
-              tuple[13] = null; // not used
-              tuple[14] = null; // not used
-              tuple[15] = tuple[6]; // char octet length
-              tuple[16] = connection.encodeString(Integer.toString(columnIdx));
-              tuple[17] = connection.encodeString(nullable ? "NO" : "YES");
-              tuple[18] = null; // SCOPE_CATALOG
-              tuple[19] = null; // SCOPE_SCHEMA
-              tuple[20] = null; // SCOPE_TABLE
-              tuple[21] = null; // TODO: SOURCE_DATA_TYPE
-              tuple[22] = connection.encodeString(""); // TODO: Do we auto increment anything, conceptually?
-              tuple[23] = connection.encodeString(""); // TODO: Do we auto increment anything, conceptually?
+            // SHOW COLUMNS returns a table with NAME NULLABLE TYPE fields
+            byte[] name = crs.getBytes(1);
+            boolean nullable = crs.getBoolean(2);
+            String typeName = crs.getString(3);
 
-              v.add(tuple);
-            }
+            tuple[0] = null;
+            tuple[1] = null;
+            tuple[2] = connection.encodeString(tableName);
+            tuple[3] = name;
+            int theType = connection.getTypeInfo().getSQLType(typeName);
+            tuple[4] = connection.encodeString(Integer.toString(theType));
+            tuple[5] = connection.encodeString(typeName);
+            int theOid = connection.getTypeInfo().getPGType(typeName);
+            tuple[6] = connection.encodeString(Integer.toString(theOid));
+            tuple[7] = null; // Not used
+            // TODO: extract digits
+            tuple[8] = connection.encodeString("0");
+            // everything is base 10
+            tuple[9] = connection.encodeString("10");
+            tuple[10] = connection.encodeString(Integer.toString(nullable
+              ? java.sql.DatabaseMetaData.columnNoNulls : java.sql.DatabaseMetaData.columnNullable)); // Nullable
+            tuple[11] = null;
+            tuple[12] = null; // materialize does not supply defaults
+            tuple[13] = null; // not used
+            tuple[14] = null; // not used
+            tuple[15] = tuple[6]; // char octet length
+            tuple[16] = connection.encodeString(Integer.toString(columnIdx));
+            tuple[17] = connection.encodeString(nullable ? "NO" : "YES");
+            tuple[18] = null; // SCOPE_CATALOG
+            tuple[19] = null; // SCOPE_SCHEMA
+            tuple[20] = null; // SCOPE_TABLE
+            tuple[21] = null; // TODO: SOURCE_DATA_TYPE
+            tuple[22] = connection.encodeString(""); // TODO: Do we auto increment anything, conceptually?
+            tuple[23] = connection.encodeString(""); // TODO: Do we auto increment anything, conceptually?
+
+            v.add(tuple);
           }
         }
       }
